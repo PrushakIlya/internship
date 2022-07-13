@@ -22,19 +22,19 @@ lastname.oninput = function () {
 
 email.oninput = function () {
   apiCheckEmail(checkEmail,email.value, error_email);
-  if (!email.value.match(/^(([a-zA-Z0-9]{3,40})@(gmail.com|yandex.ru|mail.ru))$/g)) error_email.innerHTML = 'EMAIL has letters and numbers, length[3,40]';
+  if(!email.value.match(/^(([a-zA-Z0-9]{3,40})@(gmail.com|yandex.ru|mail.ru))$/g)) error_email.innerHTML = 'EMAIL has letters and numbers, length[3,40]';
   else error_email.innerHTML = ' ';
 };
 
 document.addEventListener('DOMContentLoaded', function () {
   const callback = () => {
-    console.log(1);
     console.log(error_name.textContent.length);
     if(error_name.textContent.length === 1 && error_lastname.textContent.length === 1 && error_email.textContent.length === 1) {
       submit.disabled = false;
       submit.className = 'btn success'
     }else{
       submit.disabled = true;
+      submit.className = 'btn disabled'
     }
   };
   let observer = new MutationObserver(callback);
