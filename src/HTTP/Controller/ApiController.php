@@ -4,7 +4,7 @@ namespace Prushak\Internship\HTTP\Controller;
 
 use Prushak\Internship\HTTP\Models\UsersModel;
 
-class ApiController
+class ApiController extends BaseController
 {
   private $users_model;
 

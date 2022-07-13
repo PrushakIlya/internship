@@ -3,7 +3,7 @@
 function users_fake($db_connect)
 {
     $names = ['Ilya', 'Kate', 'Aleksandr', 'Sergey', 'John', 'Olya', 'Kirill', 'Ilya', 'John', 'Vlad'];
-    $lastnames = ['lastname_one', 'lastname_two', 'lastname_three', 'lastname_four', 'lastname_five', 'lastname_six', 'lastname_seven', 'lastname_eight', 'lastname_nine', 'lastname_ten'];
+    $lastnames = ['lastnameoOne', 'lastnameTwo', 'lastnameThree', 'lastnameFour', 'lastnameFive', 'lastnameSix', 'lastnameSeven', 'lastnameEight', 'lastnameNine', 'lastnameTen'];
     $emails = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
     $emails_last = ['gmail.com', 'mail.ru', 'yandex.ru'];
 

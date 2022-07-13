@@ -1,36 +1,18 @@
+<?php
+include 'components/select.php';
+include 'components/inputError.php';
+?>
 <section class="edit">
   <div class="wrapper">
     <form action="/store" method="POST">
-      <div id="error_name" class="errors"></div>
       <div>
-        <label for="name">Name: </label>
-        <input type="text" name="name" id="name">
+        <?php echo inputError('error_name', 'text', 'name') ?>
+        <?php echo inputError('error_lastname', 'text', 'lastname') ?>
+        <?php echo inputError('error_email', 'text', 'email') ?>
+        <?php echo select('gender_block', 'gender', 'male', 'female') ?>
+        <?php echo select('status_block', 'status', 'active', 'inactive') ?>
       </div>
-      <div id="error_lastname" class="errors"></div>
-      <div>
-        <label for="lastname">Lastname: </label>
-        <input type="text" name="lastname" id="lastname">
-      </div>
-      <div id="error_email" class="errors"></div>
-      <div>
-        <label for="email">Email: </label>
-        <input type="text" name="email" id='email'>
-      </div>
-      <div class="gender_block">
-        <label for="gender">Gender: </label>
-        <select name="gender" id="gender">
-          <option value="male">male</option>
-          <option value="female">female</option>
-        </select>
-      </div>
-      <div>
-        <label for="status">Status: </label>
-        <select name="status" id="status">
-          <option value="active">active</option>
-          <option value="inactive">inactive</option>
-        </select>
-      </div>
-      <input type="submit" value="save" id="submit">
+      <input type="submit" value="save" id="submit" class="btn success">
     </form>
   </div>
   </header>

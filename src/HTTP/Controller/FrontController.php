@@ -25,6 +25,17 @@ class FrontController extends BaseController
         include '../resources/views/layout.php';
     }
 
+    public function create()
+    {
+        include '../resources/views/layout.php';
+    }
+
+    public function store()
+    {
+        $this->users_model->store();
+        header('Location: /');
+    }
+
     public function update($id)
     {
         $this->users_model->update($id);
@@ -49,17 +60,6 @@ class FrontController extends BaseController
                 $first_elem++;
             }
         }
-        header('Location: /');
-    }
-
-    public function create()
-    {
-        include '../resources/views/layout.php';
-    }
-
-    public function store()
-    {
-        $this->users_model->store();
         header('Location: /');
     }
 }
