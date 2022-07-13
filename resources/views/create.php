@@ -16,4 +16,3 @@ include 'components/inputError.php';
     </form>
   </div>
   </header>
-  <script src="./js/create.js" type="module" defer></script>

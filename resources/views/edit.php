@@ -16,4 +16,3 @@ include 'components/select.php';
     </form>
   </div>
 </section>
-<script src="/js/edit.js" type="module" defer></script>

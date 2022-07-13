@@ -19,6 +19,8 @@
   </main>
 
   <?php include('../resources/views/footer.php') ?>
+  
+  <script src="./app.js" type="module" defer></script>
 </body>
 
 </html>

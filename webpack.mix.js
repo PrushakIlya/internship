@@ -6,4 +6,6 @@ mix.sass('resources/sass/app.sass', 'public/app.css', {
   },
 });
 
+mix.js('resources/js/app.js', 'public/app.js');
+
 mix.browserSync('http://localhost:8888');
