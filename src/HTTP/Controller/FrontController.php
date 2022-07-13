@@ -54,7 +54,6 @@ class FrontController extends BaseController
             $arr = explode('-', $_POST['ids']);
             $first_elem = array_shift($arr);
             $range = array_pop($arr) - $first_elem + 1;
-            var_dump($range);
             for ($i = 0; $i < $range; $i++) {
                 $this->users_model->destroy($first_elem);
                 $first_elem++;
