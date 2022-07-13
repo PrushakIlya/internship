@@ -1,56 +1,58 @@
 import {checkEmail} from './api-type.js';
 import {apiCheckEmail} from './api.js';
+const edit_firstname = document.getElementById('edit_name');
+const edit_lastname = document.getElementById('edit_lastname');
+const edit_email = document.getElementById('edit_email');
+const edit_submit = document.getElementById('edit_submit');
 
-const firstname = document.getElementById('name');
-const lastname = document.getElementById('lastname');
-const email = document.getElementById('email');
-const submit = document.getElementById('submit');
+const edit_error_name = document.getElementById('edit_error_name');
+const edit_error_lastname = document.getElementById('edit_error_lastname');
+const edit_error_email = document.getElementById('edit_error_email');
 
-const error_name = document.getElementById('error_name');
-const error_lastname = document.getElementById('error_lastname');
-const error_email = document.getElementById('error_email');
-
-error_name.innerHTML = ' ';
-error_lastname.innerHTML = ' ';
-error_email.innerHTML = ' ';
-
-const start_mail = email.value;
-
-firstname.oninput = function () {
-  if (!firstname.value.match(/^([A-Za-z]{3,20})$/g)) error_name.innerHTML = 'NAME has only letters, length[3,20]';
-  else error_name.innerHTML = ' ';
-};
-
-lastname.oninput = function () {
-  if (!lastname.value.match(/^([A-Za-z]{3,20})$/g)) error_lastname.innerHTML = 'LASTNAME has only letters, length[3,20]';
-  else error_lastname.innerHTML = ' ';
-};
-
-email.oninput = function () {
-  if(start_mail !== email.value) apiCheckEmail(checkEmail,email.value, error_email);
-  if (!email.value.match(/^(([a-zA-Z0-9]{3,40})@(gmail.com|yandex.ru|mail.ru))$/g)) error_email.innerHTML = 'EMAIL has letters and numbers, length[3,40]';
-  else error_email.innerHTML = ' ';
-};
-document.addEventListener('DOMContentLoaded', function () {
-  const callback = () => {
-    if(error_name.textContent.length === 1 && error_lastname.textContent.length === 1 && error_email.textContent.length === 1) {
-      submit.disabled = false;
-      submit.className = 'btn success'
-    }
-    else{
-      submit.disabled = true;
-      submit.className = 'btn disabled'
-    }
+if(edit_firstname!==null && edit_lastname!==null && edit_email!==null && edit_submit!==null && edit_error_name!==null && edit_error_lastname!==null && edit_error_email!==null){
+  edit_error_name.innerHTML = ' ';
+  edit_error_lastname.innerHTML = ' ';
+  edit_error_email.innerHTML = ' ';
+  
+  const start_mail = edit_email.value;
+  
+  edit_firstname.oninput = function () {
+    if (!edit_firstname.value.match(/^([A-Za-z]{3,20})$/g)) edit_error_name.innerHTML = 'NAME has only letters, length[3,20]';
+    else edit_error_name.innerHTML = ' ';
   };
-  let observer = new MutationObserver(callback);
-
-  const elem = document.querySelector('body');
-
-  observer.observe(elem, {
-    childList: true,
-    subtree: true,
+  
+  edit_lastname.oninput = function () {
+    if (!edit_lastname.value.match(/^([A-Za-z]{3,20})$/g)) edit_error_lastname.innerHTML = 'LASTNAME has only letters, length[3,20]';
+    else edit_error_lastname.innerHTML = ' ';
+  };
+  
+  edit_email.oninput = function () {
+    if(start_mail !== edit_email.value) apiCheckEmail(checkEmail,edit_email.value, edit_error_email);
+    if (!edit_email.value.match(/^(([a-zA-Z0-9]{3,40})@(gmail.com|yandex.ru|mail.ru))$/g)) edit_error_email.innerHTML = 'EMAIL has letters and numbers, length[3,40]';
+    else edit_error_email.innerHTML = ' ';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    const callback = () => {
+      if(edit_error_name.textContent.length === 1 && edit_error_lastname.textContent.length === 1 && edit_error_email.textContent.length === 1) {
+        edit_submit.disabled = false;
+        edit_submit.className = 'btn success'
+      }
+      else{
+        edit_submit.disabled = true;
+        edit_submit.className = 'btn disabled'
+      }
+    };
+    let observer = new MutationObserver(callback);
+  
+    const elem = document.querySelector('body');
+  
+    observer.observe(elem, {
+      childList: true,
+      subtree: true,
+    });
   });
-});
+}
+
 
 
 

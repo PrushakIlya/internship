@@ -20,7 +20,7 @@
 
   <?php include('../resources/views/footer.php') ?>
   
-  <script src="./app.js" type="module" defer></script>
+  <script src="/app.js" defer></script>
 </body>
 
 </html>

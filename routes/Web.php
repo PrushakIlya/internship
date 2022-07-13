@@ -3,16 +3,27 @@
 class Web
 {
     private array $routes;
+    private array $routes_api;
 
     public function __construct()
     {
         $this->routes = include '../config/routes.php';
+        $this->routes_api = include '../config/routes_api.php';
     }
 
     public function route()
     {
-        foreach ($this->routes as $pattern => $replacement) {
+        $route = array();
+        $arr = explode('/', $_SERVER['REQUEST_URI']);
+        if ($arr[1] === 'api') {
+            $route = $this->routes_api;
+        } else {
+            $route = $this->routes;
+        }
+
+        foreach ($route as $pattern => $replacement) {
             $match = preg_match("~^$pattern$~", $_SERVER['REQUEST_URI']);
+
             if ($match) {
                 $route = preg_replace("~$pattern~", $replacement, $_SERVER['REQUEST_URI']);
 

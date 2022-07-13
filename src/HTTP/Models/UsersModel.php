@@ -18,7 +18,7 @@ class UsersModel
         $sql = "INSERT INTO users (name, lastname, email, gender,status) VALUES (:name, :lastname, :email, :gender,:status)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(array(
-            ":name" => $_POST["name"], ":lastname" => $_POST["lastname"], ":email" => $_POST["email"],
+            ":name" => $_POST["create_name"], ":lastname" => $_POST["create_lastname"], ":email" => $_POST["create_email"],
             ":gender" => $_POST["gender"] === 'male' ? 1 : 0, ":status" => $_POST["status"] === 'active'  ? 1 : 0
         ));
     }
@@ -52,7 +52,7 @@ class UsersModel
         $sql = "UPDATE users SET name=:name,lastname=:lastname,email=:email,gender=:gender,status=:status WHERE id = '$id'";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(array(
-            ":name" => $_POST["name"], ":lastname" => $_POST["lastname"], ":email" => $_POST["email"],
+            ":name" => $_POST["edit_name"], ":lastname" => $_POST["edit_lastname"], ":email" => $_POST["edit_email"],
             ":gender" => $_POST["gender"] === 'male' ? 1 : 0, ":status" => $_POST["status"] === 'active'  ? 1 : 0
         ));
     }

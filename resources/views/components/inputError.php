@@ -1,7 +1,7 @@
 <?php
-function inputError($id_error, $type, $name_id, $value = '')
+function inputError($id_error, $type, $name_id,$title, $value = '')
 {
-  $title = ucfirst($name_id);
+  $title = ucfirst($title);
   return "
           <div id=$id_error class='errors'></div>
           <div class='input_block'>

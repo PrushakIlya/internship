@@ -13,7 +13,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "checkEmail": () => (/* binding */ checkEmail)
 /* harmony export */ });
 var ROOT = 'http://localhost:3000';
-var checkEmail = ROOT + '/checkEmail';
+var checkEmail = ROOT + '/api/checkEmail';
 
 /***/ }),
 
@@ -74,47 +74,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./api.js */ "./resources/js/api.js");
 
 
-var firstname = document.getElementById('name');
-var lastname = document.getElementById('lastname');
-var email = document.getElementById('email');
-var submit = document.getElementById('submit');
-var error_name = document.getElementById('error_name');
-var error_lastname = document.getElementById('error_lastname');
-var error_email = document.getElementById('error_email');
+var create_firstname = document.getElementById('create_name');
+var create_lastname = document.getElementById('create_lastname');
+var create_email = document.getElementById('create_email');
+var create_submit = document.getElementById('create_submit');
+var create_error_name = document.getElementById('create_error_name');
+var create_error_lastname = document.getElementById('create_error_lastname');
+var create_error_email = document.getElementById('create_error_email');
 
-firstname.oninput = function () {
-  if (!firstname.value.match(/^([A-Za-z]{3,20})$/g)) error_name.innerHTML = 'NAME has only letters, length[3,20]';else error_name.innerHTML = ' ';
-};
-
-lastname.oninput = function () {
-  if (!lastname.value.match(/^([A-Za-z]{3,20})$/g)) error_lastname.innerHTML = 'LASTNAME has only letters, length[3,20]';else error_lastname.innerHTML = ' ';
-};
-
-email.oninput = function () {
-  (0,_api_js__WEBPACK_IMPORTED_MODULE_1__.apiCheckEmail)(_api_type_js__WEBPACK_IMPORTED_MODULE_0__.checkEmail, email.value, error_email);
-  if (!email.value.match(/^(([a-zA-Z0-9]{3,40})@(gmail.com|yandex.ru|mail.ru))$/g)) error_email.innerHTML = 'EMAIL has letters and numbers, length[3,40]';else error_email.innerHTML = ' ';
-};
-
-document.addEventListener('DOMContentLoaded', function () {
-  var callback = function callback() {
-    console.log(error_name.textContent.length);
-
-    if (error_name.textContent.length === 1 && error_lastname.textContent.length === 1 && error_email.textContent.length === 1) {
-      submit.disabled = false;
-      submit.className = 'btn success';
-    } else {
-      submit.disabled = true;
-      submit.className = 'btn disabled';
-    }
+if (create_firstname !== null && create_lastname !== null && create_email !== null && create_submit !== null && create_error_name !== null && create_error_lastname !== null && create_error_email !== null) {
+  create_firstname.oninput = function () {
+    if (!create_firstname.value.match(/^([A-Za-z]{3,20})$/g)) create_error_name.innerHTML = 'NAME has only letters, length[3,20]';else create_error_name.innerHTML = ' ';
   };
 
-  var observer = new MutationObserver(callback);
-  var elem = document.querySelector('body');
-  observer.observe(elem, {
-    childList: true,
-    subtree: true
+  create_lastname.oninput = function () {
+    if (!create_lastname.value.match(/^([A-Za-z]{3,20})$/g)) create_error_lastname.innerHTML = 'LASTNAME has only letters, length[3,20]';else create_error_lastname.innerHTML = ' ';
+  };
+
+  create_email.oninput = function () {
+    (0,_api_js__WEBPACK_IMPORTED_MODULE_1__.apiCheckEmail)(_api_type_js__WEBPACK_IMPORTED_MODULE_0__.checkEmail, create_email.value, create_error_email);
+    if (!create_email.value.match(/^(([a-zA-Z0-9]{3,40})@(gmail.com|yandex.ru|mail.ru))$/g)) create_error_email.innerHTML = 'EMAIL has letters and numbers, length[3,40]';else create_error_email.innerHTML = ' ';
+  };
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var callback = function callback() {
+      if (create_error_name.textContent.length === 1 && create_error_lastname.textContent.length === 1 && create_error_email.textContent.length === 1) {
+        create_submit.disabled = false;
+        create_submit.className = 'btn success';
+      } else {
+        create_submit.disabled = true;
+        create_submit.className = 'btn disabled';
+      }
+    };
+
+    var observer = new MutationObserver(callback);
+    var elem = document.querySelector('body');
+    observer.observe(elem, {
+      childList: true,
+      subtree: true
+    });
   });
-});
+}
 
 /***/ }),
 
@@ -129,49 +129,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./api.js */ "./resources/js/api.js");
 
 
-var firstname = document.getElementById('name');
-var lastname = document.getElementById('lastname');
-var email = document.getElementById('email');
-var submit = document.getElementById('submit');
-var error_name = document.getElementById('error_name');
-var error_lastname = document.getElementById('error_lastname');
-var error_email = document.getElementById('error_email');
-error_name.innerHTML = ' ';
-error_lastname.innerHTML = ' ';
-error_email.innerHTML = ' ';
-var start_mail = email.value;
+var edit_firstname = document.getElementById('edit_name');
+var edit_lastname = document.getElementById('edit_lastname');
+var edit_email = document.getElementById('edit_email');
+var edit_submit = document.getElementById('edit_submit');
+var edit_error_name = document.getElementById('edit_error_name');
+var edit_error_lastname = document.getElementById('edit_error_lastname');
+var edit_error_email = document.getElementById('edit_error_email');
 
-firstname.oninput = function () {
-  if (!firstname.value.match(/^([A-Za-z]{3,20})$/g)) error_name.innerHTML = 'NAME has only letters, length[3,20]';else error_name.innerHTML = ' ';
-};
+if (edit_firstname !== null && edit_lastname !== null && edit_email !== null && edit_submit !== null && edit_error_name !== null && edit_error_lastname !== null && edit_error_email !== null) {
+  edit_error_name.innerHTML = ' ';
+  edit_error_lastname.innerHTML = ' ';
+  edit_error_email.innerHTML = ' ';
+  var start_mail = edit_email.value;
 
-lastname.oninput = function () {
-  if (!lastname.value.match(/^([A-Za-z]{3,20})$/g)) error_lastname.innerHTML = 'LASTNAME has only letters, length[3,20]';else error_lastname.innerHTML = ' ';
-};
-
-email.oninput = function () {
-  if (start_mail !== email.value) (0,_api_js__WEBPACK_IMPORTED_MODULE_1__.apiCheckEmail)(_api_type_js__WEBPACK_IMPORTED_MODULE_0__.checkEmail, email.value, error_email);
-  if (!email.value.match(/^(([a-zA-Z0-9]{3,40})@(gmail.com|yandex.ru|mail.ru))$/g)) error_email.innerHTML = 'EMAIL has letters and numbers, length[3,40]';else error_email.innerHTML = ' ';
-};
-
-document.addEventListener('DOMContentLoaded', function () {
-  var callback = function callback() {
-    if (error_name.textContent.length === 1 && error_lastname.textContent.length === 1 && error_email.textContent.length === 1) {
-      submit.disabled = false;
-      submit.className = 'btn success';
-    } else {
-      submit.disabled = true;
-      submit.className = 'btn disabled';
-    }
+  edit_firstname.oninput = function () {
+    if (!edit_firstname.value.match(/^([A-Za-z]{3,20})$/g)) edit_error_name.innerHTML = 'NAME has only letters, length[3,20]';else edit_error_name.innerHTML = ' ';
   };
 
-  var observer = new MutationObserver(callback);
-  var elem = document.querySelector('body');
-  observer.observe(elem, {
-    childList: true,
-    subtree: true
+  edit_lastname.oninput = function () {
+    if (!edit_lastname.value.match(/^([A-Za-z]{3,20})$/g)) edit_error_lastname.innerHTML = 'LASTNAME has only letters, length[3,20]';else edit_error_lastname.innerHTML = ' ';
+  };
+
+  edit_email.oninput = function () {
+    if (start_mail !== edit_email.value) (0,_api_js__WEBPACK_IMPORTED_MODULE_1__.apiCheckEmail)(_api_type_js__WEBPACK_IMPORTED_MODULE_0__.checkEmail, edit_email.value, edit_error_email);
+    if (!edit_email.value.match(/^(([a-zA-Z0-9]{3,40})@(gmail.com|yandex.ru|mail.ru))$/g)) edit_error_email.innerHTML = 'EMAIL has letters and numbers, length[3,40]';else edit_error_email.innerHTML = ' ';
+  };
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var callback = function callback() {
+      if (edit_error_name.textContent.length === 1 && edit_error_lastname.textContent.length === 1 && edit_error_email.textContent.length === 1) {
+        edit_submit.disabled = false;
+        edit_submit.className = 'btn success';
+      } else {
+        edit_submit.disabled = true;
+        edit_submit.className = 'btn disabled';
+      }
+    };
+
+    var observer = new MutationObserver(callback);
+    var elem = document.querySelector('body');
+    observer.observe(elem, {
+      childList: true,
+      subtree: true
+    });
   });
-});
+}
 
 /***/ }),
 

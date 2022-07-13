@@ -1,18 +1,18 @@
 <?php
-include 'components/select.php';
 include 'components/inputError.php';
+include 'components/select.php';
 ?>
-<section class="edit">
+<section class="create">
   <div class="wrapper">
     <form action="/store" method="POST">
       <div>
-        <?php echo inputError('error_name', 'text', 'name') ?>
-        <?php echo inputError('error_lastname', 'text', 'lastname') ?>
-        <?php echo inputError('error_email', 'text', 'email') ?>
-        <?php echo select('gender_block', 'gender', 'male', 'female') ?>
-        <?php echo select('status_block', 'status', 'active', 'inactive') ?>
+        <?php echo inputError('create_error_name', 'text', 'create_name', 'name') ?>
+        <?php echo inputError('create_error_lastname', 'text', 'create_lastname', 'lastname') ?>
+        <?php echo inputError('create_error_email', 'text', 'create_email', 'email') ?>
+        <?php echo select('create_gender_block', 'gender', 'male', 'female') ?>
+        <?php echo select('create_status_block', 'status', 'active', 'inactive') ?>
       </div>
-      <input type="submit" value="save" id="submit" class="btn disabled">
+      <input type="submit" value="save" id="create_submit" class="btn disabled">
     </form>
   </div>
   </header>
