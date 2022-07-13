@@ -35,9 +35,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const callback = () => {
     if(error_name.textContent.length === 1 && error_lastname.textContent.length === 1 && error_email.textContent.length === 1) {
       submit.disabled = false;
+      submit.className = 'btn success'
     }
     else{
       submit.disabled = true;
+      submit.className = 'btn disabled'
     }
   };
   let observer = new MutationObserver(callback);

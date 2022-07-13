@@ -12,7 +12,7 @@ include 'components/inputError.php';
         <?php echo select('gender_block', 'gender', 'male', 'female') ?>
         <?php echo select('status_block', 'status', 'active', 'inactive') ?>
       </div>
-      <input type="submit" value="save" id="submit" class="btn success">
+      <input type="submit" value="save" id="submit" class="btn disabled">
     </form>
   </div>
   </header>
