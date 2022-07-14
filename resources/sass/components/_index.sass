@@ -1,0 +1,31 @@
+@import './../vars'
+.index
+  .index_panel
+    display: flex
+    .index_panel__delete
+      margin-left: 10px
+  .grid_contener
+    display: grid
+    grid-template-columns: 25% 25% 25% 25%
+
+    .grid-item
+      padding: 30px
+      margin: 10px
+      border: 1px solid $black
+
+      &:first-child
+        margin-left: 0
+
+      &:nth-child(4n+4)
+        margin-right: 0
+      &:nth-child(5n+5)
+        margin-left: 0
+
+      div
+        display: flex
+        justify-content: center
+
+        .btn
+          margin-right: 10px
+          &:last-child
+            margin-right: 0

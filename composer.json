@@ -1,0 +1,15 @@
+{
+    "name": "prushak/internship",
+    "autoload": {
+        "psr-4": {
+            "Prushak\\Internship\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ilya",
+            "email": "89218019+PrushakIlya@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}

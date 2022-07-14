@@ -1,0 +1,52 @@
+@import "_vars"
+
+.wrapper
+  max-width: 1400px
+  margin: 0 auto
+
+body
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  font-size: 18px
+  height: 100vh
+
+  main
+    flex-grow: 1
+    margin-top: 50px
+    margin-bottom: 50px
+
+  footer
+    position: relative
+    bottom: 0
+
+.btn
+  color: $white
+  text-transform: uppercase
+  cursor: pointer
+  border: 2px solid $black
+  border-radius: 5px
+  padding: 5px
+  &:hover
+    opacity: .5
+
+.delete
+  background-color: $red
+
+.success 
+  background-color: $green
+
+.disabled
+  color: $black
+  opacity: .5
+  cursor: not-allowed
+
+.errors
+  height: 15px
+  margin-bottom: 2px
+  color: $red
+  font-size: 14px
+
+.line
+  background-color: $black
+  height: 1px  
