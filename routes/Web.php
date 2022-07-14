@@ -4,11 +4,13 @@ class Web
 {
     private array $routes;
     private array $routes_api;
+    private string $namespace;
 
     public function __construct()
     {
         $this->routes = include '../config/routes.php';
         $this->routes_api = include '../config/routes_api.php';
+        $this->namespace = 'Prushak\Internship\HTTP\Controller\\';
     }
 
     public function route()
@@ -37,7 +39,7 @@ class Web
                 $method = explode('?', $method);
                 $method = array_shift($method);
 
-                $controller = new ('Prushak\Internship\HTTP\Controller\\' . $controller);
+                $controller = new ($this->namespace . $controller);
                 echo $id ? $controller->$method($id) : $controller->$method();
                 return 0;
             }

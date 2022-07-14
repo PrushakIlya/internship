@@ -4,6 +4,7 @@ namespace Prushak\Internship\HTTP\Controller;
 
 use Prushak\Internship\HTTP\Models\UsersModel;
 
+
 class FrontController extends BaseController
 {
     private $users_model;
@@ -32,20 +33,20 @@ class FrontController extends BaseController
 
     public function store()
     {
-        $this->users_model->store();
         header('Location: /');
+        $this->users_model->store();
     }
 
     public function update($id)
     {
-        $this->users_model->update($id);
         header('Location: /');
+        $this->users_model->update($id);
     }
 
     public function destroy($id)
     {
-        $this->users_model->destroy($id);
         header('Location: /');
+        $this->users_model->destroy($id);
     }
 
     public function mass_destroy()

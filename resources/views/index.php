@@ -1,8 +1,28 @@
+<?php
+$href_edit = '';
+$href_destroy = '';
+$href_create = '';
+$action_mass_destroy = '';
+
+if ($_SERVER['REQUEST_URI'] === '/api') {
+  $href_edit = '/api/edit/';
+  $href_destroy = '/api/destroy/';
+  $href_create = '/api/create';
+  $action_mass_destroy = '/api/massDestroy';
+} else {
+  $href_edit = '/edit//';
+  $href_destroy = '/destroy//';
+  $href_create = '/create';
+  $action_mass_destroy = '/massDestroy';
+}
+
+?>
+
 <section class="index">
   <div class="wrapper">
     <div class="index_panel">
-      <button class="btn success"><a href="/create">Add New</a></button>
-      <form action="/mass_destroy" method="POST" class="index_panel__delete">
+      <a href="<?php echo $href_create ?>"><button class="btn success">Add New</button></a>
+      <form action="<?php echo $action_mass_destroy?>" method="POST" class="index_panel__delete">
         <input type="submit" class="btn delete" value="Mass Delete">
         <input type="text" name="ids" placeholder="example: 1-4 (by №)">
       </form>
@@ -10,15 +30,14 @@
     <div class="grid_contener">
       <?php foreach ($results as $item) : ?>
         <div class="grid-item">
-          <div><?php echo "№".$item['id'] ?></div>
+          <div><?php echo "№" . $item['id'] ?></div>
           <div><?php echo $item['name'] ?></div>
-          <div><?php echo $item['lastname'] ?></div>
           <div><?php echo $item['email'] ?></div>
           <div><?php echo $item['gender'] === 1 ? 'male' : 'female' ?></div>
           <div><?php echo $item['status'] === 1 ? 'active' : 'inactive' ?></div>
           <div>
-            <button class='btn success' id='<?php $item['id'] ?>'><a href='/edit/<?php echo $item['id'] ?>'>edit</a></button>
-            <button class='btn delete' id='<?php $item['id'] ?>'><a href='/destroy/<?php echo $item['id'] ?>'>delete</a></button>
+            <a href='<?php echo $href_edit . $item['id'] ?>'><button class='btn success' id='<?php $item['id'] ?>'>edit</button></a>
+            <a href='<?php echo $href_destroy . $item['id'] ?>'> <button class='btn delete' id='<?php $item['id'] ?>'>delete</a>
           </div>
         </div>
       <?php endforeach; ?>

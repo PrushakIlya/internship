@@ -2,6 +2,7 @@
 
 namespace Prushak\Internship\HTTP\Models;
 
+use InvalidArgumentException;
 use PDO;
 
 class UsersModel
@@ -15,10 +16,10 @@ class UsersModel
 
     public function store()
     {
-        $sql = "INSERT INTO users (name, lastname, email, gender,status) VALUES (:name, :lastname, :email, :gender,:status)";
+        $sql = "INSERT INTO users (name, email, gender, status) VALUES (:name, :email, :gender, :status)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(array(
-            ":name" => $_POST["create_name"], ":lastname" => $_POST["create_lastname"], ":email" => $_POST["create_email"],
+            ":name" => $_POST["name"], ":email" => $_POST["email"],
             ":gender" => $_POST["gender"] === 'male' ? 1 : 0, ":status" => $_POST["status"] === 'active'  ? 1 : 0
         ));
     }
@@ -27,8 +28,12 @@ class UsersModel
     {
         $sql = "SELECT * FROM users";
         $stmt = $this->conn->query($sql);
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $results;
+        if ($stmt) {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        } else {
+            throw new InvalidArgumentException('Request on the server is failed');
+        }
     }
 
     public function getEmail($email)
@@ -49,10 +54,10 @@ class UsersModel
 
     public function update($id)
     {
-        $sql = "UPDATE users SET name=:name,lastname=:lastname,email=:email,gender=:gender,status=:status WHERE id = '$id'";
+        $sql = "UPDATE users SET name=:name,email=:email,gender=:gender,status=:status WHERE id = '$id'";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(array(
-            ":name" => $_POST["edit_name"], ":lastname" => $_POST["edit_lastname"], ":email" => $_POST["edit_email"],
+            ":name" => $_POST["name"], ":email" => $_POST["email"],
             ":gender" => $_POST["gender"] === 'male' ? 1 : 0, ":status" => $_POST["status"] === 'active'  ? 1 : 0
         ));
     }

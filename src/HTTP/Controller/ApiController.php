@@ -13,7 +13,7 @@ class ApiController extends BaseController
     $this->users_model = new UsersModel;
   }
 
-  public function checkEmail()
+  public function check_email()
   {
     $data = json_decode(file_get_contents('php://input'), true);
     $result = $this->users_model->getEmail($data);
