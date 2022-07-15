@@ -11,5 +11,7 @@
             "email": "89218019+PrushakIlya@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {
+        "twig/twig": "^3.4"
+    }
 }

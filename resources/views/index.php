@@ -10,8 +10,8 @@ if ($_SERVER['REQUEST_URI'] === '/api') {
   $href_create = '/api/create';
   $action_mass_destroy = '/api/massDestroy';
 } else {
-  $href_edit = '/edit//';
-  $href_destroy = '/destroy//';
+  $href_edit = '/edit/';
+  $href_destroy = '/destroy/';
   $href_create = '/create';
   $action_mass_destroy = '/massDestroy';
 }
