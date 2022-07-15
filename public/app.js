@@ -85,7 +85,7 @@ var create_error_email = document.getElementById('create_error_email');
 
 if (create_firstname !== null && create_email !== null && create_submit !== null && create_error_name !== null && create_error_email !== null) {
   create_firstname.oninput = function () {
-    if (!create_firstname.value.match(/^(([A-Za-z]{3,10})(\s)([A-Za-z]{3,10}))$/g)) create_error_name.innerHTML = 'NAME has only letters, example: Ilya Prushak';else create_error_name.innerHTML = ' ';
+    if (!create_firstname.value.match(/^(([A-Za-z]|.){3,50})$/g)) create_error_name.innerHTML = 'NAME has only letters, example: Ilya Prushak';else create_error_name.innerHTML = ' ';
   };
 
   create_email.oninput = function () {
@@ -138,7 +138,7 @@ if (edit_email !== null && edit_submit !== null && edit_error_name !== null && e
   var start_mail = edit_email.value;
 
   edit_firstname.oninput = function () {
-    if (!edit_firstname.value.match(/^(([A-Za-z]{3,10})(\s)([A-Za-z]{3,10}))$/g)) edit_error_name.innerHTML = 'NAME has only letters, length[3,20]';else edit_error_name.innerHTML = ' ';
+    if (!edit_firstname.value.match(/^(([A-Za-z]|.){3,50})$/g)) edit_error_name.innerHTML = 'NAME has only letters, length[3,20]';else edit_error_name.innerHTML = ' ';
   };
 
   edit_email.oninput = function () {

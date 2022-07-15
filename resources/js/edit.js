@@ -14,7 +14,7 @@ if(edit_email!==null && edit_submit!==null && edit_error_name!==null && edit_err
   const start_mail = edit_email.value;
   
   edit_firstname.oninput = function () {
-    if (!edit_firstname.value.match(/^(([A-Za-z]{3,10})(\s)([A-Za-z]{3,10}))$/g)) edit_error_name.innerHTML = 'NAME has only letters, length[3,20]';
+    if (!edit_firstname.value.match(/^(([A-Za-z]|.){3,50})$/g)) edit_error_name.innerHTML = 'NAME has only letters, length[3,20]';
     else edit_error_name.innerHTML = ' ';
   };
   
