@@ -3,8 +3,15 @@ include 'components/inputError.php';
 include 'components/select.php';
 
 $action = '';
+$href_back = '';
 
-$_SERVER['REQUEST_URI'] === '/api/create' ? $action = '/api/store' : $action = '/store';
+if ($_SERVER['REQUEST_URI'] === '/api/create') {
+  $action = '/api/store';
+  $href_back = '/api';
+} else {
+  $action = '/store';
+  $href_back = '/';
+}
 ?>
 
 <section class="create">
@@ -17,6 +24,7 @@ $_SERVER['REQUEST_URI'] === '/api/create' ? $action = '/api/store' : $action = '
         <?php echo select('create_status_block', 'status', 'active', 'inactive') ?>
       </div>
       <input type="submit" value="save" id="create_submit" class="btn disabled">
+      <a href="<?php echo $href_back ?>"><button class="btn success">Back</button></a>
     </form>
   </div>
   </header>

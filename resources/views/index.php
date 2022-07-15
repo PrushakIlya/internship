@@ -21,11 +21,17 @@ if ($_SERVER['REQUEST_URI'] === '/api') {
 <section class="index">
   <div class="wrapper">
     <div class="index_panel">
-      <a href="<?php echo $href_create ?>"><button class="btn success">Add New</button></a>
-      <form action="<?php echo $action_mass_destroy?>" method="POST" class="index_panel__delete">
-        <input type="submit" class="btn delete" value="Mass Delete">
-        <input type="text" name="ids" placeholder="example: 1-4 (by №)">
-      </form>
+      <div class="panel_block">
+        <a href="/"><button class="btn black">Task-1</button></a>
+        <a href="/api" class="index_panel__button"><button class="btn black">Task-2</button></a>
+      </div>
+      <div class="panel_block">
+        <a href="<?php echo $href_create ?>"><button class="btn success">Add New</button></a>
+        <form action="<?php echo $action_mass_destroy ?>" method="POST" class="index_panel__button">
+          <input type="submit" class="btn delete" value="Mass Delete">
+          <input type="text" name="ids" placeholder="example: 1-4 (by №)">
+        </form>
+      </div>
     </div>
     <div class="grid_contener">
       <?php foreach ($results as $item) : ?>

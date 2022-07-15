@@ -2,20 +2,16 @@
 
 namespace Prushak\Internship\HTTP\Controller;
 
-use Prushak\Internship\HTTP\Models\UsersModel;
-
 class GorestController extends BaseController
 {
-  private $users_model;
   private $remote_api;
 
   public function __construct()
   {
-    $this->users_model = new UsersModel;
     $this->remote_api = include '../config/gorest_api.php';
   }
 
-  public function check_email()
+  public function check_email_go(): string
   {
     $data = json_decode(file_get_contents('php://input'), true);
     $json_data = file_get_contents($this->remote_api['get']);
@@ -28,10 +24,15 @@ class GorestController extends BaseController
     return json_encode(false);
   }
 
-  public function index()
+  private function get_response_data()
   {
     $json_data = file_get_contents($this->remote_api['get'] . $this->remote_api['token']);
-    $response_data = json_decode($json_data);
+    return json_decode($json_data);
+  }
+
+  public function index(): void
+  {
+    $response_data = $this->get_response_data();
     $results = [];
     foreach ($response_data as $item) {
       array_push($results, (array)$item);
@@ -39,10 +40,9 @@ class GorestController extends BaseController
     include '../resources/views/layout.php';
   }
 
-  public function edit($id)
+  public function edit($id): void
   {
-    $json_data = file_get_contents($this->remote_api['get'] . $this->remote_api['token']);
-    $response_data = json_decode($json_data);
+    $response_data = $this->get_response_data();
     $results = [];
     foreach ($response_data as $item) {
       if ($item->id === (int)$id) {
@@ -53,14 +53,15 @@ class GorestController extends BaseController
     include '../resources/views/layout.php';
   }
 
-  public function create()
+  public function create(): void
   {
     include '../resources/views/layout.php';
   }
 
-  public function store()
+  public function store(): void
   {
     header('Location: /api');
+
     $curl = curl_init($this->remote_api['post'] . $this->remote_api['token']);
     curl_setopt($curl, CURLOPT_POST, true);
     curl_setopt($curl, CURLOPT_POSTFIELDS, $_POST);
@@ -69,7 +70,7 @@ class GorestController extends BaseController
     curl_close($curl);
   }
 
-  public function update($id)
+  public function update($id): void
   {
     header('Location: /api');
 
@@ -86,10 +87,9 @@ class GorestController extends BaseController
     // }
   }
 
-  public function destroy($id)
+  public function destroy($id): void
   {
     header('Location: /api');
-
     $curl = curl_init($this->remote_api['destroy'] . $id . $this->remote_api['token']);
     curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
 
@@ -97,7 +97,7 @@ class GorestController extends BaseController
     curl_close($curl);
   }
 
-  public function mass_destroy()
+  public function mass_destroy(): void
   {
     header('Location: /api');
     if (preg_match('~^([0-9]+)-([0-9]+)~', $_POST['ids'], $matches)) {

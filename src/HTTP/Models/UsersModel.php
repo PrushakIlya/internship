@@ -7,14 +7,14 @@ use PDO;
 
 class UsersModel
 {
-    private $conn;
+    private object $conn;
 
     public function __construct()
     {
         $this->conn = include '../config/connect_db.php';
     }
 
-    public function store()
+    public function store(): void
     {
         $sql = "INSERT INTO users (name, email, gender, status) VALUES (:name, :email, :gender, :status)";
         $stmt = $this->conn->prepare($sql);
@@ -24,7 +24,7 @@ class UsersModel
         ));
     }
 
-    public function index()
+    public function index(): array
     {
         $sql = "SELECT * FROM users";
         $stmt = $this->conn->query($sql);
@@ -36,7 +36,7 @@ class UsersModel
         }
     }
 
-    public function getEmail($email)
+    public function getEmail($email): array
     {
         $sql = "SELECT email FROM users WHERE email='$email'";
         $stmt = $this->conn->query($sql);
@@ -44,7 +44,7 @@ class UsersModel
         return $result;
     }
 
-    public function elemById($id)
+    public function elemById($id): array
     {
         $sql = "SELECT * FROM users WHERE id='$id'";
         $stmt = $this->conn->query($sql);
@@ -52,7 +52,7 @@ class UsersModel
         return $results;
     }
 
-    public function update($id)
+    public function update($id): void
     {
         $sql = "UPDATE users SET name=:name,email=:email,gender=:gender,status=:status WHERE id = '$id'";
         $stmt = $this->conn->prepare($sql);
@@ -62,7 +62,7 @@ class UsersModel
         ));
     }
 
-    public function destroy($id)
+    public function destroy($id): void
     {
         $sql = "DELETE FROM users WHERE id = '$id'";
         $this->conn->exec($sql);
