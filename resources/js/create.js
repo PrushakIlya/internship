@@ -10,7 +10,7 @@ const create_error_email = document.getElementById('create_error_email');
 
 if(create_firstname!==null && create_email!==null && create_submit!==null && create_error_name!==null && create_error_email!==null){
   create_firstname.oninput = function () {
-    if (!create_firstname.value.match(/^(([A-Za-z]{3,10})(\s)([A-Za-z]{3,10}))$/g)) create_error_name.innerHTML = 'NAME has only letters, length[3,20]';
+    if (!create_firstname.value.match(/^(([A-Za-z]{3,10})(\s)([A-Za-z]{3,10}))$/g)) create_error_name.innerHTML = 'NAME has only letters, example: Ilya Prushak';
     else create_error_name.innerHTML = ' ';
   };
   
