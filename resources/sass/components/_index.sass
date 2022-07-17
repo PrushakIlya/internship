@@ -1,9 +1,11 @@
 @import './../vars'
 .index
   .index_panel
-    display: flex
-    .index_panel__delete
-      margin-left: 10px
+    .panel_block
+      display: flex
+      margin-bottom: 10px
+      .index_panel__button
+        margin-left: 10px
   .grid_contener
     display: grid
     grid-template-columns: 25% 25% 25% 25%
@@ -18,14 +20,14 @@
 
       &:nth-child(4n+4)
         margin-right: 0
-      &:nth-child(5n+5)
+      &:nth-child(4n+5)
         margin-left: 0
 
       div
         display: flex
         justify-content: center
 
-        .btn
+        a
           margin-right: 10px
           &:last-child
             margin-right: 0

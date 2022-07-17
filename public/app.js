@@ -10,10 +10,12 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "checkEmail": () => (/* binding */ checkEmail)
+/* harmony export */   "checkEmail": () => (/* binding */ checkEmail),
+/* harmony export */   "checkEmailGo": () => (/* binding */ checkEmailGo)
 /* harmony export */ });
 var ROOT = 'http://localhost:3000';
 var checkEmail = ROOT + '/api/checkEmail';
+var checkEmailGo = ROOT + '/api/checkEmailGo';
 
 /***/ }),
 
@@ -37,6 +39,7 @@ var apiCheckEmail = function apiCheckEmail(url, payload, error_block) {
   }).then(function (res) {
     return res.json();
   }).then(function (body) {
+    console.log(body);
     if (body === true) error_block.innerHTML = 'Email is taken';
   })["catch"](function (error) {
     return console.log(error);
@@ -75,30 +78,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var create_firstname = document.getElementById('create_name');
-var create_lastname = document.getElementById('create_lastname');
 var create_email = document.getElementById('create_email');
 var create_submit = document.getElementById('create_submit');
 var create_error_name = document.getElementById('create_error_name');
-var create_error_lastname = document.getElementById('create_error_lastname');
 var create_error_email = document.getElementById('create_error_email');
 
-if (create_firstname !== null && create_lastname !== null && create_email !== null && create_submit !== null && create_error_name !== null && create_error_lastname !== null && create_error_email !== null) {
+if (create_firstname !== null && create_email !== null && create_submit !== null && create_error_name !== null && create_error_email !== null) {
   create_firstname.oninput = function () {
-    if (!create_firstname.value.match(/^([A-Za-z]{3,20})$/g)) create_error_name.innerHTML = 'NAME has only letters, length[3,20]';else create_error_name.innerHTML = ' ';
-  };
-
-  create_lastname.oninput = function () {
-    if (!create_lastname.value.match(/^([A-Za-z]{3,20})$/g)) create_error_lastname.innerHTML = 'LASTNAME has only letters, length[3,20]';else create_error_lastname.innerHTML = ' ';
+    if (!create_firstname.value.match(/^(([A-Za-z]|.){3,50})$/g)) create_error_name.innerHTML = 'NAME has only letters, length[3,20]';else create_error_name.innerHTML = ' ';
   };
 
   create_email.oninput = function () {
-    (0,_api_js__WEBPACK_IMPORTED_MODULE_1__.apiCheckEmail)(_api_type_js__WEBPACK_IMPORTED_MODULE_0__.checkEmail, create_email.value, create_error_email);
-    if (!create_email.value.match(/^(([a-zA-Z0-9]{3,40})@(gmail.com|yandex.ru|mail.ru))$/g)) create_error_email.innerHTML = 'EMAIL has letters and numbers, length[3,40]';else create_error_email.innerHTML = ' ';
+    (0,_api_js__WEBPACK_IMPORTED_MODULE_1__.apiCheckEmail)(_api_type_js__WEBPACK_IMPORTED_MODULE_0__.checkEmail, create_email.value, create_error_email) || (0,_api_js__WEBPACK_IMPORTED_MODULE_1__.apiCheckEmail)(_api_type_js__WEBPACK_IMPORTED_MODULE_0__.checkEmailGo, create_email.value, create_error_email);
+    if (!create_email.value.match(/^(([a-zA-Z0-9]{3,40})@([a-z]+).(com|yandex|ru))$/g)) create_error_email.innerHTML = 'EMAIL has letters and numbers, length[3,40]';else create_error_email.innerHTML = ' ';
   };
 
   document.addEventListener('DOMContentLoaded', function () {
     var callback = function callback() {
-      if (create_error_name.textContent.length === 1 && create_error_lastname.textContent.length === 1 && create_error_email.textContent.length === 1) {
+      if (create_error_name.textContent.length === 1 && create_error_email.textContent.length === 1) {
         create_submit.disabled = false;
         create_submit.className = 'btn success';
       } else {
@@ -130,35 +127,28 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var edit_firstname = document.getElementById('edit_name');
-var edit_lastname = document.getElementById('edit_lastname');
 var edit_email = document.getElementById('edit_email');
 var edit_submit = document.getElementById('edit_submit');
 var edit_error_name = document.getElementById('edit_error_name');
-var edit_error_lastname = document.getElementById('edit_error_lastname');
 var edit_error_email = document.getElementById('edit_error_email');
 
-if (edit_firstname !== null && edit_lastname !== null && edit_email !== null && edit_submit !== null && edit_error_name !== null && edit_error_lastname !== null && edit_error_email !== null) {
+if (edit_email !== null && edit_submit !== null && edit_error_name !== null && edit_error_email !== null) {
   edit_error_name.innerHTML = ' ';
-  edit_error_lastname.innerHTML = ' ';
   edit_error_email.innerHTML = ' ';
   var start_mail = edit_email.value;
 
   edit_firstname.oninput = function () {
-    if (!edit_firstname.value.match(/^([A-Za-z]{3,20})$/g)) edit_error_name.innerHTML = 'NAME has only letters, length[3,20]';else edit_error_name.innerHTML = ' ';
-  };
-
-  edit_lastname.oninput = function () {
-    if (!edit_lastname.value.match(/^([A-Za-z]{3,20})$/g)) edit_error_lastname.innerHTML = 'LASTNAME has only letters, length[3,20]';else edit_error_lastname.innerHTML = ' ';
+    if (!edit_firstname.value.match(/^(([A-Za-z]|.){3,50})$/g)) edit_error_name.innerHTML = 'NAME has only letters, length[3,20]';else edit_error_name.innerHTML = ' ';
   };
 
   edit_email.oninput = function () {
     if (start_mail !== edit_email.value) (0,_api_js__WEBPACK_IMPORTED_MODULE_1__.apiCheckEmail)(_api_type_js__WEBPACK_IMPORTED_MODULE_0__.checkEmail, edit_email.value, edit_error_email);
-    if (!edit_email.value.match(/^(([a-zA-Z0-9]{3,40})@(gmail.com|yandex.ru|mail.ru))$/g)) edit_error_email.innerHTML = 'EMAIL has letters and numbers, length[3,40]';else edit_error_email.innerHTML = ' ';
+    if (!edit_email.value.match(/^(([a-zA-Z0-9]{3,40})@([a-z]+).(com|yandex|ru))$/g)) edit_error_email.innerHTML = 'EMAIL has letters and numbers, length[3,40]';else edit_error_email.innerHTML = ' ';
   };
 
   document.addEventListener('DOMContentLoaded', function () {
     var callback = function callback() {
-      if (edit_error_name.textContent.length === 1 && edit_error_lastname.textContent.length === 1 && edit_error_email.textContent.length === 1) {
+      if (edit_error_name.textContent.length === 1 && edit_error_email.textContent.length === 1) {
         edit_submit.disabled = false;
         edit_submit.className = 'btn success';
       } else {

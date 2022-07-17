@@ -4,52 +4,54 @@ namespace Prushak\Internship\HTTP\Controller;
 
 use Prushak\Internship\HTTP\Models\UsersModel;
 
+
 class FrontController extends BaseController
 {
-    private $users_model;
+    private object $users_model;
 
     public function __construct()
     {
         $this->users_model = new UsersModel;
     }
 
-    public function index()
+    public function index(): void
     {
         $results = $this->users_model->index();
         include '../resources/views/layout.php';
     }
 
-    public function edit($id)
+    public function edit($id): void
     {
         $results = $this->users_model->elemById($id);
         include '../resources/views/layout.php';
     }
 
-    public function create()
+    public function create(): void
     {
         include '../resources/views/layout.php';
     }
 
-    public function store()
+    public function store(): void
     {
+        header('Location: /');
         $this->users_model->store();
-        header('Location: /');
     }
 
-    public function update($id)
+    public function update($id): void
     {
+        header('Location: /');
         $this->users_model->update($id);
-        header('Location: /');
     }
 
-    public function destroy($id)
+    public function destroy($id): void
     {
+        header('Location: /');
         $this->users_model->destroy($id);
-        header('Location: /');
     }
 
-    public function mass_destroy()
+    public function mass_destroy(): void
     {
+        header('Location: /');
         if (preg_match('~^([0-9]+)-([0-9]+)~', $_POST['ids'], $matches)) {
             $arr = explode('-', $_POST['ids']);
             $first_elem = array_shift($arr);
@@ -59,6 +61,5 @@ class FrontController extends BaseController
                 $first_elem++;
             }
         }
-        header('Location: /');
     }
 }

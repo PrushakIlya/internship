@@ -1,10 +1,8 @@
 <?php
 
 return [
-  // '/checkEmail' => 'api/checkEmail', //API
-
-  '/destroy/([0-9]+)' => 'front/destroy/$1', //The perfect way create API + AJAX
-  '/mass_destroy' => 'front/mass_destroy',
+  '/destroy/([0-9]+)' => 'front/destroy/$1', //Perfect way create API + AJAX
+  '/massDestroy' => 'front/mass_destroy',
   '/create' => 'front/create',
   '/store' => 'front/store',
   '/edit/([0-9]+)' => 'front/edit/$1',

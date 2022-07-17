@@ -8,11 +8,16 @@ include_once '../database/fake/users_fake.php';
 $sql_users_migration = include_once '../database/users_migration.php';
 
 try {
-    $db_connect->exec($sql_users_migration);
+    $table = $db_connect->query("SHOW TABLES LIKE 'users'");
+    $result = $table->fetchAll(PDO::FETCH_ASSOC);
+    if (empty($result)) {
+        echo "Table users has been created";
+        $db_connect->exec($sql_users_migration);
+    }
 
     // users_fake($db_connect);
 
-    echo "Table users has been created";
+
 } catch (PDOException $e) {
     // echo $e;
 }
