@@ -16,7 +16,7 @@ try {
     // users_fake($db_connect);
 
 } catch (PDOException $e) {
-    // echo $e;
+    echo $e;
 }
 $web = new Web();
 $web->route();

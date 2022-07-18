@@ -19,7 +19,8 @@ class FilesModel extends BaseModel
         $sql = "INSERT INTO files (name, size, type) VALUES (:name, :size, :type)";
         $stmt = BaseModel::getConn()->prepare($sql);
         $stmt->execute(array(
-            ":name" => $fileName, ":size" => $_FILES["file"]["size"], ":type" => $_FILES["file"]["type"]
+            ":name" => $fileName, ":size" => $_FILES["file"]["size"], 
+            ":type" => $_FILES["file"]["type"]
         ));
     }
 }
