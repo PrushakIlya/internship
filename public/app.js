@@ -58,8 +58,11 @@ var apiCheckEmail = function apiCheckEmail(url, payload, error_block) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vars.js */ "./resources/js/vars.js");
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_vars_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _create_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./create.js */ "./resources/js/create.js");
-/* harmony import */ var _edit_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit.js */ "./resources/js/edit.js");
+/* harmony import */ var _upload_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./upload.js */ "./resources/js/upload.js");
+/* harmony import */ var _upload_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_upload_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _create_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./create.js */ "./resources/js/create.js");
+/* harmony import */ var _edit_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit.js */ "./resources/js/edit.js");
+
 
 
 
@@ -204,6 +207,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var PATTERNFIRSTNAME = /^(([A-Za-z]|.){3,50})$/g;
 var PATTERNEMAIL = /^(([a-zA-Z0-9]{3,26})@([a-z]{3,10}).(com|yandex|ru))$/g;
+
+/***/ }),
+
+/***/ "./resources/js/upload.js":
+/*!********************************!*\
+  !*** ./resources/js/upload.js ***!
+  \********************************/
+/***/ (() => {
+
+var upload_submit = document.getElementById('upload_submit');
+var upload_file = document.getElementById('formFile');
+var upload_errors = document.getElementById('upload_errors');
+
+upload_file.oninput = function () {
+  if (upload_file.files[0].size > 200000) {
+    upload_errors.innerHTML = 'Max file size is 200kByt';
+    upload_submit.disabled = true;
+    console.log(upload_file.files[0].size);
+  }
+
+  if (upload_file.files[0].type !== 'image/png' && upload_file.files[0].type !== 'image/jpeg' && upload_file.files[0].type !== 'text/plain') {
+    upload_errors.innerHTML = 'Only png,jpeg,txt';
+    upload_submit.disabled = true;
+    console.log(upload_file.files[0].type);
+  } else {
+    upload_errors.innerHTML = ' ';
+    upload_submit.disabled = false;
+  }
+};
 
 /***/ }),
 

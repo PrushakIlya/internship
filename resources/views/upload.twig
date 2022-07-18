@@ -1,57 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/app.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-  <title>Document</title>
-</head>
-<body>
 
-  {% include 'header.php' %}
-  
-  <main>
-    <section class="upload">
-      <div class="wrapper">
-        <div class="panel_block">
-          <a href="/"><button class="btn btn-dark">Task-1</button></a>
-          <a href="/two" class="index_panel__button"><button class="btn btn-dark">Task-2</button></a>
-          <a href="/upload" class="index_panel__button"><button class="btn btn-dark">Task-3</button></a>
-        </div>
-        <form action="/saveUpload" method="POST" enctype="multipart/form-data">
-          <div class="mb-3">
-            <div id="upload_errors" style="height: 30px" class="text-danger"></div>
-            <input class="form-control w-25" type="file" id="formFile" name="file">
-          </div>
-          <input value="Send" type="submit" id="upload_submit" disabled>
-        </form>
-        <div class="upload_contener text-center">
-          <h2>Uploaded files</h2>
-          <div class="container">
-            <div class="row row-cols-4">
-
-            {% for item in results %}
-              <div class="col border">
-                <div><span class="fw-bold">Name:</span> {{item.name}}</div>
-                <div><span class="fw-bold">Id:</span> {{item.id}}</div>
-                <div><span class="fw-bold">Size:</span> {{item.size}}</div>
-              </div>
-            {% endfor %}
-
-            </div>
-          <div>  
-        </div>
+<section class="upload">
+  <div class="wrapper">
+    <div class="panel_block">
+      <a href="/"><button class="btn btn-dark">Task-1</button></a>
+      <a href="/two" class="index_panel__button"><button class="btn btn-dark">Task-2</button></a>
+      <a href="/upload" class="index_panel__button"><button class="btn btn-dark">Task-3</button></a>
+    </div>
+    <form action="/saveUpload" method="POST" enctype="multipart/form-data">
+      <div class="mb-3">
+        <div id="upload_errors" style="height: 30px" class="text-danger"></div>
+        <input class="form-control w-25" type="file" id="formFile" name="file">
       </div>
-    </section>
-  </main>
+      <input value="Send" type="submit" id="upload_submit" disabled>
+    </form>
+    <div class="upload_contener text-center">
+      <h2>Uploaded files</h2>
+      <div class="container">
+        <div class="row row-cols-4">
 
-  {% include 'footer.php' %}
+        {% for item in results %}
+          <div class="col border">
+            <div><span class="fw-bold">Name:</span> {{item.name}}</div>
+            <div><span class="fw-bold">Id:</span> {{item.id}}</div>
+            <div><span class="fw-bold">Size:</span> {{item.size}}</div>
+          </div>
+        {% endfor %}
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>  
-  <script src="/upload.js" defer></script>
-</body>
-</html>
+        </div>
+      <div>  
+    </div>
+  </div>
+</section>
+
 
 

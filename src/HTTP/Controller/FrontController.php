@@ -48,15 +48,7 @@ class FrontController extends BaseController
     public function upload()
     {
         $results = parent::getFilesModel()->index();
-
-        $loader = new \Twig\Loader\FilesystemLoader('../resources/views');
-        $twig = new \Twig\Environment($loader, []);
-
-        echo $twig->render('upload.twig', array(
-            'results' => $results,
-        ));
-        // var_dump($results);
-        // include '../resources/views/layout.php';
+        include '../resources/views/layout.php';
     }
 
     public function saveUpload()
