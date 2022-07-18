@@ -9,8 +9,11 @@ class LogService
   {
     $file_name = 'upload_' . date('d.m.Y') . '.log';
     $all_files = scandir('../storage/logs/');
-    if (!array_key_exists(2, $all_files)) {
-      fopen('../storage/logs/' . $file_name, 'w');
+    foreach ($all_files as $item) {
+      if ($item === $file_name) {
+        fopen('../storage/logs/' . $file_name, 'w');
+        break;
+      }
     }
     $content = file_get_contents('../storage/logs/' . $file_name);
     $content .= 'The data had not sent:' . $reason . date("Y-m-d H:i:s") . '/' . $file_name . '/' . $type_file . "\n";
