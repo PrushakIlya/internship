@@ -3,12 +3,12 @@ import { apiCheckEmail } from './api.js';
 import { PATTERNFIRSTNAME,PATTERNEMAIL } from './expressions.js';
 const task = window.location.pathname.split('/');
 
-// const create_firstname = document.getElementById('create_name');
-// const create_email = document.getElementById('create_email');
-// const create_submit = document.getElementById('create_submit');
+const create_firstname = document.getElementById('create_name');
+const create_email = document.getElementById('create_email');
+const create_submit = document.getElementById('create_submit');
 
-// const create_error_name = document.getElementById('create_error_name');
-// const create_error_email = document.getElementById('create_error_email');
+const create_error_name = document.getElementById('create_error_name');
+const create_error_email = document.getElementById('create_error_email');
 
 if (create_firstname !== null && create_email !== null && create_submit !== null && create_error_name !== null && create_error_email !== null) {
   create_firstname.oninput = inputCreateFirstName;
