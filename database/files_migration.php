@@ -1,0 +1,7 @@
+<?php
+
+$sql = "CREATE TABLE files (id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+name VARCHAR(50) NOT NULL UNIQUE, size INT(50) NOT NULL,
+type VARCHAR(20))";
+
+return $sql;

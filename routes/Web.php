@@ -2,6 +2,7 @@
 
 return [
   '/upload' => 'front/upload',
+  '/saveUpload' => 'front/saveUpload',
 
   '/two/massDestroy' => 'gorest/massDestroy',
   '/two/destroy/([0-9]+)' => 'gorest/destroy/$1',
