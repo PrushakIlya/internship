@@ -2,21 +2,17 @@
 
 namespace Prushak\Internship\HTTP\Controller;
 
-use Prushak\Internship\HTTP\Models\UsersModel;
 
 class ApiController extends BaseController
 {
-  private $users_model;
-
-  public function __construct()
+  public function checkEmail(): string
   {
-    $this->users_model = new UsersModel;
+    return parent::getApiService()->checkEmail(parent::getUsersModel()->getEmail(parent::getApiService()->getData()));
   }
 
-  public function check_email(): string
+  public function checkEmailGo(): string
   {
-    $data = json_decode(file_get_contents('php://input'), true);
-    $result = $this->users_model->getEmail($data);
-    return json_encode(!empty($result));
+    $results = parent::getApiService()->curlReturn(parent::getApi('get'));
+    return parent::getApiService()->checkEmailGo($results);
   }
 }

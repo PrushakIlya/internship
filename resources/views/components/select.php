@@ -1,13 +1,13 @@
 <?php
-function select($class, $name_id, $option_1, $option_2)
+function select($class, $nameId, $optionOne, $optionTwo)
 {
-  $title = ucfirst($name_id);
+  $title = ucfirst($nameId);
   return "
       <div class='$class'>
-        <label for='$name_id'>$title: </label>
-        <select name='$name_id' id='$name_id'>
-          <option value='$option_1'>$option_1</option>
-          <option value='$option_2'>$option_2</option>
+        <label for='$nameId'>$title: </label>
+        <select name='$nameId' id='$nameId'>
+          <option value='$optionOne'>$optionOne</option>
+          <option value='$optionTwo'>$optionTwo</option>
         </select>
       </div>
   ";

@@ -3,14 +3,14 @@ include 'components/inputError.php';
 include 'components/select.php';
 
 $action = '';
-$href_back = '';
+$hrefBack = '';
 
-if (preg_match('~^(\/api\/edit\/([0-9]+))$~', $_SERVER['REQUEST_URI'], $matches)) {
-  $action = '/api/update/';
-  $href_back = '/api';
+if (preg_match('~^(\/two\/edit\/([0-9]+))$~', $_SERVER['REQUEST_URI'], $matches)) {
+  $action = '/two/update/';
+  $hrefBack = '/two';
 } else {
   $action = '/update/';
-  $href_back = '/';
+  $hrefBack = '/';
 }
 
 ?>
@@ -24,7 +24,7 @@ if (preg_match('~^(\/api\/edit\/([0-9]+))$~', $_SERVER['REQUEST_URI'], $matches)
         <?php echo select('edit_status_block', 'status', 'active', 'inactive') ?>
       <?php endforeach; ?>
       <input type="submit" id="edit_submit" value="change" class="btn success">
-      <a href="<?php echo $href_back ?>"><button class="btn success">Back</button></a>
+      <a href="<?php echo $hrefBack ?>"><button class="btn success">Back</button></a>
     </form>
   </div>
 </section>

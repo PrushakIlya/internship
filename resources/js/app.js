@@ -1,5 +1,4 @@
-import './api-type.js';
-import './api.js'
+import './vars.js';
 
 import './create.js'
 import './edit.js'

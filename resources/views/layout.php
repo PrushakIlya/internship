@@ -19,9 +19,9 @@
     <?php $_SERVER['REQUEST_URI'] === '/create' && include('../resources/views/create.php') ?>
 
     <!-- API -->
-    <?php $_SERVER['REQUEST_URI'] === '/api' && include('../resources/views/index.php') ?>
-    <?php preg_match('~^(\/api\/edit\/([0-9]+))$~', $_SERVER['REQUEST_URI'], $matches) && include('../resources/views/edit.php') ?>
-    <?php $_SERVER['REQUEST_URI'] === '/api/create' && include('../resources/views/create.php') ?>
+    <?php $_SERVER['REQUEST_URI'] === '/two' && include('../resources/views/index.php') ?>
+    <?php preg_match('~^(\/two\/edit\/([0-9]+))$~', $_SERVER['REQUEST_URI'], $matches) && include('../resources/views/edit.php') ?>
+    <?php $_SERVER['REQUEST_URI'] === '/two/create' && include('../resources/views/create.php') ?>
   </main>
 
   <?php include('../resources/views/footer.php') ?>
