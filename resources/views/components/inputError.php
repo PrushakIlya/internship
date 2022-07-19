@@ -1,8 +1,10 @@
 <?php
+
 function inputError($idError, $type, $nameId, $name, $value = '')
 {
-  $title = ucfirst($name);
-  return "
+    $title = ucfirst($name);
+
+    return "
           <div id='$idError' class='errors'></div>
           <div class='input_block'>
             <label for='$nameId'>$title: </label>

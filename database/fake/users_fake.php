@@ -7,15 +7,15 @@ function usersFake($dbConnect)
     $emailsLast = ['gmail.com', 'mail.ru', 'yandex.ru'];
 
     foreach ($names as $name) {
-        $sql = "INSERT INTO users (name,lastname,email,gender,status) 
-        VALUES (:name,:lastname,:email,:gender,:status)";
+        $sql = 'INSERT INTO users (name,lastname,email,gender,status) 
+        VALUES (:name,:lastname,:email,:gender,:status)';
         $stmt = $dbConnect->prepare($sql);
-        $stmt->execute(array(
-            ":name" => $name,
-            ":email" => randEmail($emails) . '@' . $emailsLast[array_rand($emailsLast, 1)],
-            ":gender" => rand(0, 1),
-            ":status" => rand(0, 1),
-        ));
+        $stmt->execute([
+            ':name' => $name,
+            ':email' => randEmail($emails) . '@' . $emailsLast[array_rand($emailsLast, 1)],
+            ':gender' => rand(0, 1),
+            ':status' => rand(0, 1),
+        ]);
     }
 }
 
@@ -27,5 +27,6 @@ function randEmail($emails)
     foreach ($rand as $key => $item) {
         $email .= $emails[$item];
     }
+
     return $email;
 }

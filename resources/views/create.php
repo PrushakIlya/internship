@@ -6,11 +6,11 @@ $action = '';
 $hrefBack = '';
 
 if ($_SERVER['REQUEST_URI'] === '/two/create') {
-  $action = '/two/store';
-  $hrefBack = '/two';
+    $action = '/two/store';
+    $hrefBack = '/two';
 } else {
-  $action = '/store';
-  $hrefBack = '/';
+    $action = '/store';
+    $hrefBack = '/';
 }
 ?>
 
@@ -24,7 +24,8 @@ if ($_SERVER['REQUEST_URI'] === '/two/create') {
         <?php echo select('create_status_block', 'status', 'active', 'inactive') ?>
       </div>
       <input type="submit" value="save" id="create_submit" class="btn disabled">
-      <a href="<?php echo $hrefBack ?>"><button class="btn success">Back</button></a>
+      <a href="<?php echo $hrefBack ?>"><button
+          class="btn success">Back</button></a>
     </form>
   </div>
   </header>

@@ -1,4 +1,5 @@
 <?php
+
 include_once '../vendor/autoload.php';
 include_once '../src/HTTP/Kernel.php';
 
@@ -14,7 +15,6 @@ try {
     checkTable($dbConnect, $sqlFilesMigration, 'files');
 
     // users_fake($db_connect);
-
 } catch (PDOException $e) {
     echo $e;
 }

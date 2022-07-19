@@ -15,7 +15,7 @@ class Web
 
     public function route()
     {
-        $route = array();
+        $route = [];
         $arr = explode('/', $_SERVER['REQUEST_URI']);
         if ($arr[1] === 'api') {
             $route = $this->api;
@@ -42,9 +42,11 @@ class Web
                 $controllerName = $this->namespace . $controller;
                 $controller = new $controllerName();
                 echo $id ? $controller->$method($id) : $controller->$method();
+
                 return 0;
             }
         }
-        return header("HTTP/1.1 404 Not Found");
+
+        return header('HTTP/1.1 404 Not Found');
     }
 }

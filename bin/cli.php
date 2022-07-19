@@ -1,4 +1,5 @@
 <?php
+
 include 'vendor/autoload.php';
 var_dump(1);
 // $main = 'Prushak\Internship\Cli\\';
