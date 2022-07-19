@@ -18,18 +18,15 @@ $twig = new \Twig\Environment($loader, []);
 <body>
   <?php include '../resources/views/header.php'?>
   <main>
-    <div class="panel_block">
-      <a href="/"><button class="btn black">Task-1</button></a>
-      <a href="/two" class="index_panel__button"><button class="btn black">Task-2</button></a>
-      <a href="/upload" class="index_panel__button"><button class="btn black">Task-3</button></a>
-    </div>
+    <?php include '../resources/views/panel.php' ?>
+
     <!-- SQL -->
     <?php $_SERVER['REQUEST_URI'] === '/' && include '../resources/views/index.php'?>
     <?php preg_match('~^(\/edit\/([0-9]+))$~', $_SERVER['REQUEST_URI'], $matches) && include '../resources/views/edit.php'?>
     <?php $_SERVER['REQUEST_URI'] === '/create' && include '../resources/views/create.php'?>
     <?php if ($_SERVER['REQUEST_URI'] === '/upload') {
     echo $twig->render('upload.twig', ['results' => $results, ]);
-}
+    }
     ?>
 
     <!-- API -->
