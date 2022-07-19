@@ -22,7 +22,7 @@ class AuntificationController extends BaseController
 
     public function logout()
     {
-        parent::setCookie('autorized', ' ', '/',1, '-');
+        parent::setCookie('autorized', ' ', '/', 1, '-');
         header('Location: /registration');
     }
 
