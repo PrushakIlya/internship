@@ -1,5 +1,8 @@
-import {checkEmail} from './api-type.js';
+import {CHECKEMAIL,CHECKEMAILGO} from './api-type.js';
 import {apiCheckEmail} from './api.js';
+import { PATTERNFIRSTNAME,PATTERNEMAIL } from './expressions.js';
+const task = window.location.pathname.split('/');
+
 const edit_firstname = document.getElementById('edit_name');
 const edit_email = document.getElementById('edit_email');
 const edit_submit = document.getElementById('edit_submit');
@@ -13,14 +16,23 @@ if(edit_email!==null && edit_submit!==null && edit_error_name!==null && edit_err
   
   const start_mail = edit_email.value;
   
-  edit_firstname.oninput = function () {
-    if (!edit_firstname.value.match(/^(([A-Za-z]|.){3,50})$/g)) edit_error_name.innerHTML = 'NAME has only letters, length[3,20]';
+  edit_firstname.oninput = inputEditFirstname;
+  function inputEditFirstname() {
+    if (!edit_firstname.value.match(PATTERNFIRSTNAME)) edit_error_name.innerHTML = 'NAME has only letters, length[3,20]';
     else edit_error_name.innerHTML = ' ';
   };
   
-  edit_email.oninput = function () {
-    if(start_mail !== edit_email.value) apiCheckEmail(checkEmail,edit_email.value, edit_error_email);
-    if (!edit_email.value.match(/^(([a-zA-Z0-9]{3,40})@([a-z]+).(com|yandex|ru))$/g)) edit_error_email.innerHTML = 'EMAIL has letters and numbers, length[3,40]';
+  edit_email.oninput = inputEditEmail;
+  function inputEditEmail() {
+    if(task[1] === 'two'){
+      apiCheckEmail(CHECKEMAILGO, edit_email.value, edit_error_email);
+      start_mail !== edit_email.value && apiCheckEmail(CHECKEMAIL,edit_email.value, edit_error_email);
+    }
+    else{
+      apiCheckEmail(CHECKEMAIL, edit_email.value, edit_error_email);
+      start_mail !== edit_email.value && apiCheckEmail(CHECKEMAILGO,edit_email.value, edit_error_email);
+    }
+    if (!edit_email.value.match(PATTERNEMAIL)) edit_error_email.innerHTML = 'EMAIL has letters and numbers, length[3,40]';
     else edit_error_email.innerHTML = ' ';
   };
   document.addEventListener('DOMContentLoaded', function () {

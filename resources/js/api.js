@@ -8,8 +8,8 @@ export const apiCheckEmail = (url,payload,error_block) => {
   })
     .then(res => res.json())
     .then(body => {
-      console.log(body)
-      if(body === true) error_block.innerHTML = 'Email is taken';
+      if(body === true) error_block.innerHTML = 'Something wrong';
+      else error_block.innerHTML = ' '
     })
     .catch(error => console.log(error));
 };

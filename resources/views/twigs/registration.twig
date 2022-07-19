@@ -1,0 +1,26 @@
+<section class="registration">
+  <div class="wrapper d-flex justify-content-center">
+    <form action="/auntification/store" method="POST" class="mt-4">
+    <div class="text-danger fs-6 mb-1" id="reg_error_name" style="height:18px"></div>
+      <div>
+          <label for="reg_name" style="width:100px" class="label">Name:</label>
+          <input type="text" name="reg_name" class="reg_name" id="reg_name" autofocus>
+      </div>
+      <div class="text-danger fs-6 mb-1" id="reg_error_email" style="height:18px"></div>
+      <div>
+          <label for="reg_email" style="width:100px" class="label">Email:</label>
+          <input type="text" name="reg_email" class="reg_email" id="reg_email" autofocus>
+      </div>
+      <div class="text-danger fs-6 mb-1" id="reg_error_password" style="height:18px"></div>
+      <div>
+          <label for="reg_password" style="width:100px" class="label">Password:</label>
+          <input type="password" name="reg_password" class="reg_password" id="reg_password">
+      </div>
+      <input value="Login" type="submit" class="btn btn-success mt-2" id="reg_submit" disabled>
+      <a href="/autorization" class="btn btn-success mt-2 text-light text-uppercase">Autorization</a>
+    </form>
+  </div>
+</section>
+
+
+

@@ -2,63 +2,73 @@
 
 namespace Prushak\Internship\HTTP\Controller;
 
-use Prushak\Internship\HTTP\Models\UsersModel;
-
-
 class FrontController extends BaseController
 {
-    private object $users_model;
-
-    public function __construct()
-    {
-        $this->users_model = new UsersModel;
-    }
-
     public function index(): void
     {
-        $results = $this->users_model->index();
-        include '../resources/views/layout.php';
+        $results = parent::getUsersModel()->index();
+        parent::view($results);
     }
 
     public function edit($id): void
     {
-        $results = $this->users_model->elemById($id);
-        include '../resources/views/layout.php';
+        $results = parent::getUsersModel()->elemById($id);
+        parent::view($results);
     }
 
     public function create(): void
     {
-        include '../resources/views/layout.php';
+        parent::view();
     }
 
     public function store(): void
     {
         header('Location: /');
-        $this->users_model->store();
+        parent::getUsersModel()->store();
     }
 
     public function update($id): void
     {
         header('Location: /');
-        $this->users_model->update($id);
+        parent::getUsersModel()->update($id);
     }
 
     public function destroy($id): void
     {
         header('Location: /');
-        $this->users_model->destroy($id);
+        parent::getUsersModel()->destroy($id);
     }
 
-    public function mass_destroy(): void
+    public function massDestroy(): void
     {
         header('Location: /');
-        if (preg_match('~^([0-9]+)-([0-9]+)~', $_POST['ids'], $matches)) {
-            $arr = explode('-', $_POST['ids']);
-            $first_elem = array_shift($arr);
-            $range = array_pop($arr) - $first_elem + 1;
-            for ($i = 0; $i < $range; $i++) {
-                $this->users_model->destroy($first_elem);
-                $first_elem++;
+        parent::getCheckService()->splitInputDestroy(parent::getUsersModel());
+    }
+
+    public function upload(): void
+    {
+        $results = parent::getFilesModel()->index();
+        parent::view($results);
+    }
+
+    public function saveUpload(): void
+    {
+        header('Location: /upload');
+        $types = ['image/png', 'image/jpeg', 'text/plain'];
+        $type_file = $_FILES['file']['type'];
+        $tmp_name = $_FILES['file']['tmp_name'];
+        $file_text = uniqid('text_');
+
+        if ($types[count($types) - 1] === $type_file) {
+            $results = parent::getCheckService()->contenerUpload($file_text, $tmp_name, 'text');
+            parent::successUpload($results, $file_text, '.txt', $type_file);
+        }
+
+        foreach ($types as $type) {
+            if ($type_file === $type) {
+                $arr = explode('/', $type);
+                $results = parent::getCheckService()->contenerUpload($file_text, $tmp_name, 'img', $arr[1]);
+                parent::successUpload($results, $file_text, $arr, $type_file);
             }
         }
     }

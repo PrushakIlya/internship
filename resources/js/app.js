@@ -1,5 +1,6 @@
-import './api-type.js';
-import './api.js'
+import './upload.js'
+import './registration.js'
+import './autorization.js'
 
 import './create.js'
 import './edit.js'

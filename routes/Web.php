@@ -1,49 +1,33 @@
 <?php
 
-class Web
-{
-    private array $routes;
-    private array $routes_api;
-    private string $namespace;
+return [
+    //Task-4
+    '/auntification/logout' => 'auntification/logout',
+    '/auntification/ifAutorized' => 'auntification/ifAutorized',
+    '/auntification/check' => 'auntification/check',
+    '/auntification/store' => 'auntification/store',
+    '/registration' => 'auntification/registration',
+    '/autorization' => 'auntification/autorization',
 
-    public function __construct()
-    {
-        $this->routes = include '../config/routes.php';
-        $this->routes_api = include '../config/routes_api.php';
-        $this->namespace = 'Prushak\Internship\HTTP\Controller\\';
-    }
+    //Task-3
+    '/upload' => 'front/upload',
+    '/saveUpload' => 'front/saveUpload',
 
-    public function route()
-    {
-        $route = array();
-        $arr = explode('/', $_SERVER['REQUEST_URI']);
-        if ($arr[1] === 'api') {
-            $route = $this->routes_api;
-        } else {
-            $route = $this->routes;
-        }
+    //Task-2
+    '/two/massDestroy' => 'gorest/massDestroy',
+    '/two/destroy/([0-9]+)' => 'gorest/destroy/$1',
+    '/two/update/([0-9]+)' => 'gorest/update/$1',
+    '/two/edit/([0-9]+)' => 'gorest/edit/$1',
+    '/two/store' => 'gorest/store',
+    '/two/create' => 'gorest/create',
+    '/two' => 'gorest/index',
 
-        foreach ($route as $pattern => $replacement) {
-            $match = preg_match("~^$pattern$~", $_SERVER['REQUEST_URI']);
-
-            if ($match) {
-                $route = preg_replace("~$pattern~", $replacement, $_SERVER['REQUEST_URI']);
-
-                $route = explode('/', $route);
-
-                $controller = ucfirst(array_shift($route)) . 'Controller';
-
-                $method = array_shift($route);
-
-                $id = array_shift($route);
-                $method = explode('?', $method);
-                $method = array_shift($method);
-
-                $controller = new ($this->namespace . $controller);
-                echo $id ? $controller->$method($id) : $controller->$method();
-                return 0;
-            }
-        }
-        return header("HTTP/1.1 404 Not Found");
-    }
-}
+    //Task-1
+    '/destroy/([0-9]+)' => 'front/destroy/$1', //Perfect way create API + AJAX
+    '/massDestroy' => 'front/massDestroy',
+    '/create' => 'front/create',
+    '/store' => 'front/store',
+    '/edit/([0-9]+)' => 'front/edit/$1',
+    '/update/([0-9]+)' => 'front/update/$1',
+    '/' => 'front/index',
+];

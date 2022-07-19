@@ -1,0 +1,31 @@
+<section class="authistration">
+  <div class="wrapper d-flex justify-content-center">
+    <form action="/auntification/check" method="POST" class="mt-4">
+      <div class="p-3 bg-info bg-opacity-10 border border-info rounded-end rounded-start text-center">
+        <h2 class="fw-semibold">Fake users</h2>
+        <p>John/user1@test.com/1234567890</p>
+        <p>Jane/user2@test.com/1234567890</p>
+      </div>
+      <div class="text-danger fs-6 mb-1" id="auth_error_name" style="height:18px"></div>
+      <div>
+          <label for="auth_name" style="width:100px" class="label">Name:</label>
+          <input type="text" name="auth_name" id="auth_name" autofocus>
+      </div>
+      <div class="text-danger fs-6 mb-1" id="auth_error_email" style="height:18px"></div>
+      <div>
+          <label for="auth_email" style="width:100px" class="label">Email:</label>
+          <input type="text" name="auth_email" id="auth_email" autofocus>
+      </div>
+      <div class="text-danger fs-6 mb-1" id="auth_error_password" style="height:18px"></div>
+      <div>
+          <label for="auth_password" style="width:100px" class="label">Password:</label>
+          <input type="password" name="auth_password" id="auth_password">
+      </div>
+      <input value="Autorization" type="submit" class="btn btn-success mt-2" id="auth_submit" disabled>
+      <a href="/registration" class="btn btn-success mt-2 text-light text-uppercase">Back</a>
+    </form>
+  </div>
+</section>
+
+
+

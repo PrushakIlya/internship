@@ -1,4 +1,5 @@
 <?php
+
 $db = include '../config/db.php';
 
 try {
