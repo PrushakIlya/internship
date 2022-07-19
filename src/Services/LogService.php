@@ -5,7 +5,7 @@ namespace Prushak\Internship\Services;
 
 class LogService
 {
-  public function log($file_name, $type_file, $reason = '')
+  public function log($file_name, $type_file, $reason = ''): void
   {
     $file_name = 'upload_' . date('d.m.Y') . '.log';
     $all_files = scandir('../storage/logs/');

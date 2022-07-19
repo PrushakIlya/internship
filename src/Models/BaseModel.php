@@ -11,7 +11,7 @@ class BaseModel
     self::$conn = include '../config/connect_db.php';
   }
 
-  public static function getConn()
+  public static function getConn(): object
   {
     return self::$conn;
   }

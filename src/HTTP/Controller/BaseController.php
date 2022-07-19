@@ -27,39 +27,39 @@ class BaseController
     self::$logService = new LogService();
   }
 
-  public static function getUsersModel()
+  public static function getUsersModel(): object
   {
     return self::$usersModel;
   }
 
-  public static function getFilesModel()
+  public static function getFilesModel(): object
   {
     return self::$filesModel;
   }
 
-  public static function getCheckService()
+  public static function getCheckService(): object
   {
     return self::$checkService;
   }
 
-  public static function getApi($param)
+  public static function getApi($param): string
   {
     return self::$api[$param] . self::$api['token'];
   }
-  public static function getApiElem($param, $elem)
+  public static function getApiElem($param, $elem): string
   {
     return self::$api[$param] . $elem . self::$api['token'];
   }
-  public static function getApiService()
+  public static function getApiService(): object
   {
     return self::$apiService;
   }
-  public static function getLogService()
+  public static function getLogService(): object
   {
     return self::$logService;
   }
 
-  public static function successUpload($results, $file_text, $arr, $type_file)
+  public static function successUpload($results, $file_text, $arr, $type_file): void
   {
     if ($results[0]) {
       self::getFilesModel()->store($results[1]);

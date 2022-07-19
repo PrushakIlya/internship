@@ -45,13 +45,13 @@ class FrontController extends BaseController
         parent::getCheckService()->splitInputDestroy(parent::getUsersModel());
     }
 
-    public function upload()
+    public function upload(): void
     {
         $results = parent::getFilesModel()->index();
         include '../resources/views/layout.php';
     }
 
-    public function saveUpload()
+    public function saveUpload(): void
     {
         header('Location: /upload');
         $types = ['image/png', 'image/jpeg', 'text/plain'];

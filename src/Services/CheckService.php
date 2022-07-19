@@ -4,7 +4,7 @@ namespace Prushak\Internship\Services;
 
 class CheckService
 {
-  public function splitInputDestroy($model)
+  public function splitInputDestroy($model): void
   {
     if (preg_match('~^([0-9]+)-([0-9]+)~', $_POST['ids'], $matches)) {
       $arr = explode('-', $_POST['ids']);
@@ -17,7 +17,7 @@ class CheckService
     }
   }
 
-  public function splitInputMassDestroy()
+  public function splitInputMassDestroy(): array
   {
     $elems = [];
     if (preg_match('~^([0-9]+)-([0-9]+)~', $_POST['ids'], $matches)) {
@@ -32,7 +32,7 @@ class CheckService
     return $elems;
   }
 
-  private function checkFile($folder, $file_name)
+  private function checkFile($folder, $file_name): bool
   {
     $all_files = scandir($folder);
     foreach ($all_files as $file) {
@@ -43,12 +43,12 @@ class CheckService
     return false;
   }
 
-  private function checkExistFolder($folder)
+  private function checkExistFolder($folder): void
   {
     strlen(realpath($_SERVER['DOCUMENT_ROOT'] . '/' . $folder)) === 0 && @mkdir($folder); // I do not know why the is @ before mkdir. I know mkdir and @mkdir are the same;
   }
 
-  public function contenerUpload($fileText, $tmpName, $name, $nameExplode = 'text')
+  public function contenerUpload($fileText, $tmpName, $name, $nameExplode = 'text'): array
   {
     $fileName = $fileText . '.' . $nameExplode;
     $this->checkExistFolder($name);
