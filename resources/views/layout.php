@@ -27,9 +27,6 @@ $twig = new \Twig\Environment($loader, []);
     <?php if ($_SERVER['REQUEST_URI'] === '/upload') {
         echo $twig->render('twigs/upload.twig', ['results' => $results, ]);
     }?>
-    <?php if ($_SERVER['REQUEST_URI'] === '/registration') {
-        echo $twig->render('twigs/registration.twig', []);
-    }?>
     <?php if ($_SERVER['REQUEST_URI'] === '/autorization') {
         echo $twig->render('twigs/autorization.twig', []);
     }?>
