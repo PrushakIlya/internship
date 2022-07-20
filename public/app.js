@@ -111,14 +111,17 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authEmail !== null && _vars_js__WEBPAC
 
   var authEmailFunc = function authEmailFunc() {
     if (!_vars_js__WEBPACK_IMPORTED_MODULE_2__.authEmail.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNEMAIL)) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorEmail.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.MAILERROR;else _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorEmail.textContent = ' ';
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authEmail.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorEmail.textContent = '';
   };
 
   var authPasswordFunc = function authPasswordFunc() {
     if (!_vars_js__WEBPACK_IMPORTED_MODULE_2__.authPassword.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNPASSWORD)) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorPassword.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.PASSWORDERROR;else _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorPassword.textContent = ' ';
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authPassword.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorPassword.textContent = '';
   };
 
   var authNameFunc = function authNameFunc() {
     if (!_vars_js__WEBPACK_IMPORTED_MODULE_2__.authName.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNNAME)) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorName.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.NAMEERROR;else _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorName.textContent = ' ';
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authName.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorName.textContent = '';
   };
 
   _vars_js__WEBPACK_IMPORTED_MODULE_2__.authEmail.oninput = authEmailFunc;
