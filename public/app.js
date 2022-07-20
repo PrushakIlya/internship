@@ -115,14 +115,17 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authEmail !== null && _vars_js__WEBPAC
 
   var authEmailFunc = function authEmailFunc() {
     if (!_vars_js__WEBPACK_IMPORTED_MODULE_2__.authEmail.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNEMAIL)) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorEmail.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.MAILERROR;else _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorEmail.textContent = ' ';
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authEmail.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorEmail.textContent = '';
   };
 
   var authPasswordFunc = function authPasswordFunc() {
     if (!_vars_js__WEBPACK_IMPORTED_MODULE_2__.authPassword.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNPASSWORD)) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorPassword.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.PASSWORDERROR;else _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorPassword.textContent = ' ';
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authPassword.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorPassword.textContent = '';
   };
 
   var authNameFunc = function authNameFunc() {
     if (!_vars_js__WEBPACK_IMPORTED_MODULE_2__.authName.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNNAME)) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorName.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.NAMEERROR;else _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorName.textContent = ' ';
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authName.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorName.textContent = '';
   };
 
   _vars_js__WEBPACK_IMPORTED_MODULE_2__.authEmail.oninput = authEmailFunc;
@@ -338,27 +341,27 @@ document.cookie && _vars_js__WEBPACK_IMPORTED_MODULE_4__.successBlock.classList.
 if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.registration !== null) {
   var regFirstnameFunc = function regFirstnameFunc() {
     if (!_vars_js__WEBPACK_IMPORTED_MODULE_4__.regFirstname.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNNAME)) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorFirstname.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.NAMEERROR;else _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorFirstname.textContent = ' ';
-    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regFirstname.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorFirstname.textContent = ' ';
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regFirstname.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorFirstname.textContent = '';
   };
 
   var regLastnameFunc = function regLastnameFunc() {
     if (!_vars_js__WEBPACK_IMPORTED_MODULE_4__.regLastname.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNNAME)) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorLastname.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.NAMEERROR;else _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorLastname.textContent = ' ';
-    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regLastname.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorLastname.textContent = ' ';
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regLastname.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorLastname.textContent = '';
   };
 
   var regEmailFunc = function regEmailFunc() {
     if (!_vars_js__WEBPACK_IMPORTED_MODULE_4__.regEmail.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNEMAIL)) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorEmail.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.MAILERROR;else (0,_api__WEBPACK_IMPORTED_MODULE_3__.apiCheckEmail)(_api_type__WEBPACK_IMPORTED_MODULE_2__.CHECKEMAILREG, _vars_js__WEBPACK_IMPORTED_MODULE_4__.regEmail.value, _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorEmail);
-    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regEmail.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorEmail.textContent = ' ';
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regEmail.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorEmail.textContent = '';
   };
 
   var regPassFunc = function regPassFunc() {
     !_vars_js__WEBPACK_IMPORTED_MODULE_4__.regPass.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNPASSWORD_REG) ? _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.PASSWORDERROR_REG : _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent = ' ';
-    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regPass.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent = ' ';
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regPass.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent = '';
   };
 
   var regPassConfFunc = function regPassConfFunc() {
     _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPass.value === _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPassConf.value ? _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPassConf.textContent = ' ' : _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.PASSWORDERROR_NOT_EQUAL_REG;
-    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regPassConf.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent = ' ';
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regPassConf.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent = '';
   };
 
   _vars_js__WEBPACK_IMPORTED_MODULE_4__.regFirstname.oninput = regFirstnameFunc;

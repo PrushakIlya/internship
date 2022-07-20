@@ -12,16 +12,19 @@ if(authEmail!==null && authPassword!==null && authName!==null && authSubmit!==nu
   const authEmailFunc = () => {
     if(!authEmail.value.match(PATTERNEMAIL)) authErrorEmail.textContent = MAILERROR;
     else authErrorEmail.textContent = ' ';
+    if (authEmail.value.length === 0) authErrorEmail.textContent = '';
   }
   
   const authPasswordFunc = () => {
     if(!authPassword.value.match(PATTERNPASSWORD)) authErrorPassword.textContent = PASSWORDERROR;
     else authErrorPassword.textContent = ' ';
+    if (authPassword.value.length === 0) authErrorPassword.textContent = '';
   }
 
   const authNameFunc = () => {
     if(!authName.value.match(PATTERNNAME)) authErrorName.textContent = NAMEERROR;
     else authErrorName.textContent = ' ';
+    if (authName.value.length === 0) authErrorName.textContent = '';
   }
 
   authEmail.oninput = authEmailFunc;

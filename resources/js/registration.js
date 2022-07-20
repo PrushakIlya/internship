@@ -24,29 +24,29 @@ if (registration !== null) {
   const regFirstnameFunc = () => {
     if (!regFirstname.value.match(PATTERNNAME)) regErrorFirstname.textContent = NAMEERROR;
     else regErrorFirstname.textContent = ' ';
-    if (regFirstname.value.length === 0) regErrorFirstname.textContent = ' ';
+    if (regFirstname.value.length === 0) regErrorFirstname.textContent = '';
   };
 
   const regLastnameFunc = () => {
     if (!regLastname.value.match(PATTERNNAME)) regErrorLastname.textContent = NAMEERROR;
     else regErrorLastname.textContent = ' ';
-    if (regLastname.value.length === 0) regErrorLastname.textContent = ' ';
+    if (regLastname.value.length === 0) regErrorLastname.textContent = '';
   };
 
   const regEmailFunc = () => {
     if (!regEmail.value.match(PATTERNEMAIL)) regErrorEmail.textContent = MAILERROR;
     else apiCheckEmail(CHECKEMAILREG, regEmail.value, regErrorEmail);
-    if (regEmail.value.length === 0) regErrorEmail.textContent = ' ';
+    if (regEmail.value.length === 0) regErrorEmail.textContent = '';
   };
 
   const regPassFunc = () => {
     !regPass.value.match(PATTERNPASSWORD_REG) ? (regErrorPass.textContent = PASSWORDERROR_REG) : (regErrorPass.textContent = ' ');
-    if (regPass.value.length === 0) regErrorPass.textContent = ' ';
+    if (regPass.value.length === 0) regErrorPass.textContent = '';
   };
 
   const regPassConfFunc = () => {
     regPass.value === regPassConf.value ? (regErrorPassConf.textContent = ' ') : (regErrorPass.textContent = PASSWORDERROR_NOT_EQUAL_REG);
-    if (regPassConf.value.length === 0) regErrorPass.textContent = ' ';
+    if (regPassConf.value.length === 0) regErrorPass.textContent = '';
   };
 
   regFirstname.oninput = regFirstnameFunc;
