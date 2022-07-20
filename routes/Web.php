@@ -1,6 +1,10 @@
 <?php
 
 return [
+    //Task-5
+    '/registration/store' => 'registration/store',
+    '/registration' => 'registration/index',
+
     //Task-4
     '/autorization/logout' => 'autorization/logout',
     '/autorization/ifAutorized' => 'autorization/ifAutorized',

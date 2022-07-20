@@ -31,12 +31,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CHECKEMAIL": () => (/* binding */ CHECKEMAIL),
 /* harmony export */   "CHECKEMAILFORM": () => (/* binding */ CHECKEMAILFORM),
-/* harmony export */   "CHECKEMAILGO": () => (/* binding */ CHECKEMAILGO)
+/* harmony export */   "CHECKEMAILGO": () => (/* binding */ CHECKEMAILGO),
+/* harmony export */   "CHECKEMAILREG": () => (/* binding */ CHECKEMAILREG)
 /* harmony export */ });
 var ROOT = 'http://localhost:3000';
 var CHECKEMAIL = ROOT + '/api/checkEmail';
 var CHECKEMAILGO = ROOT + '/api/checkEmailGo';
 var CHECKEMAILFORM = ROOT + '/api/checkEmailForm';
+var CHECKEMAILREG = ROOT + '/api/checkEmailReg';
 
 /***/ }),
 
@@ -79,8 +81,10 @@ var apiCheckEmail = function apiCheckEmail(url, payload, error_block) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _upload_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./upload.js */ "./resources/js/upload.js");
 /* harmony import */ var _autorization_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./autorization.js */ "./resources/js/autorization.js");
-/* harmony import */ var _create_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./create.js */ "./resources/js/create.js");
-/* harmony import */ var _edit_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit.js */ "./resources/js/edit.js");
+/* harmony import */ var _registration_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration.js */ "./resources/js/registration.js");
+/* harmony import */ var _create_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./create.js */ "./resources/js/create.js");
+/* harmony import */ var _edit_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./edit.js */ "./resources/js/edit.js");
+
 
 
 
@@ -272,6 +276,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "MAILERROR": () => (/* binding */ MAILERROR),
 /* harmony export */   "NAMEERROR": () => (/* binding */ NAMEERROR),
 /* harmony export */   "PASSWORDERROR": () => (/* binding */ PASSWORDERROR),
+/* harmony export */   "PASSWORDERROR_EMPTY_REG": () => (/* binding */ PASSWORDERROR_EMPTY_REG),
+/* harmony export */   "PASSWORDERROR_NOT_EQUAL_REG": () => (/* binding */ PASSWORDERROR_NOT_EQUAL_REG),
+/* harmony export */   "PASSWORDERROR_REG": () => (/* binding */ PASSWORDERROR_REG),
 /* harmony export */   "UPLOADERRORS_1": () => (/* binding */ UPLOADERRORS_1),
 /* harmony export */   "UPLOADERRORS_2": () => (/* binding */ UPLOADERRORS_2)
 /* harmony export */ });
@@ -280,7 +287,10 @@ var UPLOADERRORS_2 = 'Only png,jpeg,txt';
 var MAILERROR = 'example: dgg34d@test.by';
 var NAMEERROR = 'Only latters[3-20]';
 var PASSWORDERROR = 'Only latters and numbers[10-20]';
-var AUTORIZATIONERROR = 'Login or Email is incorrect';
+var AUTORIZATIONERROR = 'Email is taken';
+var PASSWORDERROR_REG = 'upper and lower case latters, numbers, symbols[6-20]';
+var PASSWORDERROR_EMPTY_REG = 'Password is empty';
+var PASSWORDERROR_NOT_EQUAL_REG = 'Password is not equal';
 
 /***/ }),
 
@@ -295,12 +305,85 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "PATTERNEMAIL": () => (/* binding */ PATTERNEMAIL),
 /* harmony export */   "PATTERNFIRSTNAME": () => (/* binding */ PATTERNFIRSTNAME),
 /* harmony export */   "PATTERNNAME": () => (/* binding */ PATTERNNAME),
-/* harmony export */   "PATTERNPASSWORD": () => (/* binding */ PATTERNPASSWORD)
+/* harmony export */   "PATTERNPASSWORD": () => (/* binding */ PATTERNPASSWORD),
+/* harmony export */   "PATTERNPASSWORD_REG": () => (/* binding */ PATTERNPASSWORD_REG)
 /* harmony export */ });
 var PATTERNFIRSTNAME = /^(([A-Za-z]|.){3,50})$/g;
 var PATTERNEMAIL = /^(([a-zA-Z0-9]{3,26})@([a-z]{3,10}).(com|ru|by))$/g;
 var PATTERNNAME = /^([A-Za-z]{3,20})$/g;
 var PATTERNPASSWORD = /^([A-Za-z0-9]{10,20})$/g;
+var PATTERNPASSWORD_REG = /^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_-]).{8,15})$/g;
+
+/***/ }),
+
+/***/ "./resources/js/registration.js":
+/*!**************************************!*\
+  !*** ./resources/js/registration.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _expressions_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./expressions.js */ "./resources/js/expressions.js");
+/* harmony import */ var _errors_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./errors.js */ "./resources/js/errors.js");
+/* harmony import */ var _api_type__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./api-type */ "./resources/js/api-type.js");
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./api */ "./resources/js/api.js");
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./vars.js */ "./resources/js/vars.js");
+
+
+
+
+
+
+if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.registration !== null) {
+  var regFirstnameFunc = function regFirstnameFunc() {
+    if (!_vars_js__WEBPACK_IMPORTED_MODULE_4__.regFirstname.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNNAME)) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorFirstname.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.NAMEERROR;else _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorFirstname.textContent = ' ';
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regFirstname.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorFirstname.textContent = ' ';
+  };
+
+  var regLastnameFunc = function regLastnameFunc() {
+    if (!_vars_js__WEBPACK_IMPORTED_MODULE_4__.regLastname.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNNAME)) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorLastname.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.NAMEERROR;else _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorLastname.textContent = ' ';
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regLastname.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorLastname.textContent = ' ';
+  };
+
+  var regEmailFunc = function regEmailFunc() {
+    if (!_vars_js__WEBPACK_IMPORTED_MODULE_4__.regEmail.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNEMAIL)) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorEmail.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.MAILERROR;else (0,_api__WEBPACK_IMPORTED_MODULE_3__.apiCheckEmail)(_api_type__WEBPACK_IMPORTED_MODULE_2__.CHECKEMAILREG, _vars_js__WEBPACK_IMPORTED_MODULE_4__.regEmail.value, _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorEmail);
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regEmail.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorEmail.textContent = ' ';
+  };
+
+  var regPassFunc = function regPassFunc() {
+    !_vars_js__WEBPACK_IMPORTED_MODULE_4__.regPass.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNPASSWORD_REG) ? _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.PASSWORDERROR_REG : _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent = ' ';
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regPass.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent = ' ';
+  };
+
+  var regPassConfFunc = function regPassConfFunc() {
+    _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPass.value === _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPassConf.value ? _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPassConf.textContent = ' ' : _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.PASSWORDERROR_NOT_EQUAL_REG;
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regPassConf.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent = ' ';
+  };
+
+  _vars_js__WEBPACK_IMPORTED_MODULE_4__.regFirstname.oninput = regFirstnameFunc;
+  _vars_js__WEBPACK_IMPORTED_MODULE_4__.regLastname.oninput = regLastnameFunc;
+  _vars_js__WEBPACK_IMPORTED_MODULE_4__.regEmail.oninput = regEmailFunc;
+  _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPass.oninput = regPassFunc;
+  _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPassConf.oninput = regPassConfFunc;
+  document.addEventListener('DOMContentLoaded', function () {
+    var callback = function callback() {
+      if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorFirstname.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorLastname.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorEmail.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPassConf.textContent.length === 1) {
+        _vars_js__WEBPACK_IMPORTED_MODULE_4__.regSubmit.disabled = false;
+      } else {
+        _vars_js__WEBPACK_IMPORTED_MODULE_4__.regSubmit.disabled = true;
+      }
+
+      document.cookie && _vars_js__WEBPACK_IMPORTED_MODULE_4__.successBlock.classList.add('register_success');
+    };
+
+    var observer = new MutationObserver(callback);
+    var elem = document.querySelector('body');
+    observer.observe(elem, {
+      childList: true,
+      subtree: true
+    });
+  });
+}
 
 /***/ }),
 
@@ -360,6 +443,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "editErrorName": () => (/* binding */ editErrorName),
 /* harmony export */   "editFirstname": () => (/* binding */ editFirstname),
 /* harmony export */   "editSubmit": () => (/* binding */ editSubmit),
+/* harmony export */   "regEmail": () => (/* binding */ regEmail),
+/* harmony export */   "regErrorEmail": () => (/* binding */ regErrorEmail),
+/* harmony export */   "regErrorFirstname": () => (/* binding */ regErrorFirstname),
+/* harmony export */   "regErrorLastname": () => (/* binding */ regErrorLastname),
+/* harmony export */   "regErrorPass": () => (/* binding */ regErrorPass),
+/* harmony export */   "regErrorPassConf": () => (/* binding */ regErrorPassConf),
+/* harmony export */   "regFirstname": () => (/* binding */ regFirstname),
+/* harmony export */   "regLastname": () => (/* binding */ regLastname),
+/* harmony export */   "regPass": () => (/* binding */ regPass),
+/* harmony export */   "regPassConf": () => (/* binding */ regPassConf),
+/* harmony export */   "regSubmit": () => (/* binding */ regSubmit),
+/* harmony export */   "registration": () => (/* binding */ registration),
+/* harmony export */   "successBlock": () => (/* binding */ successBlock),
 /* harmony export */   "uploadErrors": () => (/* binding */ uploadErrors),
 /* harmony export */   "uploadFile": () => (/* binding */ uploadFile),
 /* harmony export */   "uploadSubmit": () => (/* binding */ uploadSubmit)
@@ -384,6 +480,19 @@ var editEmail = document.getElementById('edit_email');
 var editSubmit = document.getElementById('edit_submit');
 var editErrorName = document.getElementById('edit_error_name');
 var editErrorEmail = document.getElementById('edit_error_email');
+var regFirstname = document.getElementById('reg_firstname');
+var regLastname = document.getElementById('reg_lastname');
+var regEmail = document.getElementById('reg_email');
+var regPass = document.getElementById('reg_pass');
+var regPassConf = document.getElementById('reg_pass_conf');
+var regSubmit = document.getElementById('reg_submit');
+var regErrorFirstname = document.getElementById('reg_error_firstname');
+var regErrorLastname = document.getElementById('reg_error_lastname');
+var regErrorEmail = document.getElementById('reg_error_email');
+var regErrorPass = document.getElementById('reg_error_pass');
+var regErrorPassConf = document.getElementById('reg_error_pass_conf');
+var registration = document.getElementById('registration');
+var successBlock = document.getElementById('success_block');
 
 /***/ }),
 

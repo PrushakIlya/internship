@@ -21,3 +21,17 @@ export const editEmail = document.getElementById('edit_email');
 export const editSubmit = document.getElementById('edit_submit');
 export const editErrorName = document.getElementById('edit_error_name');
 export const editErrorEmail = document.getElementById('edit_error_email');
+
+export const regFirstname = document.getElementById('reg_firstname');
+export const regLastname = document.getElementById('reg_lastname');
+export const regEmail = document.getElementById('reg_email');
+export const regPass = document.getElementById('reg_pass');
+export const regPassConf = document.getElementById('reg_pass_conf');
+export const regSubmit = document.getElementById('reg_submit');
+export const regErrorFirstname = document.getElementById('reg_error_firstname');
+export const regErrorLastname = document.getElementById('reg_error_lastname');
+export const regErrorEmail = document.getElementById('reg_error_email');
+export const regErrorPass = document.getElementById('reg_error_pass');
+export const regErrorPassConf = document.getElementById('reg_error_pass_conf');
+export const registration = document.getElementById('registration');
+export const successBlock = document.getElementById('success_block');

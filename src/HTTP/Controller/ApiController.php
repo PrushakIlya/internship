@@ -25,4 +25,15 @@ class ApiController extends BaseController
 
         return json_encode(false);
     }
+    public function checkEmailReg(): string
+    {
+        $result = json_decode(file_get_contents('php://input'), true);
+        $results = parent::getClientsModel()->selectByEmail($result);
+
+        if (!empty($results)) {
+            return json_encode(true);
+        }
+
+        return json_encode(false);
+    }
 }

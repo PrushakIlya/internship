@@ -33,7 +33,7 @@ body
 .delete
   background-color: $red
 
-.success 
+.success
   background-color: $green
 
 .black
@@ -52,6 +52,24 @@ body
 
 .line
   background-color: $black
-  height: 1px 
+  height: 1px
+
+.success_block
+  opacity: 0
+
+.register_success
+  opacity: 0
+  animation-name: appear
+  animation-duration: 4s
+
+@keyframes appear
+  0%
+    opacity: 0
+  25%
+    opacity: 100%
+  50%
+    opacity: 100%
+  100%
+    opacity: 0
 
 

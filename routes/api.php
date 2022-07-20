@@ -1,6 +1,8 @@
 <?php
 
 return [
+    '/api/checkEmailReg' => 'api/checkEmailReg',
+
     '/api/checkEmailForm' => 'api/checkEmailForm',
     '/api/checkEmail' => 'api/checkEmail',
     '/api/checkEmailGo' => 'api/checkEmailGo',

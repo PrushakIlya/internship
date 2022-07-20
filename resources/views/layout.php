@@ -33,6 +33,10 @@ $twig = new \Twig\Environment($loader, []);
     <?php if ($_SERVER['REQUEST_URI'] === '/autorization/ifAutorized') {
         echo $twig->render('twigs/if_autorized.twig', ['results' => $results, ]);
     }?>
+       <?php if ($_SERVER['REQUEST_URI'] === '/registration') {
+        echo $twig->render('twigs/registration.twig', []);
+    }?>
+
 
     <!-- API -->
     <?php $_SERVER['REQUEST_URI'] === '/two' && include '../resources/views/index.php'?>
