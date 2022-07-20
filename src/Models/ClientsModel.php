@@ -6,15 +6,17 @@ use PDO;
 
 class ClientsModel extends BaseModel
 {
-    public function store($password): void
+    public function selectEqualEmailName($email, $name): array
     {
-        $sql = 'INSERT INTO clients (name, email, password) VALUES (:name,:email, :password)';
-        $stmt = BaseModel::getConn()->prepare($sql);
-        $stmt->execute([':name' => $_POST['reg_name'],':email' => $_POST['reg_email'], ':password' => $password]);
+        $sql = "SELECT * FROM clients WHERE email = '$email' AND name = '$name'";
+        $stmt = BaseModel::getConn()->query($sql);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
     }
-    public function selectByEmail($email): array
+    public function selectEqualPassword($password): array
     {
-        $sql = "SELECT * FROM clients WHERE email = '$email'";
+        $sql = "SELECT * FROM clients WHERE password = '$password'";
         $stmt = BaseModel::getConn()->query($sql);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

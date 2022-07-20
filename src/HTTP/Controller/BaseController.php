@@ -90,7 +90,7 @@ class BaseController
     public static function ifHaveCookie(): void
     {
         if ($_COOKIE && !$_COOKIE['error'] && $_COOKIE['autorized']) {
-            header('Location: /auntification/ifAutorized');
+            header('Location: /autorization/ifAutorized');
         } else {
             self::view();
         }

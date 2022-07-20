@@ -30,7 +30,7 @@ $twig = new \Twig\Environment($loader, []);
     <?php if ($_SERVER['REQUEST_URI'] === '/autorization') {
         echo $twig->render('twigs/autorization.twig', []);
     }?>
-    <?php if ($_SERVER['REQUEST_URI'] === '/auntification/ifAutorized') {
+    <?php if ($_SERVER['REQUEST_URI'] === '/autorization/ifAutorized') {
         echo $twig->render('twigs/if_autorized.twig', ['results' => $results, ]);
     }?>
 

@@ -31,6 +31,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "apiCheckEmail": () => (/* binding */ apiCheckEmail)
 /* harmony export */ });
+/* harmony import */ var _errors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./errors */ "./resources/js/errors.js");
+
 var apiCheckEmail = function apiCheckEmail(url, payload, error_block) {
   fetch(url, {
     method: 'POST',
@@ -41,7 +43,7 @@ var apiCheckEmail = function apiCheckEmail(url, payload, error_block) {
   }).then(function (res) {
     return res.json();
   }).then(function (body) {
-    if (body === true) error_block.innerHTML = 'Something wrong';else error_block.innerHTML = ' ';
+    if (body === true) error_block.innerHTML = _errors__WEBPACK_IMPORTED_MODULE_0__.AUTORIZATIONERROR;else error_block.innerHTML = ' ';
   })["catch"](function (error) {
     return console.log(error);
   });
@@ -57,11 +59,9 @@ var apiCheckEmail = function apiCheckEmail(url, payload, error_block) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _upload_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./upload.js */ "./resources/js/upload.js");
-/* harmony import */ var _registration_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./registration.js */ "./resources/js/registration.js");
-/* harmony import */ var _autorization_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./autorization.js */ "./resources/js/autorization.js");
-/* harmony import */ var _create_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./create.js */ "./resources/js/create.js");
-/* harmony import */ var _edit_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./edit.js */ "./resources/js/edit.js");
-
+/* harmony import */ var _autorization_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./autorization.js */ "./resources/js/autorization.js");
+/* harmony import */ var _create_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./create.js */ "./resources/js/create.js");
+/* harmony import */ var _edit_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit.js */ "./resources/js/edit.js");
 
 
 
@@ -269,6 +269,7 @@ if (edit_email !== null && edit_submit !== null && edit_error_name !== null && e
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AUTORIZATIONERROR": () => (/* binding */ AUTORIZATIONERROR),
 /* harmony export */   "MAILERROR": () => (/* binding */ MAILERROR),
 /* harmony export */   "NAMEERROR": () => (/* binding */ NAMEERROR),
 /* harmony export */   "PASSWORDERROR": () => (/* binding */ PASSWORDERROR),
@@ -280,6 +281,7 @@ var UPLOADERRORS_2 = 'Only png,jpeg,txt';
 var MAILERROR = 'example: dgg34d@test.by';
 var NAMEERROR = 'Only latters[3-20]';
 var PASSWORDERROR = 'Only latters and numbers[10-20]';
+var AUTORIZATIONERROR = 'Login or Email is incorrect';
 
 /***/ }),
 
@@ -300,65 +302,6 @@ var PATTERNFIRSTNAME = /^(([A-Za-z]|.){3,50})$/g;
 var PATTERNEMAIL = /^(([a-zA-Z0-9]{3,26})@([a-z]{3,10}).(com|ru|by))$/g;
 var PATTERNNAME = /^([A-Za-z]{3,20})$/g;
 var PATTERNPASSWORD = /^([A-Za-z0-9]{10,20})$/g;
-
-/***/ }),
-
-/***/ "./resources/js/registration.js":
-/*!**************************************!*\
-  !*** ./resources/js/registration.js ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _expressions_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./expressions.js */ "./resources/js/expressions.js");
-/* harmony import */ var _errors_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./errors.js */ "./resources/js/errors.js");
-/* harmony import */ var _api_type_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./api-type.js */ "./resources/js/api-type.js");
-/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./api.js */ "./resources/js/api.js");
-
-
-
-
-var regEmail = document.getElementById('reg_email');
-var regPassword = document.getElementById('reg_password');
-var regName = document.getElementById('reg_name');
-var regSubmit = document.getElementById('reg_submit');
-var regErrorEmail = document.getElementById('reg_error_email');
-var regErrorPassword = document.getElementById('reg_error_password');
-var regErrorName = document.getElementById('reg_error_name');
-
-if (regEmail !== null && regPassword !== null && regName !== null && regSubmit !== null && regErrorEmail !== null && regErrorPassword !== null && regErrorName !== 0) {
-  var regEmailFunc = function regEmailFunc() {
-    if (!regEmail.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNEMAIL)) regErrorEmail.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.MAILERROR;else (0,_api_js__WEBPACK_IMPORTED_MODULE_3__.apiCheckEmail)(_api_type_js__WEBPACK_IMPORTED_MODULE_2__.CHECKEMAILFORM, regEmail.value, regErrorEmail);
-  };
-
-  var regPasswordFunc = function regPasswordFunc() {
-    if (!regPassword.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNPASSWORD)) regErrorPassword.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.PASSWORDERROR;else regErrorPassword.textContent = ' ';
-  };
-
-  var regNameFunc = function regNameFunc() {
-    if (!regName.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNNAME)) regErrorName.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.NAMEERROR;else regErrorName.textContent = ' ';
-  };
-
-  regEmail.oninput = regEmailFunc;
-  regPassword.oninput = regPasswordFunc;
-  regName.oninput = regNameFunc;
-  document.addEventListener('DOMContentLoaded', function () {
-    var callback = function callback() {
-      if (regErrorEmail.textContent.length === 1 && regErrorPassword.textContent.length === 1) {
-        regSubmit.disabled = false;
-      } else {
-        regSubmit.disabled = true;
-      }
-    };
-
-    var observer = new MutationObserver(callback);
-    var elem = document.querySelector('body');
-    observer.observe(elem, {
-      childList: true,
-      subtree: true
-    });
-  });
-}
 
 /***/ }),
 

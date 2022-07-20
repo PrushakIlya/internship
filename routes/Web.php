@@ -2,12 +2,10 @@
 
 return [
     //Task-4
-    '/auntification/logout' => 'auntification/logout',
-    '/auntification/ifAutorized' => 'auntification/ifAutorized',
-    '/auntification/check' => 'auntification/check',
-    '/auntification/store' => 'auntification/store',
-    '/registration' => 'auntification/registration',
-    '/autorization' => 'auntification/autorization',
+    '/autorization/logout' => 'autorization/logout',
+    '/autorization/ifAutorized' => 'autorization/ifAutorized',
+    '/autorization/check' => 'autorization/check',
+    '/autorization' => 'autorization/autorization',
 
     //Task-3
     '/upload' => 'front/upload',
