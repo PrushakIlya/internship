@@ -96,13 +96,13 @@ class BaseController
         }
     }
 
-    public static function setCookie($name, $value, $path, $time, $symbol = '+')
+    public static function setCookie($name, $value, $time, $path, $symbol = '+')
     {
         switch ($symbol) {
-            case '+': setcookie($name, $value, 0, $path, time() + $time);
+            case '+': setcookie($name, $value, time() + $time, $path);
 
                 break;
-            case '-': setcookie($name, '', 0, $path, time() - $time);
+            case '-': setcookie($name, $value, time() - $time, $path);
 
                 break;
         }

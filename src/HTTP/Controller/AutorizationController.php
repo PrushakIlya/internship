@@ -17,7 +17,7 @@ class AutorizationController extends BaseController
 
     public function logout()
     {
-        parent::setCookie('autorized', ' ', '/', 1, '-');
+        parent::setCookie('autorized', '', 1, '/', '-');
         header('Location: /autorization');
     }
 
@@ -28,7 +28,7 @@ class AutorizationController extends BaseController
         $results = parent::getClientsModel()->selectEqualPassword($result[0]['password']);
 
         if (!empty($results) && $password) {
-            parent::setCookie('autorized', $results[0]['id'], '/', 3600);
+            parent::setCookie('autorized', $results[0]['id'], 3600, '/');
 
             return header('Location: /autorization/ifAutorized');
         }
