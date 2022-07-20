@@ -333,6 +333,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+document.cookie && _vars_js__WEBPACK_IMPORTED_MODULE_4__.successBlock.classList.add('register_success');
 
 if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.registration !== null) {
   var regFirstnameFunc = function regFirstnameFunc() {
@@ -372,8 +373,6 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.registration !== null) {
       } else {
         _vars_js__WEBPACK_IMPORTED_MODULE_4__.regSubmit.disabled = true;
       }
-
-      document.cookie && _vars_js__WEBPACK_IMPORTED_MODULE_4__.successBlock.classList.add('register_success');
     };
 
     var observer = new MutationObserver(callback);

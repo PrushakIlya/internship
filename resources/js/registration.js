@@ -18,6 +18,8 @@ import {
   successBlock,
 } from './vars.js';
 
+document.cookie && successBlock.classList.add('register_success');
+
 if (registration !== null) {
   const regFirstnameFunc = () => {
     if (!regFirstname.value.match(PATTERNNAME)) regErrorFirstname.textContent = NAMEERROR;
@@ -66,7 +68,6 @@ if (registration !== null) {
       } else {
         regSubmit.disabled = true;
       }
-      document.cookie && successBlock.classList.add('register_success');
     };
     let observer = new MutationObserver(callback);
 
