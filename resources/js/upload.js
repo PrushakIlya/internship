@@ -1,8 +1,5 @@
-import {UPLOADERRORS_1,UPLOADERRORS_2} from './errors';
-
-const uploadSubmit = document.getElementById('upload_submit');
-const uploadFile = document.getElementById('formFile');
-const uploadErrors = document.getElementById('upload_errors');
+import {UPLOADERRORS_1,UPLOADERRORS_2} from './errors.js';
+import {uploadSubmit,uploadFile,uploadErrors} from './vars.js'
 
 if(uploadSubmit!==null && uploadFile!==null && uploadErrors!==null){
   uploadFile.oninput = function (){

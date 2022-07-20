@@ -1,25 +1,9 @@
 import {PATTERNNAME,PATTERNPASSWORD,PATTERNEMAIL} from './expressions.js';
 import {NAMEERROR,PASSWORDERROR, MAILERROR} from './errors.js';
-import { CHECKEMAILFORM } from './api-type.js';
-import { apiCheckEmail } from './api.js';
-
-
-const authEmail = document.getElementById('auth_email');
-const authPassword = document.getElementById('auth_password');
-const authName = document.getElementById('auth_name');
-const authSubmit = document.getElementById('auth_submit');
-const authErrorEmail = document.getElementById('auth_error_email');
-const authErrorPassword = document.getElementById('auth_error_password');
-const authErrorName = document.getElementById('auth_error_name');
+import {authEmail,authPassword,authName,authSubmit,authErrorEmail,authErrorPassword,authErrorName} from './vars.js';
+import {getCookie} from './all-functions.js'
 
 if(authEmail!==null && authPassword!==null && authName!==null && authSubmit!==null && authErrorEmail!==null && authErrorPassword!==null && authErrorName!==0){  
-  
-  const getCookie = (name) => {
-    const cookie = document.cookie.split('=');
-    let value = cookie[1].replaceAll('%20',' ');
-    value = value.replaceAll('%21','');
-    return value;
-  }
   
   if(document.cookie){
     authErrorName.textContent = getCookie(document.cookie);
