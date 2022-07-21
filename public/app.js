@@ -133,7 +133,7 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authEmail !== null && _vars_js__WEBPAC
   _vars_js__WEBPACK_IMPORTED_MODULE_2__.authName.oninput = authNameFunc;
   document.addEventListener('DOMContentLoaded', function () {
     var callback = function callback() {
-      if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorEmail.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorPassword.textContent.length === 1) {
+      if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorEmail.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorPassword.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorName.textContent.length === 1 || _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorEmail.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_2__.authEmail.value.length > 0 && _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorPassword.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_2__.authPassword.value.length > 0 && _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorName.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_2__.authName.value.length > 0) {
         _vars_js__WEBPACK_IMPORTED_MODULE_2__.authSubmit.disabled = false;
       } else {
         _vars_js__WEBPACK_IMPORTED_MODULE_2__.authSubmit.disabled = true;
@@ -371,7 +371,7 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.registration !== null) {
   _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPassConf.oninput = regPassConfFunc;
   document.addEventListener('DOMContentLoaded', function () {
     var callback = function callback() {
-      if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorFirstname.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorLastname.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorEmail.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPassConf.textContent.length === 1) {
+      if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorFirstname.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorLastname.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorEmail.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPassConf.textContent.length === 1 || _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorFirstname.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regFirstname.value.length > 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorLastname.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regLastname.value.length > 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorEmail.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regEmail.value.length > 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPass.value.length > 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPassConf.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPassConf.value.length > 0) {
         _vars_js__WEBPACK_IMPORTED_MODULE_4__.regSubmit.disabled = false;
       } else {
         _vars_js__WEBPACK_IMPORTED_MODULE_4__.regSubmit.disabled = true;

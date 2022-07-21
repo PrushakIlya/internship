@@ -58,11 +58,21 @@ if (registration !== null) {
   document.addEventListener('DOMContentLoaded', function () {
     const callback = () => {
       if (
-        regErrorFirstname.textContent.length === 1 &&
-        regErrorLastname.textContent.length === 1 &&
-        regErrorEmail.textContent.length === 1 &&
-        regErrorPass.textContent.length === 1 &&
-        regErrorPassConf.textContent.length === 1
+        (regErrorFirstname.textContent.length === 1 &&
+          regErrorLastname.textContent.length === 1 &&
+          regErrorEmail.textContent.length === 1 &&
+          regErrorPass.textContent.length === 1 &&
+          regErrorPassConf.textContent.length === 1) ||
+        (regErrorFirstname.textContent.length === 0 &&
+          regFirstname.value.length > 0 &&
+          regErrorLastname.textContent.length === 0 &&
+          regLastname.value.length > 0 &&
+          regErrorEmail.textContent.length === 0 &&
+          regEmail.value.length > 0 &&
+          regErrorPass.textContent.length === 0 &&
+          regPass.value.length > 0 &&
+          regErrorPassConf.textContent.length === 0 &&
+          regPassConf.value.length > 0)
       ) {
         regSubmit.disabled = false;
       } else {
