@@ -32,14 +32,19 @@ class CombineController extends BaseController
 
     public function ifAutorized(): void
     {
-        if (isset($_SESSION['autorized'])) {
+        if (!isset($_SESSION['autorized']) && !isset($_COOKIE['autorized'])) {
+            header('Location: /combine/registration');
+        } elseif (isset($_SESSION['autorized'])) {
             $id = $_SESSION['autorized'];
+            $result = parent::getCombineUsersModel()->selectById($id);
+            $results = parent::getCombineFilesModel()->selectByUserId($id);
+            parent::view([$results, $result]);
         } else {
             $id = $_COOKIE['autorized'];
+            $result = parent::getCombineUsersModel()->selectById($id);
+            $results = parent::getCombineFilesModel()->selectByUserId($id);
+            parent::view([$results, $result]);
         }
-        $result = parent::getCombineUsersModel()->selectById($id);
-        $results = parent::getCombineFilesModel()->selectByUserId($id);
-        parent::view([$results, $result]);
     }
 
     public function logout(): void
@@ -79,7 +84,7 @@ class CombineController extends BaseController
         $fileName = uniqid('upload_');
         $type = explode('/', $typeFile);
         $id = 0;
-
+        var_dump($type[1]);
         if (isset($_SESSION['autorized'])) {
             $id = $_SESSION['autorized'];
             header('Location: /combine/ifAutorized');
@@ -94,8 +99,8 @@ class CombineController extends BaseController
             $results = parent::getCheckService()->contenerUpload($fileName, $tmpName, 'text');
             parent::successUploadCombine($results, $fileName, $typeFile, $fileSize, $id);
         } else {
-            foreach ($types as $type) {
-                if ($typeFile === $type) {
+            foreach ($types as $item) {
+                if ($typeFile === $item) {
                     $results = parent::getCheckService()->contenerUpload($fileName, $tmpName, 'img', $type[1]);
                     parent::successUploadCombine($results, $fileName, $typeFile, $fileSize, $id);
                 }

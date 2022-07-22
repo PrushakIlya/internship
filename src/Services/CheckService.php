@@ -50,7 +50,7 @@ class CheckService
         strlen(realpath($_SERVER['DOCUMENT_ROOT'] . '/' . $folder)) === 0 && @mkdir($folder);
     }
 
-    public function contenerUpload($fileText, $tmpName, $name, $nameExplode = 'text'): array
+    public function contenerUpload($fileText, $tmpName, $name, $nameExplode = 'text')
     {
         $fileName = $fileText . '.' . $nameExplode;
         move_uploaded_file($tmpName, $name . '/' . $fileName);

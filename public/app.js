@@ -471,7 +471,7 @@ var PATTERNFIRSTNAME = /^(([A-Za-z]|.){3,50})$/g;
 var PATTERNEMAIL = /^(([a-zA-Z0-9]{3,26})@([a-z]{3,10}).(com|ru|by))$/g;
 var PATTERNNAME = /^([A-Za-z]{3,20})$/g;
 var PATTERNPASSWORD = /^([A-Za-z0-9]{10,20})$/g;
-var PATTERNPASSWORD_REG = /^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_-]).{8,15})$/g;
+var PATTERNPASSWORD_REG = /^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=_-]).{8,15})$/g;
 
 /***/ }),
 
