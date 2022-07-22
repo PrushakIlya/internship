@@ -293,12 +293,12 @@ if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.sectionIndex !== nul
   };
 
   var emailFunc = function emailFunc() {
-    if (!_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.email.value.match(_exports_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNEMAIL)) _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorEmail.textContent = _exports_errors_js__WEBPACK_IMPORTED_MODULE_1__.MAILERROR;else (0,_exports_api_js__WEBPACK_IMPORTED_MODULE_3__.apiCheckEmail)(CHECKCOMBINE_EMAIL, _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.email.value, _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorEmail);
+    if (!_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.email.value.match(_exports_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNEMAIL)) _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorEmail.textContent = _exports_errors_js__WEBPACK_IMPORTED_MODULE_1__.MAILERROR;else (0,_exports_api_js__WEBPACK_IMPORTED_MODULE_3__.apiCheckEmail)(_exports_api_type_js__WEBPACK_IMPORTED_MODULE_2__.CHECKEMAIL, _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.email.value, _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorEmail);
     if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.email.value.length === 0) _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorEmail.textContent = '';
   };
 
   var passwordFunc = function passwordFunc() {
-    !_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.password.value.match(PATTERNPASSWORD_REG) ? _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorPassword.textContent = _exports_errors_js__WEBPACK_IMPORTED_MODULE_1__.PASSWORDERROR_REG : _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorPassword.textContent = ' ';
+    !_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.password.value.match(_exports_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNPASSWORD) ? _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorPassword.textContent = PASSWORDERROR : _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorPassword.textContent = ' ';
     if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.password.value.length === 0) _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorPassword.textContent = '';
   };
 

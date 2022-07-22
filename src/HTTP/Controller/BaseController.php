@@ -7,9 +7,6 @@ use Prushak\Internship\Models\UsersModel;
 use Prushak\Internship\Services\ApiService;
 use Prushak\Internship\Services\CheckService;
 use Prushak\Internship\Services\LogService;
-use Prushak\Internship\Models\ClientsModel;
-use Prushak\Internship\Models\CombineFilesModel;
-use Prushak\Internship\Models\CombineUsersModel;
 
 class BaseController
 {
@@ -20,20 +17,15 @@ class BaseController
     private static object $checkService;
     private static object $apiService;
     private static object $logService;
-    private static object $combineUsersModel;
-    private static object $combineFilesModel;
     private static string $domain;
 
     public function __construct()
     {
         self::$usersModel = new UsersModel();
         self::$filesModel = new FilesModel();
-        self::$clientsModel = new ClientsModel();
         self::$checkService = new CheckService();
         self::$apiService = new ApiService();
         self::$logService = new LogService();
-        self::$combineFilesModel = new CombineFilesModel();
-        self::$combineUsersModel = new CombineUsersModel();
         self::$api = include '../routes/api.php';
         self::$domain = '';
     }
@@ -46,16 +38,6 @@ class BaseController
     public static function view($results = [], string $view = 'layout.php')
     {
         include '../resources/views/'.$view;
-    }
-
-    public static function getCombineFilesModel()
-    {
-        return self::$combineFilesModel;
-    }
-
-    public static function getCombineUsersModel()
-    {
-        return self::$combineUsersModel;
     }
 
     public static function getUsersModel(): object
@@ -119,18 +101,18 @@ class BaseController
         }
     }
 
-    public static function successUploadCombine($results, $fileName, $typeFile, $fileSize, $id): void
-    {
-        $sumSize = self::$combineFilesModel->getSumSize();
-        var_dump($results);
-        if ($results[0]) {
-            self::getCombineFilesModel()->store($fileName, $id);
+    // public static function successUploadCombine($results, $fileName, $typeFile, $fileSize, $id): void
+    // {
+    //     $sumSize = self::$combineFilesModel->getSumSize();
+    //     var_dump($results);
+    //     if ($results[0]) {
+    //         self::getCombineFilesModel()->store($fileName, $id);
 
-            self::getLogService()->logCombine($fileName .'.'. $typeFile, $fileSize, 'successes', $sumSize[0]['sum']);
-        } else {
-            self::getLogService()->logCombineError('errors');
-        }
-    }
+    //         self::getLogService()->logCombine($fileName .'.'. $typeFile, $fileSize, 'successes', $sumSize[0]['sum']);
+    //     } else {
+    //         self::getLogService()->logCombineError('errors');
+    //     }
+    // }
 
     public static function countToBlock($time)
     {

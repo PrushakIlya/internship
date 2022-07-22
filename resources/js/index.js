@@ -33,12 +33,12 @@ if (sectionIndex !== null) {
 
   const emailFunc = () => {
     if (!email.value.match(PATTERNEMAIL)) errorEmail.textContent = MAILERROR;
-    else apiCheckEmail(CHECKCOMBINE_EMAIL, email.value, errorEmail);
+    else apiCheckEmail(CHECKEMAIL, email.value, errorEmail);
     if (email.value.length === 0) errorEmail.textContent = '';
   };
 
   const passwordFunc = () => {
-    !password.value.match(PATTERNPASSWORD_REG) ? (errorPassword.textContent = PASSWORDERROR_REG) : (errorPassword.textContent = ' ');
+    !password.value.match(PATTERNPASSWORD) ? (errorPassword.textContent = PASSWORDERROR) : (errorPassword.textContent = ' ');
     if (password.value.length === 0) errorPassword.textContent = '';
   };
 

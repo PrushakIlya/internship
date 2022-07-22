@@ -6,19 +6,9 @@ class ApiController extends BaseController
 {
     public function checkEmail(): string
     {
-        return parent::getApiService()->checkEmail(parent::getUsersModel()->getEmail(parent::getApiService()->getData()));
-    }
-
-    public function checkEmailGo(): string
-    {
-        $results = parent::getApiService()->curlReturn(parent::getApi('get'));
-
-        return parent::getApiService()->checkEmailGo($results);
-    }
-    public function checkEmailForm(): string
-    {
         $results = json_decode(file_get_contents('php://input'), true);
-        $result = parent::getClientsModel()->selectByEmail($results);
+        $result = parent::getUsersModel()->selectByEmail($results);
+
         if (!empty($result)) {
             return json_encode(true);
         }

@@ -4,20 +4,14 @@ namespace Prushak\Internship\Models;
 
 use PDO;
 
-class CombineUsersModel extends BaseModel
+class UsersModel extends BaseModel
 {
     public function store($password): void
     {
-        $sql = 'INSERT INTO users (firstname, lastname, email, password) VALUES (:firstname, :lastname, :email, :password)';
+        $sql = 'INSERT INTO users (name, email, password) VALUES (:name,:email, :password)';
         $stmt = BaseModel::getConn()->prepare($sql);
-        $stmt->execute([
-            ':firstname' => $_POST['firstname'],
-            ':lastname' => $_POST['lastname'],
-            ':email' => $_POST['email'],
-            ':password' => $password,
-        ]);
+        $stmt->execute([':name' => $_POST['reg_name'], ':email' => $_POST['reg_email'], ':password' => $password]);
     }
-
     public function selectByEmail($email): array
     {
         $sql = "SELECT * FROM users WHERE email = '$email'";
@@ -26,31 +20,12 @@ class CombineUsersModel extends BaseModel
 
         return $result;
     }
-
-    public function selectEqualEmailName($email, $name): array
-    {
-        $sql = "SELECT * FROM users WHERE email = '$email' AND firstname = '$name'";
-        $stmt = BaseModel::getConn()->query($sql);
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        return $result;
-    }
-
-    public function selectEqualPassword($password): array
-    {
-        $sql = "SELECT * FROM users WHERE password = '$password'";
-        $stmt = BaseModel::getConn()->query($sql);
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        return $result;
-    }
-
     public function selectById($id): array
     {
-        $sql = "SELECT * FROM users WHERE id='$id'";
+        $sql = "SELECT * FROM users WHERE id = '$id'";
         $stmt = BaseModel::getConn()->query($sql);
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        return $results;
+        return $result;
     }
 }

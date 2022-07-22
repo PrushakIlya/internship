@@ -38,13 +38,13 @@ class AuntificationController extends BaseController
     //         header('Location: /combine/registration');
     //     } elseif (isset($_SESSION['autorized'])) {
     //         $id = $_SESSION['autorized'];
-    //         $result = parent::getCombineUsersModel()->selectById($id);
-    //         $results = parent::getCombineFilesModel()->selectByUserId($id);
+    //         $result = parent::getUsersModel()->selectById($id);
+    //         $results = parent::getFilesModel()->selectByUserId($id);
     //         parent::view([$results, $result]);
     //     } else {
     //         $id = $_COOKIE['autorized'];
-    //         $result = parent::getCombineUsersModel()->selectById($id);
-    //         $results = parent::getCombineFilesModel()->selectByUserId($id);
+    //         $result = parent::getUsersModel()->selectById($id);
+    //         $results = parent::getFilesModel()->selectByUserId($id);
     //         parent::view([$results, $result]);
     //     }
     // }
@@ -63,19 +63,19 @@ class AuntificationController extends BaseController
     //     header('Location: /combine/registration');
     // }
 
-    // public function check()
-    // {
-    //     $result = parent::getCombineUsersModel()->selectEqualEmailName($_POST['auth_email'], $_POST['auth_name']);
-    //     self::countToBlock(3);
-    //     $password = password_verify($_POST['auth_password'], $result[0]['password']);
-    //     $results = parent::getCombineUsersModel()->selectEqualPassword($result[0]['password']);
+    public function check()
+    {
+        $result = parent::getUsersModel()->selectEqualEmailName($_POST['auth_email'], $_POST['auth_name']);
+        self::countToBlock(3);
+        $password = password_verify($_POST['auth_password'], $result[0]['password']);
+        $results = parent::getUsersModel()->selectEqualPassword($result[0]['password']);
 
-    //     if (!empty($results) && $password) {
-    //         count($_POST) === 4 ? setcookie('autorized', $result[0]['id'], time() + 3600 * 24 * 7, '/combine', self::getDomain()) && $_SESSION = [] : $_SESSION['autorized'] = $result[0]['id'];
+        if (!empty($results) && $password) {
+            count($_POST) === 4 ? setcookie('autorized', $result[0]['id'], time() + 3600 * 24 * 7, '/combine', self::getDomain()) && $_SESSION = [] : $_SESSION['autorized'] = $result[0]['id'];
 
-    //         return header('Location: /combine/ifAutorized');
-    //     }
-    // }
+            return header('Location: /combine/ifAutorized');
+        }
+    }
 
     // public function storeUploded(): void
     // {

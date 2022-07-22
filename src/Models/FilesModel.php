@@ -4,7 +4,7 @@ namespace Prushak\Internship\Models;
 
 use PDO;
 
-class CombineFilesModel extends BaseModel
+class FilesModel extends BaseModel
 {
     public function index(): array
     {
