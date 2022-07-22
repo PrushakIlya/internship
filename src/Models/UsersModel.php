@@ -12,6 +12,7 @@ class UsersModel extends BaseModel
         $stmt = BaseModel::getConn()->prepare($sql);
         $stmt->execute([':firstname' => $_POST['firstname'], ':lastname' => $_POST['lastname'], ':email' => $_POST['email'], ':password' => $password]);
     }
+
     public function selectByEmail($email): array
     {
         $sql = "SELECT * FROM users WHERE email = '$email'";
@@ -30,16 +31,9 @@ class UsersModel extends BaseModel
         return $result;
     }
 
-
-
-
-
-
-
-
     public function selectEqualEmailName($email, $name): array
     {
-        $sql = "SELECT * FROM combineUsers WHERE email = '$email' AND firstname = '$name'";
+        $sql = "SELECT * FROM users WHERE email = '$email' AND firstname = '$name'";
         $stmt = BaseModel::getConn()->query($sql);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -48,7 +42,7 @@ class UsersModel extends BaseModel
 
     public function selectEqualPassword($password): array
     {
-        $sql = "SELECT * FROM combineUsers WHERE password = '$password'";
+        $sql = "SELECT * FROM users WHERE password = '$password'";
         $stmt = BaseModel::getConn()->query($sql);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

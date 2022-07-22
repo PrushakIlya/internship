@@ -35,7 +35,7 @@ class CheckService
 
     private function checkFile($folder, $fileName): bool
     {
-        $allFiles = scandir($folder);
+        $allFiles = scandir('storage/'.$folder);
         foreach ($allFiles as $file) {
             if ($file === $fileName) {
                 return true;
@@ -47,25 +47,23 @@ class CheckService
 
     private function checkExistFolder($folder): void
     {
-        strlen(realpath($_SERVER['DOCUMENT_ROOT'] . '/' . $folder)) === 0 && @mkdir($folder);
+        strlen(realpath($_SERVER['DOCUMENT_ROOT'] . '/storage/' . $folder)) === 0 && mkdir('storage/'.$folder);
     }
 
     public function contenerUpload($fileText, $tmpName, $name, $nameExplode = 'text')
     {
         $fileName = $fileText . '.' . $nameExplode;
-        move_uploaded_file($tmpName, $name . '/' . $fileName);
         $this->checkExistFolder($name);
+        move_uploaded_file($tmpName, 'storage'.'/'.$name . '/' . $fileName);
         $result = $this->checkFile($name, $fileName);
 
         return [$result, $fileName];
     }
 
-    public function checkSessionCookies($view)
+    public function checkSessionCookies()
     {
         if (isset($_SESSION['autorized']) || isset($_COOKIE['autorized'])) {
-            header('Location: /combine/ifAutorized');
-        } else {
-            $view;
+            return header('Location: /ifAutorized');
         }
     }
 }

@@ -19,3 +19,4 @@ function view($template, $payload = [])
     echo $twig->render("/$template.twig", $payload);
 }
 
+

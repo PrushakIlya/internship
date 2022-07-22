@@ -4,71 +4,36 @@ namespace Prushak\Internship\HTTP\Controller;
 
 class UploadController extends BaseController
 {
-    // public function index(): void
-    // {
-    //     $results = parent::getUsersModel()->index();
-    //     parent::view($results);
-    // }
-
-    // public function edit($id): void
-    // {
-    //     $results = parent::getUsersModel()->elemById($id);
-    //     parent::view($results);
-    // }
-
-    // public function create(): void
-    // {
-    //     parent::view();
-    // }
-
-    // public function store(): void
-    // {
-    //     header('Location: /');
-    //     parent::getUsersModel()->store();
-    // }
-
-    // public function update($id): void
-    // {
-    //     header('Location: /');
-    //     parent::getUsersModel()->update($id);
-    // }
-
-    // public function destroy($id): void
-    // {
-    //     header('Location: /');
-    //     parent::getUsersModel()->destroy($id);
-    // }
-
-    // public function massDestroy(): void
-    // {
-    //     header('Location: /');
-    //     parent::getCheckService()->splitInputDestroy(parent::getUsersModel());
-    // }
-
-    public function upload(): void
+    public function store(): void
     {
-        $results = parent::getFilesModel()->index();
-        parent::view($results);
-    }
-
-    public function saveUpload(): void
-    {
-        header('Location: /upload');
         $types = ['image/png', 'image/jpeg', 'text/plain'];
         $typeFile = $_FILES['file']['type'];
         $tmpName = $_FILES['file']['tmp_name'];
-        $fileName = uniqid('text_');
+        $fileSize = $_FILES['file']['size'];
+        $fileName = uniqid('upload_');
+        $type = explode('/', $typeFile);
+        $id = 0;
+
+        if (isset($_SESSION['autorized'])) {
+            $id = $_SESSION['autorized'];
+            header('Location: /ifAutorized');
+        } elseif (isset($_COOKIE['autorized'])) {
+            $id = $_COOKIE['autorized'];
+            header('Location: /ifAutorized');
+        } else {
+            header('Location: /');
+        }
 
         if ($types[count($types) - 1] === $typeFile) {
             $results = parent::getCheckService()->contenerUpload($fileName, $tmpName, 'text');
-            parent::successUpload($results, $fileName, '.txt', $typeFile);
-        }
-
-        foreach ($types as $type) {
-            if ($typeFile === $type) {
-                $arr = explode('/', $type);
-                $results = parent::getCheckService()->contenerUpload($fileName, $tmpName, 'img', $arr[1]);
-                parent::successUpload($results, $fileName, $arr, $typeFile);
+            parent::successUpload($results, $fileName, $typeFile, $fileSize, $id);
+        } else {
+            foreach ($types as $item) {
+                if ($typeFile === $item) {
+                    $results = parent::getCheckService()->contenerUpload($fileName, $tmpName, 'img', $type[1]);
+                    var_dump($results);
+                    parent::successUpload($results, $fileName, $typeFile, $fileSize, $id);
+                }
             }
         }
     }

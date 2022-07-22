@@ -1,5 +1,5 @@
-import { UPLOADERRORS_1, UPLOADERRORS_2 } from './errors.js';
-import { upload, uploadSubmit, uploadFile, uploadErrors } from './vars.js';
+import { UPLOADERRORS_1, UPLOADERRORS_2 } from './exports/errors.js';
+import { upload, uploadSubmit, uploadFile, uploadErrors } from './exports/getElementById.js';
 
 if (upload !== null) {
   uploadFile.oninput = function () {

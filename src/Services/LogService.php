@@ -4,23 +4,23 @@ namespace Prushak\Internship\Services;
 
 class LogService
 {
-    public function log($fileName, $typeFile, $reason = ''): void
-    {
-        $fileName = 'upload_' . date('d.m.Y') . '.log';
-        $allFiles = scandir('../storage/logs/');
-        foreach ($allFiles as $item) {
-            if ($item === $fileName) {
-                fopen('../storage/logs/' . $fileName, 'w');
+    // public function log($fileName, $typeFile, $reason = ''): void
+    // {
+    //     $fileName = 'upload_' . date('d.m.Y') . '.log';
+    //     $allFiles = scandir('../storage/logs/');
+    //     foreach ($allFiles as $item) {
+    //         if ($item === $fileName) {
+    //             fopen('../storage/logs/' . $fileName, 'w');
 
-                break;
-            }
-        }
-        $content = file_get_contents('../storage/logs/' . $fileName);
-        $content .= 'The data had not sent:' . $reason . date('Y-m-d H:i:s') . '/' . $fileName . '/' . $typeFile . "\n";
-        file_put_contents('../storage/logs/' . $fileName, $content);
-    }
+    //             break;
+    //         }
+    //     }
+    //     $content = file_get_contents('../storage/logs/' . $fileName);
+    //     $content .= 'The data had not sent:' . $reason . date('Y-m-d H:i:s') . '/' . $fileName . '/' . $typeFile . "\n";
+    //     file_put_contents('../storage/logs/' . $fileName, $content);
+    // }
 
-    public function logCombine($fileName, $fileSize, $archiveName, $sumSize): void
+    public function log($fileName, $fileSize, $archiveName, $sumSize): void
     {
         $nameFile = 'log_' . date('d.m.Y') . '.log';
         $filesInDir = scandir('../storage/logs/'.$archiveName.'/');
@@ -37,7 +37,7 @@ class LogService
         file_put_contents('../storage/logs/'.$archiveName.'/'.$nameFile, $content);
     }
 
-    public function logCombineError($archiveName): void
+    public function logError($archiveName): void
     {
         $nameFile = 'log_' . date('d.m.Y') . '.log';
         $filesInDir = scandir('../storage/logs/'.$archiveName.'/');

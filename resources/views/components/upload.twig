@@ -1,0 +1,30 @@
+<form action="/storeUploded" method="POST" enctype="multipart/form-data">
+	<div class="mb-3">
+		<div id="upload_errors" style="height: 30px" class="text-danger"></div>
+		<input class="form-control w-25" type="file" id="formFile" name="file">
+	</div>
+	<input value="Send" type="submit" id="upload_submit" disabled>
+</form>
+<div class="upload_contener text-center">
+	<h2>Uploaded files</h2>
+	<div class="container">
+		<div class="row row-cols-4">
+			{% for item in files %}
+				<div class="col border">
+					<div>
+						<span class="fw-bold">Name:</span>
+						{{item.name}}</div>
+					<div>
+						<span class="fw-bold">Id:</span>
+						{{item.id}}</div>
+					<div>
+						<span class="fw-bold">Size:</span>
+						{{item.size}}</div>
+					<div>
+						<span class="fw-bold">Date:</span>
+						{{item.date}}</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>

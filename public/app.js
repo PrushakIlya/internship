@@ -47,9 +47,10 @@ var navigateCurrentPage = function navigateCurrentPage(button, num, current) {
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.js */ "./resources/js/index.js");
-/* harmony import */ var _autorization_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./autorization.js */ "./resources/js/autorization.js");
-// import './upload.js';
+/* harmony import */ var _upload_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./upload.js */ "./resources/js/upload.js");
+/* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.js */ "./resources/js/index.js");
+/* harmony import */ var _autorization_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./autorization.js */ "./resources/js/autorization.js");
+
 
 
 
@@ -179,7 +180,7 @@ var UPLOADERRORS_2 = 'Only png,jpeg,txt';
 var MAILERROR = 'example: prushak@test.by';
 var NAMEERROR = 'Only latters[3-20]';
 var AUTORIZATIONERROR = 'Email is taken';
-var PASSWORDERROR = 'at least some: symbol, number, upper and lower latter [8-20]';
+var PASSWORDERROR = 'at least a: symbol, number, upper and lower latter [8-20]';
 var PASSWORDERROR_EMPTY = 'Password is empty';
 var PASSWORDERROR_NOT_EQUAL = 'Password is not equal';
 
@@ -211,8 +212,6 @@ var PATTERNPASSWORD = /^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=_-]).{8,15
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "combineAuthorisation": () => (/* binding */ combineAuthorisation),
-/* harmony export */   "combineistration": () => (/* binding */ combineistration),
 /* harmony export */   "email": () => (/* binding */ email),
 /* harmony export */   "errorEmail": () => (/* binding */ errorEmail),
 /* harmony export */   "errorFirstname": () => (/* binding */ errorFirstname),
@@ -220,7 +219,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "errorPassword": () => (/* binding */ errorPassword),
 /* harmony export */   "errorPasswordConf": () => (/* binding */ errorPasswordConf),
 /* harmony export */   "firstname": () => (/* binding */ firstname),
-/* harmony export */   "istration": () => (/* binding */ istration),
 /* harmony export */   "lastname": () => (/* binding */ lastname),
 /* harmony export */   "password": () => (/* binding */ password),
 /* harmony export */   "passwordConf": () => (/* binding */ passwordConf),
@@ -251,11 +249,7 @@ var errorPassword = document.getElementById('error_password');
 var errorPasswordConf = document.getElementById('error_password_conf');
 var successBlock = document.getElementById('success_block');
 var sectionIndex = document.getElementById('index');
-var sectionAuthorisation = document.getElementById('authorisation'); //
-
-var istration = document.getElementById('registration');
-var combineAuthorisation = document.getElementById('combine_authorisation');
-var combineistration = document.getElementById('combine_registration');
+var sectionAuthorisation = document.getElementById('authorisation');
 
 /***/ }),
 
@@ -326,6 +320,42 @@ if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.sectionIndex !== nul
       subtree: true
     });
   });
+}
+
+/***/ }),
+
+/***/ "./resources/js/upload.js":
+/*!********************************!*\
+  !*** ./resources/js/upload.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _exports_errors_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./exports/errors.js */ "./resources/js/exports/errors.js");
+/* harmony import */ var _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./exports/getElementById.js */ "./resources/js/exports/getElementById.js");
+
+
+
+if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_1__.upload !== null) {
+  _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_1__.uploadFile.oninput = function () {
+    if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_1__.uploadFile.value.length === 0) {
+      _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_1__.uploadErrors.innerHTML = _exports_errors_js__WEBPACK_IMPORTED_MODULE_0__.UPLOADERRORS_2;
+      _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_1__.uploadSubmit.disabled = true;
+    } else {
+      if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_1__.uploadFile.files[0].size > 200000) {
+        _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_1__.uploadErrors.innerHTML = _exports_errors_js__WEBPACK_IMPORTED_MODULE_0__.UPLOADERRORS_1;
+        _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_1__.uploadSubmit.disabled = true;
+      }
+
+      if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_1__.uploadFile.files[0].type !== 'image/png' && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_1__.uploadFile.files[0].type !== 'image/jpeg' && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_1__.uploadFile.files[0].type !== 'text/plain') {
+        _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_1__.uploadErrors.innerHTML = _exports_errors_js__WEBPACK_IMPORTED_MODULE_0__.UPLOADERRORS_2;
+        _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_1__.uploadSubmit.disabled = true;
+      } else {
+        _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_1__.uploadErrors.innerHTML = ' ';
+        _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_1__.uploadSubmit.disabled = false;
+      }
+    }
+  };
 }
 
 /***/ }),

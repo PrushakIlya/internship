@@ -21,11 +21,7 @@ export const errorPasswordConf = document.getElementById('error_password_conf');
 export const successBlock = document.getElementById('success_block');
 export const sectionIndex = document.getElementById('index');
 export const sectionAuthorisation = document.getElementById('authorisation');
-//
 
 
 
-export const istration = document.getElementById('registration');
 
-export const combineAuthorisation = document.getElementById('combine_authorisation');
-export const combineistration = document.getElementById('combine_registration');
