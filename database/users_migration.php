@@ -1,7 +1,7 @@
 <?php
 
 $sql = 'CREATE TABLE users (id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-name VARCHAR(50) NOT NULL, email VARCHAR(50) NOT NULL UNIQUE,
-gender TINYINT, status TINYINT)';
+firstname VARCHAR(20) NOT NULL,lastname VARCHAR(20) NOT NULL,email VARCHAR(40) NOT NULL UNIQUE, 
+password VARCHAR(60) NOT NULL, created_date TIMESTAMP)';
 
 return $sql;

@@ -1,7 +1,0 @@
-<?php
-
-$sql = 'CREATE TABLE clients (id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-name VARCHAR(20) NOT NULL,email VARCHAR(40) NOT NULL UNIQUE, password VARCHAR(60) NOT NULL UNIQUE,
-timestamp TIMESTAMP)';
-
-return $sql;

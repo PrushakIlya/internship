@@ -104,11 +104,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _upload_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./upload.js */ "./resources/js/upload.js");
 /* harmony import */ var _autorization_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./autorization.js */ "./resources/js/autorization.js");
 /* harmony import */ var _registration_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration.js */ "./resources/js/registration.js");
-/* harmony import */ var _combineAutorization_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./combineAutorization.js */ "./resources/js/combineAutorization.js");
-/* harmony import */ var _combineRegistration_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./combineRegistration.js */ "./resources/js/combineRegistration.js");
-/* harmony import */ var _navigation_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./navigation.js */ "./resources/js/navigation.js");
-/* harmony import */ var _create_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./create.js */ "./resources/js/create.js");
-/* harmony import */ var _edit_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./edit.js */ "./resources/js/edit.js");
+Object(function webpackMissingModule() { var e = new Error("Cannot find module './combineAutorization.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+Object(function webpackMissingModule() { var e = new Error("Cannot find module './combineRegistration.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+Object(function webpackMissingModule() { var e = new Error("Cannot find module './navigation.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _create_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./create.js */ "./resources/js/create.js");
+/* harmony import */ var _edit_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./edit.js */ "./resources/js/edit.js");
 
 
 
@@ -165,136 +165,6 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authorization !== null) {
         _vars_js__WEBPACK_IMPORTED_MODULE_2__.authSubmit.disabled = false;
       } else {
         _vars_js__WEBPACK_IMPORTED_MODULE_2__.authSubmit.disabled = true;
-      }
-    };
-
-    var observer = new MutationObserver(callback);
-    var elem = document.querySelector('body');
-    observer.observe(elem, {
-      childList: true,
-      subtree: true
-    });
-  });
-}
-
-/***/ }),
-
-/***/ "./resources/js/combineAutorization.js":
-/*!*********************************************!*\
-  !*** ./resources/js/combineAutorization.js ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _expressions_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./expressions.js */ "./resources/js/expressions.js");
-/* harmony import */ var _errors_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./errors.js */ "./resources/js/errors.js");
-/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./vars.js */ "./resources/js/vars.js");
-/* harmony import */ var _all_functions_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./all-functions.js */ "./resources/js/all-functions.js");
-
-
-
-
-
-if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.combineAuthorisation !== null) {
-  if (document.cookie.includes('error')) {
-    _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorName.textContent = (0,_all_functions_js__WEBPACK_IMPORTED_MODULE_3__.getCookieCombine)(document.cookie);
-  }
-
-  var authEmailFunc = function authEmailFunc() {
-    if (!_vars_js__WEBPACK_IMPORTED_MODULE_2__.authEmail.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNEMAIL)) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorEmail.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.MAILERROR;else _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorEmail.textContent = ' ';
-    if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authEmail.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorEmail.textContent = '';
-  };
-
-  var authPasswordFunc = function authPasswordFunc() {
-    if (!_vars_js__WEBPACK_IMPORTED_MODULE_2__.authPassword.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNPASSWORD_REG)) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorPassword.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.PASSWORDERROR_REG;else _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorPassword.textContent = ' ';
-    if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authPassword.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorPassword.textContent = '';
-  };
-
-  var authNameFunc = function authNameFunc() {
-    if (!_vars_js__WEBPACK_IMPORTED_MODULE_2__.authName.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNNAME)) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorName.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.NAMEERROR;else _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorName.textContent = ' ';
-    if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authName.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorName.textContent = '';
-  };
-
-  _vars_js__WEBPACK_IMPORTED_MODULE_2__.authEmail.oninput = authEmailFunc;
-  _vars_js__WEBPACK_IMPORTED_MODULE_2__.authPassword.oninput = authPasswordFunc;
-  _vars_js__WEBPACK_IMPORTED_MODULE_2__.authName.oninput = authNameFunc;
-  document.addEventListener('DOMContentLoaded', function () {
-    var callback = function callback() {
-      if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorEmail.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorPassword.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorName.textContent.length === 1 || _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorEmail.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_2__.authEmail.value.length > 0 && _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorPassword.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_2__.authPassword.value.length > 0 && _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorName.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_2__.authName.value.length > 0) {
-        _vars_js__WEBPACK_IMPORTED_MODULE_2__.authSubmit.disabled = false;
-      } else {
-        _vars_js__WEBPACK_IMPORTED_MODULE_2__.authSubmit.disabled = true;
-      }
-    };
-
-    var observer = new MutationObserver(callback);
-    var elem = document.querySelector('body');
-    observer.observe(elem, {
-      childList: true,
-      subtree: true
-    });
-  });
-}
-
-/***/ }),
-
-/***/ "./resources/js/combineRegistration.js":
-/*!*********************************************!*\
-  !*** ./resources/js/combineRegistration.js ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _expressions_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./expressions.js */ "./resources/js/expressions.js");
-/* harmony import */ var _errors_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./errors.js */ "./resources/js/errors.js");
-/* harmony import */ var _api_type__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./api-type */ "./resources/js/api-type.js");
-/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./api */ "./resources/js/api.js");
-/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./vars.js */ "./resources/js/vars.js");
-
-
-
-
-
-
-if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.combineRegistration !== null) {
-  document.cookie.includes('success') && _vars_js__WEBPACK_IMPORTED_MODULE_4__.successBlock.classList.add('register_success');
-
-  var regFirstnameFunc = function regFirstnameFunc() {
-    if (!_vars_js__WEBPACK_IMPORTED_MODULE_4__.regFirstname.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNNAME)) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorFirstname.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.NAMEERROR;else _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorFirstname.textContent = ' ';
-    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regFirstname.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorFirstname.textContent = '';
-  };
-
-  var regLastnameFunc = function regLastnameFunc() {
-    if (!_vars_js__WEBPACK_IMPORTED_MODULE_4__.regLastname.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNNAME)) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorLastname.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.NAMEERROR;else _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorLastname.textContent = ' ';
-    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regLastname.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorLastname.textContent = '';
-  };
-
-  var regEmailFunc = function regEmailFunc() {
-    if (!_vars_js__WEBPACK_IMPORTED_MODULE_4__.regEmail.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNEMAIL)) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorEmail.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.MAILERROR;else (0,_api__WEBPACK_IMPORTED_MODULE_3__.apiCheckEmail)(_api_type__WEBPACK_IMPORTED_MODULE_2__.CHECKCOMBINE_EMAIL, _vars_js__WEBPACK_IMPORTED_MODULE_4__.regEmail.value, _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorEmail);
-    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regEmail.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorEmail.textContent = '';
-  };
-
-  var regPassFunc = function regPassFunc() {
-    !_vars_js__WEBPACK_IMPORTED_MODULE_4__.regPass.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNPASSWORD_REG) ? _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.PASSWORDERROR_REG : _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent = ' ';
-    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regPass.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent = '';
-  };
-
-  var regPassConfFunc = function regPassConfFunc() {
-    _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPass.value === _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPassConf.value ? _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPassConf.textContent = ' ' : _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.PASSWORDERROR_NOT_EQUAL_REG;
-    if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regPassConf.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent = '';
-  };
-
-  _vars_js__WEBPACK_IMPORTED_MODULE_4__.regFirstname.oninput = regFirstnameFunc;
-  _vars_js__WEBPACK_IMPORTED_MODULE_4__.regLastname.oninput = regLastnameFunc;
-  _vars_js__WEBPACK_IMPORTED_MODULE_4__.regEmail.oninput = regEmailFunc;
-  _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPass.oninput = regPassFunc;
-  _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPassConf.oninput = regPassConfFunc;
-  document.addEventListener('DOMContentLoaded', function () {
-    var callback = function callback() {
-      if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorFirstname.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorLastname.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorEmail.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPassConf.textContent.length === 1 || _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorFirstname.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regFirstname.value.length > 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorLastname.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regLastname.value.length > 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorEmail.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regEmail.value.length > 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPass.value.length > 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPassConf.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPassConf.value.length > 0) {
-        _vars_js__WEBPACK_IMPORTED_MODULE_4__.regSubmit.disabled = false;
-      } else {
-        _vars_js__WEBPACK_IMPORTED_MODULE_4__.regSubmit.disabled = true;
       }
     };
 
@@ -472,26 +342,6 @@ var PATTERNEMAIL = /^(([a-zA-Z0-9]{3,26})@([a-z]{3,10}).(com|ru|by))$/g;
 var PATTERNNAME = /^([A-Za-z]{3,20})$/g;
 var PATTERNPASSWORD = /^([A-Za-z0-9]{10,20})$/g;
 var PATTERNPASSWORD_REG = /^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=_-]).{8,15})$/g;
-
-/***/ }),
-
-/***/ "./resources/js/navigation.js":
-/*!************************************!*\
-  !*** ./resources/js/navigation.js ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vars.js */ "./resources/js/vars.js");
-/* harmony import */ var _all_functions_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./all-functions.js */ "./resources/js/all-functions.js");
-
-
-(0,_all_functions_js__WEBPACK_IMPORTED_MODULE_1__.navigateCurrentPage)(_vars_js__WEBPACK_IMPORTED_MODULE_0__.taskOneButton, 1, _vars_js__WEBPACK_IMPORTED_MODULE_0__.taskOneButton);
-(0,_all_functions_js__WEBPACK_IMPORTED_MODULE_1__.navigateCurrentPage)(_vars_js__WEBPACK_IMPORTED_MODULE_0__.taskTwoButton, 2, _vars_js__WEBPACK_IMPORTED_MODULE_0__.taskOneButton);
-(0,_all_functions_js__WEBPACK_IMPORTED_MODULE_1__.navigateCurrentPage)(_vars_js__WEBPACK_IMPORTED_MODULE_0__.taskThreeButton, 3, _vars_js__WEBPACK_IMPORTED_MODULE_0__.taskOneButton);
-(0,_all_functions_js__WEBPACK_IMPORTED_MODULE_1__.navigateCurrentPage)(_vars_js__WEBPACK_IMPORTED_MODULE_0__.taskFourButton, 4, _vars_js__WEBPACK_IMPORTED_MODULE_0__.taskOneButton);
-(0,_all_functions_js__WEBPACK_IMPORTED_MODULE_1__.navigateCurrentPage)(_vars_js__WEBPACK_IMPORTED_MODULE_0__.taskFiveButton, 5, _vars_js__WEBPACK_IMPORTED_MODULE_0__.taskOneButton);
-(0,_all_functions_js__WEBPACK_IMPORTED_MODULE_1__.navigateCurrentPage)(_vars_js__WEBPACK_IMPORTED_MODULE_0__.taskSixButton, 6, _vars_js__WEBPACK_IMPORTED_MODULE_0__.taskOneButton);
 
 /***/ }),
 
