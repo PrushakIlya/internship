@@ -1,9 +1,10 @@
 <section class="panel">
   <div class="wrapper">
-      <a href="/"><button class="btn black">Task-1</button></a>
-      <a href="/two" class="index_panel__button"><button class="btn black">Task-2</button></a>
-      <a href="/upload" class="index_panel__button"><button class="btn black">Task-3</button></a>
-      <a href="/autorization" class="index_panel__button"><button class="btn black">Task-4</button></a>
-      <a href="/registration" class="index_panel__button"><button class="btn black">Task-5</button></a>
+      <a href="/" class="btn black current_page" id="task_1">Task-1</a>
+      <a href="/two" class="btn black" id="task_2">Task-2</a>
+      <a href="/upload" class="btn black" id="task_3">Task-3</a>
+      <a href="/autorization" class="btn black" id="task_4">Task-4</a>
+      <a href="/registration" class="btn black" id="task_5">Task-5</a>
+      <a href="/combine/registration" class="btn black" id="task_6">Task-6</a>
   </div>
 </section>

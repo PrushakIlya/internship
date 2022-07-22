@@ -1,6 +1,7 @@
 <?php
 $loader = new \Twig\Loader\FilesystemLoader('../resources/views');
-$twig = new \Twig\Environment($loader, []);
+$twig = new \Twig\Environment($loader, ['debug' => true, ]);
+$twig->addExtension(new \Twig\Extension\DebugExtension());
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,8 +34,17 @@ $twig = new \Twig\Environment($loader, []);
     <?php if ($_SERVER['REQUEST_URI'] === '/autorization/ifAutorized') {
         echo $twig->render('twigs/if_autorized.twig', ['results' => $results, ]);
     }?>
-       <?php if ($_SERVER['REQUEST_URI'] === '/registration') {
+    <?php if ($_SERVER['REQUEST_URI'] === '/registration') {
         echo $twig->render('twigs/registration.twig', []);
+    }?>
+    <?php if ($_SERVER['REQUEST_URI'] === '/combine/registration') {
+        echo $twig->render('twigs/combine_registration.twig', []);
+    }?>
+    <?php if ($_SERVER['REQUEST_URI'] === '/combine/authorization') {
+        echo $twig->render('twigs/combine_autorization.twig', []);
+    }?>
+    <?php if ($_SERVER['REQUEST_URI'] === '/combine/ifAutorized') {
+        echo $twig->render('twigs/combine_if_autorized.twig', ['results' => $results[0], 'result' => $results[1]]);
     }?>
 
 

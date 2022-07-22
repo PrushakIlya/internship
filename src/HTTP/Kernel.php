@@ -47,6 +47,8 @@ class Web
             }
         }
 
-        return header('HTTP/1.1 404 Not Found');
+        header('HTTP/1.1 404 Not Found');
+        include '../resources/views/404.php';
+        die();
     }
 }

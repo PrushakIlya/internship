@@ -55,20 +55,20 @@ class FrontController extends BaseController
     {
         header('Location: /upload');
         $types = ['image/png', 'image/jpeg', 'text/plain'];
-        $type_file = $_FILES['file']['type'];
-        $tmp_name = $_FILES['file']['tmp_name'];
-        $file_text = uniqid('text_');
+        $typeFile = $_FILES['file']['type'];
+        $tmpName = $_FILES['file']['tmp_name'];
+        $fileName = uniqid('text_');
 
-        if ($types[count($types) - 1] === $type_file) {
-            $results = parent::getCheckService()->contenerUpload($file_text, $tmp_name, 'text');
-            parent::successUpload($results, $file_text, '.txt', $type_file);
+        if ($types[count($types) - 1] === $typeFile) {
+            $results = parent::getCheckService()->contenerUpload($fileName, $tmpName, 'text');
+            parent::successUpload($results, $fileName, '.txt', $typeFile);
         }
 
         foreach ($types as $type) {
-            if ($type_file === $type) {
+            if ($typeFile === $type) {
                 $arr = explode('/', $type);
-                $results = parent::getCheckService()->contenerUpload($file_text, $tmp_name, 'img', $arr[1]);
-                parent::successUpload($results, $file_text, $arr, $type_file);
+                $results = parent::getCheckService()->contenerUpload($fileName, $tmpName, 'img', $arr[1]);
+                parent::successUpload($results, $fileName, $arr, $typeFile);
             }
         }
     }

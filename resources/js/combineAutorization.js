@@ -1,10 +1,10 @@
-import { PATTERNNAME, PATTERNPASSWORD, PATTERNEMAIL } from './expressions.js';
-import { NAMEERROR, PASSWORDERROR, MAILERROR } from './errors.js';
-import { authorization, authEmail, authPassword, authName, authSubmit, authErrorEmail, authErrorPassword, authErrorName } from './vars.js';
-import { getCookie } from './all-functions.js';
+import { PATTERNNAME, PATTERNPASSWORD_REG, PATTERNEMAIL } from './expressions.js';
+import { NAMEERROR, PASSWORDERROR_REG, MAILERROR } from './errors.js';
+import { combineAuthorisation, authEmail, authPassword, authName, authSubmit, authErrorEmail, authErrorPassword, authErrorName } from './vars.js';
+import { getCookieCombine } from './all-functions.js';
 
-if (authorization !== null) {
-  if (document.cookie.length > 36) {
+if (combineAuthorisation !== null) {
+  if (  document.cookie.includes('error')) {
     authErrorName.textContent = getCookieCombine(document.cookie);
   }
 
@@ -15,7 +15,7 @@ if (authorization !== null) {
   };
 
   const authPasswordFunc = () => {
-    if (!authPassword.value.match(PATTERNPASSWORD)) authErrorPassword.textContent = PASSWORDERROR;
+    if (!authPassword.value.match(PATTERNPASSWORD_REG)) authErrorPassword.textContent = PASSWORDERROR_REG;
     else authErrorPassword.textContent = ' ';
     if (authPassword.value.length === 0) authErrorPassword.textContent = '';
   };

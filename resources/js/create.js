@@ -1,25 +1,24 @@
 import { CHECKEMAIL, CHECKEMAILGO } from './api-type.js';
 import { apiCheckEmail } from './api.js';
-import { PATTERNFIRSTNAME,PATTERNEMAIL } from './expressions.js';
-import {createFirstname,createEmail,createSubmit,createErrorName,createErrorEmail} from './vars.js'
+import { PATTERNFIRSTNAME, PATTERNEMAIL } from './expressions.js';
+import { create, createFirstname, createEmail, createSubmit, createErrorName, createErrorEmail } from './vars.js';
 const task = window.location.pathname.split('/');
 
-if (createFirstname!==null && createEmail!==null && createSubmit!==null && createErrorName!==null && createErrorEmail!==null) {
+if (create !== null) {
   createFirstname.oninput = inputCreateFirstName;
   function inputCreateFirstName() {
     if (!createFirstname.value.match(PATTERNFIRSTNAME)) createErrorName.innerHTML = 'NAME has only letters, length[3,20]';
     else createErrorName.innerHTML = ' ';
-  };
+  }
 
   createEmail.oninput = inputCreateEmail;
   function inputCreateEmail() {
     task[1] === 'two'
       ? apiCheckEmail(CHECKEMAILGO, createEmail.value, createErrorEmail)
       : apiCheckEmail(CHECKEMAIL, createEmail.value, createErrorEmail);
-    if (!createEmail.value.match(PATTERNEMAIL))
-      createErrorEmail.innerHTML = 'EMAIL has letters and numbers, length[3,40]';
+    if (!createEmail.value.match(PATTERNEMAIL)) createErrorEmail.innerHTML = 'EMAIL has letters and numbers, length[3,40]';
     else createErrorEmail.innerHTML = ' ';
-  };
+  }
 
   document.addEventListener('DOMContentLoaded', function () {
     const callback = () => {

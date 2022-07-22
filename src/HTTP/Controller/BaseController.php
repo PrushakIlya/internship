@@ -8,6 +8,8 @@ use Prushak\Internship\Services\ApiService;
 use Prushak\Internship\Services\CheckService;
 use Prushak\Internship\Services\LogService;
 use Prushak\Internship\Models\ClientsModel;
+use Prushak\Internship\Models\CombineFilesModel;
+use Prushak\Internship\Models\CombineUsersModel;
 
 class BaseController
 {
@@ -18,21 +20,35 @@ class BaseController
     private static object $checkService;
     private static object $apiService;
     private static object $logService;
+    private static object $combineUsersModel;
+    private static object $combineFilesModel;
 
     public function __construct()
     {
         self::$usersModel = new UsersModel();
         self::$filesModel = new FilesModel();
         self::$clientsModel = new ClientsModel();
-        self::$api = include '../routes/api.php';
         self::$checkService = new CheckService();
         self::$apiService = new ApiService();
         self::$logService = new LogService();
+        self::$combineFilesModel = new CombineFilesModel();
+        self::$combineUsersModel = new CombineUsersModel();
+        self::$api = include '../routes/api.php';
     }
 
     public static function view($results = [], string $view = 'layout.php')
     {
         include '../resources/views/'.$view;
+    }
+
+    public static function getCombineFilesModel()
+    {
+        return self::$combineFilesModel;
+    }
+
+    public static function getCombineUsersModel()
+    {
+        return self::$combineUsersModel;
     }
 
     public static function getUsersModel(): object
@@ -77,26 +93,26 @@ class BaseController
         return self::$logService;
     }
 
-    public static function successUpload($results, $file_text, $arr, $type_file): void
+    public static function successUpload($results, $fileText, $arr, $typeFile, $id): void
     {
         if ($results[0]) {
-            self::getFilesModel()->store($results[1]);
-            self::getLogService()->log($file_text . $arr[1], $type_file);
+            self::getCombineFilesModel()->store($results[1], $id);
+            self::getLogService()->log($fileText . $arr[1], $typeFile);
         } else {
-            self::getLogService()->log($file_text . $arr[1], $type_file, 'Connect is not stable');
+            self::getLogService()->log($fileText . $arr[1], $typeFile, 'Connect is not stable');
         }
     }
 
     public static function ifHaveCookie(): void
     {
-        if ($_COOKIE && !$_COOKIE['error'] && $_COOKIE['autorized']) {
+        if ($_COOKIE && count($_COOKIE) >= 2 && !$_COOKIE['error'] && $_COOKIE['autorized']) {
             header('Location: /autorization/ifAutorized');
         } else {
             self::view();
         }
     }
 
-    public static function setCookie($name, $value, $time, $path, $symbol = '+')
+    public static function setCookie(string $name, string $value, int $time, string $path, string $symbol = '+')
     {
         switch ($symbol) {
             case '+': setcookie($name, $value, time() + $time, $path);
@@ -105,6 +121,17 @@ class BaseController
             case '-': setcookie($name, $value, time() - $time, $path);
 
                 break;
+        }
+    }
+
+    public static function successUploadCombine($results, $fileName, $typeFile, $fileSize, $id): void
+    {
+        $sumSize = self::$combineFilesModel->getSumSize();
+        if ($results[0]) {
+            self::getCombineFilesModel()->store($results[1], $id);
+            self::getLogService()->logCombine($fileName .'.'. $typeFile, $fileSize, 'successes', $sumSize[0]['sum']);
+        } else {
+            self::getLogService()->logCombineError('errors');
         }
     }
 }

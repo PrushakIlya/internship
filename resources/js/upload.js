@@ -1,18 +1,23 @@
 import { UPLOADERRORS_1, UPLOADERRORS_2 } from './errors.js';
-import { uploadSubmit, uploadFile, uploadErrors } from './vars.js';
+import { upload, uploadSubmit, uploadFile, uploadErrors } from './vars.js';
 
-if (uploadSubmit !== null && uploadFile !== null && uploadErrors !== null) {
+if (upload !== null) {
   uploadFile.oninput = function () {
-    if (uploadFile.files[0].size > 200000) {
-      uploadErrors.innerHTML = UPLOADERRORS_1;
-      uploadSubmit.disabled = true;
-    }
-    if (uploadFile.files[0].type !== 'image/png' && uploadFile.files[0].type !== 'image/jpeg' && uploadFile.files[0].type !== 'text/plain') {
+    if (uploadFile.value.length === 0) {
       uploadErrors.innerHTML = UPLOADERRORS_2;
       uploadSubmit.disabled = true;
     } else {
-      uploadErrors.innerHTML = ' ';
-      uploadSubmit.disabled = false;
+      if (uploadFile.files[0].size > 200000) {
+        uploadErrors.innerHTML = UPLOADERRORS_1;
+        uploadSubmit.disabled = true;
+      }
+      if (uploadFile.files[0].type !== 'image/png' && uploadFile.files[0].type !== 'image/jpeg' && uploadFile.files[0].type !== 'text/plain') {
+        uploadErrors.innerHTML = UPLOADERRORS_2;
+        uploadSubmit.disabled = true;
+      } else {
+        uploadErrors.innerHTML = ' ';
+        uploadSubmit.disabled = false;
+      }
     }
   };
 }

@@ -1,6 +1,17 @@
 <?php
 
 return [
+    //Task-6
+    '/combine/storeUploded' => 'combine/storeUploded',
+    '/combine/storeUploded' => 'combine/storeUploded',
+    '/combine/logout' => 'combine/logout',
+    '/combine/ifAutorized' => 'combine/ifAutorized',
+    '/combine/check' => 'combine/check',
+    '/combine/store' => 'combine/store',
+    '/combine/upload' => 'combine/upload',
+    '/combine/authorization' => 'combine/authorization',
+    '/combine/registration' => 'combine/registration',
+
     //Task-5
     '/registration/store' => 'registration/store',
     '/registration' => 'registration/index',
