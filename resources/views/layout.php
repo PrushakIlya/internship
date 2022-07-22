@@ -46,6 +46,7 @@ $twig->addExtension(new \Twig\Extension\DebugExtension());
     <?php if ($_SERVER['REQUEST_URI'] === '/combine/ifAutorized') {
         echo $twig->render('twigs/combine_if_autorized.twig', ['results' => $results[0], 'result' => $results[1]]);
     }?>
+    
 
 
     <!-- API -->

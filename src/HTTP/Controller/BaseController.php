@@ -93,10 +93,10 @@ class BaseController
         return self::$logService;
     }
 
-    public static function successUpload($results, $fileText, $arr, $typeFile, $id): void
+    public static function successUpload($results, $fileText, $arr, $typeFile): void
     {
         if ($results[0]) {
-            self::getCombineFilesModel()->store($results[1], $id);
+            self::getFilesModel()->store($results[1]);
             self::getLogService()->log($fileText . $arr[1], $typeFile);
         } else {
             self::getLogService()->log($fileText . $arr[1], $typeFile, 'Connect is not stable');
@@ -112,23 +112,13 @@ class BaseController
         }
     }
 
-    public static function setCookie(string $name, string $value, int $time, string $path, string $symbol = '+')
-    {
-        switch ($symbol) {
-            case '+': setcookie($name, $value, time() + $time, $path);
-
-                break;
-            case '-': setcookie($name, $value, time() - $time, $path);
-
-                break;
-        }
-    }
-
     public static function successUploadCombine($results, $fileName, $typeFile, $fileSize, $id): void
     {
         $sumSize = self::$combineFilesModel->getSumSize();
+        var_dump($results);
         if ($results[0]) {
-            self::getCombineFilesModel()->store($results[1], $id);
+            self::getCombineFilesModel()->store($fileName, $id);
+            
             self::getLogService()->logCombine($fileName .'.'. $typeFile, $fileSize, 'successes', $sumSize[0]['sum']);
         } else {
             self::getLogService()->logCombineError('errors');

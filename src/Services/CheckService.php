@@ -53,8 +53,8 @@ class CheckService
     public function contenerUpload($fileText, $tmpName, $name, $nameExplode = 'text'): array
     {
         $fileName = $fileText . '.' . $nameExplode;
-        $this->checkExistFolder($name);
         move_uploaded_file($tmpName, $name . '/' . $fileName);
+        $this->checkExistFolder($name);
         $result = $this->checkFile($name, $fileName);
 
         return [$result, $fileName];

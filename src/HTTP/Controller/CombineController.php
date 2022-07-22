@@ -40,7 +40,11 @@ class CombineController extends BaseController
 
     public function ifAutorized(): void
     {
-        isset($_SESSION['autorized']) ? $id = $_SESSION['autorized'] : $id = $_COOKIE['autorized'];
+        if (isset($_SESSION['autorized'])) {
+            $id = $_SESSION['autorized'];
+        } else {
+            $id = $_COOKIE['autorized'];
+        }
         $result = parent::getCombineUsersModel()->selectById($id);
         $results = parent::getCombineFilesModel()->selectByUserId($id);
         parent::view([$results, $result]);
@@ -82,7 +86,7 @@ class CombineController extends BaseController
         $results = parent::getCombineUsersModel()->selectEqualPassword($result[0]['password']);
 
         if (!empty($results) && $password) {
-            count($_POST) === 4 ? parent::setCookie('autorized', $result[0]['id'], 3600 * 24 * 7, '/combine') && $_SESSION = [] : $_SESSION['autorized'] = $result[0]['id'];
+            count($_POST) === 4 ? setcookie('autorized', $result[0]['id'], time() + 3600 * 24 * 7, '/combine') && $_SESSION = [] : $_SESSION['autorized'] = $result[0]['id'];
 
             return header('Location: /combine/ifAutorized');
         }
@@ -95,6 +99,7 @@ class CombineController extends BaseController
         $tmpName = $_FILES['file']['tmp_name'];
         $fileSize = $_FILES['file']['size'];
         $fileName = uniqid('upload_');
+        $type = explode('/', $typeFile);
         $id = 0;
 
         if (isset($_SESSION['autorized'])) {
@@ -113,7 +118,7 @@ class CombineController extends BaseController
         } else {
             foreach ($types as $type) {
                 if ($typeFile === $type) {
-                    $results = parent::getCheckService()->contenerUpload($fileName, $tmpName, 'img', $typeFile);
+                    $results = parent::getCheckService()->contenerUpload($fileName, $tmpName, 'img', $type[1]);
                     parent::successUploadCombine($results, $fileName, $typeFile, $fileSize, $id);
                 }
             }
