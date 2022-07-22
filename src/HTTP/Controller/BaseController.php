@@ -118,10 +118,28 @@ class BaseController
         var_dump($results);
         if ($results[0]) {
             self::getCombineFilesModel()->store($fileName, $id);
-            
+
             self::getLogService()->logCombine($fileName .'.'. $typeFile, $fileSize, 'successes', $sumSize[0]['sum']);
         } else {
             self::getLogService()->logCombineError('errors');
+        }
+    }
+
+    public static function countToBlock($time)
+    {
+        if (empty($result)) {
+            $_SESSION['count'] += 1;
+            if ($_SESSION['count'] === $time && isset($_SERVER['REMOTE_ADDR'])) {
+                $_SESSION['count'] = 0;
+
+                self::getLogService()->logCombineError('exceptions');
+
+                setcookie('bloked', 'A lot attempt', time() + 60 * 15, '/combine');
+            } else {
+                setcookie('error', 'Come again pls', time() + 2, '/combine');
+            }
+
+            return header('Location: /combine/authorization');
         }
     }
 }

@@ -22,20 +22,12 @@ class CombineController extends BaseController
 
     public function registration(): void
     {
-        if (isset($_SESSION['autorized']) || isset($_COOKIE['autorized'])) {
-            header('Location: /combine/ifAutorized');
-        } else {
-            parent::view();
-        }
+        parent::getCheckService()->checkSessionCookies(parent::view());
     }
 
     public function authorization(): void
     {
-        if (isset($_SESSION['autorized']) || isset($_COOKIE['autorized'])) {
-            header('Location: /combine/ifAutorized');
-        } else {
-            parent::view();
-        }
+        parent::getCheckService()->checkSessionCookies(parent::view());
     }
 
     public function ifAutorized(): void
@@ -67,21 +59,7 @@ class CombineController extends BaseController
     public function check()
     {
         $result = parent::getCombineUsersModel()->selectEqualEmailName($_POST['auth_email'], $_POST['auth_name']);
-        if (empty($result)) {
-            $_SESSION['count'] += 1;
-            if ($_SESSION['count'] === 3 && isset($_SERVER['REMOTE_ADDR'])) {
-                $_SESSION['count'] = 0;
-
-                self::getLogService()->logCombineError('exceptions');
-
-                setcookie('bloked', 'A lot attempt', time() + 60 * 15, '/combine');
-            } else {
-                setcookie('error', 'Come again pls', time() + 2, '/combine');
-            }
-
-            return header('Location: /combine/authorization');
-        }
-
+        self::countToBlock(3);
         $password = password_verify($_POST['auth_password'], $result[0]['password']);
         $results = parent::getCombineUsersModel()->selectEqualPassword($result[0]['password']);
 
