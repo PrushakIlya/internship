@@ -60,12 +60,12 @@ class CheckService
         return [$result, $fileName];
     }
 
-    public function checkSessionCookies($view){
+    public function checkSessionCookies($view)
+    {
         if (isset($_SESSION['autorized']) || isset($_COOKIE['autorized'])) {
             header('Location: /combine/ifAutorized');
         } else {
             $view;
         }
     }
-
 }

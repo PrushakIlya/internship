@@ -11,7 +11,7 @@ class RegistrationController extends BaseController
     public function store(): void
     {
         parent::getClientsModel()->store(parent::passwordHash($_POST['password']));
-        setcookie('success', 'welcome', time() + 2, '/registration');
+        setcookie('success', 'welcome', time() + 2, '/registration', self::getDomain());
         header('Location: /registration');
     }
 }

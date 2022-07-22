@@ -22,6 +22,7 @@ class BaseController
     private static object $logService;
     private static object $combineUsersModel;
     private static object $combineFilesModel;
+    private static string $domain;
 
     public function __construct()
     {
@@ -34,6 +35,12 @@ class BaseController
         self::$combineFilesModel = new CombineFilesModel();
         self::$combineUsersModel = new CombineUsersModel();
         self::$api = include '../routes/api.php';
+        self::$domain = '';
+    }
+
+    public static function getDomain()
+    {
+        return self::$domain;
     }
 
     public static function view($results = [], string $view = 'layout.php')
@@ -134,9 +141,9 @@ class BaseController
 
                 self::getLogService()->logCombineError('exceptions');
 
-                setcookie('bloked', 'A lot attempt', time() + 60 * 15, '/combine');
+                setcookie('bloked', 'A lot attempt', time() + 60 * 15, '/combine', self::getDomain());
             } else {
-                setcookie('error', 'Come again pls', time() + 2, '/combine');
+                setcookie('error', 'Come again pls', time() + 2, '/combine', self::getDomain());
             }
 
             return header('Location: /combine/authorization');

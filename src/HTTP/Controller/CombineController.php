@@ -44,7 +44,7 @@ class CombineController extends BaseController
 
     public function logout(): void
     {
-        setcookie('autorized', ' ', time() - 1, '/combine');
+        setcookie('autorized', ' ', time() - 1, '/combine', self::getDomain());
         $_SESSION = [];
         header('Location: /combine/registration');
     }
@@ -52,7 +52,7 @@ class CombineController extends BaseController
     public function store(): void
     {
         parent::getCombineUsersModel()->store(parent::passwordHash($_POST['password']));
-        setcookie('success', 'welcome', time() + 2, '/combine');
+        setcookie('success', 'welcome', time() + 2, '/combine', self::getDomain());
         header('Location: /combine/registration');
     }
 
@@ -64,7 +64,7 @@ class CombineController extends BaseController
         $results = parent::getCombineUsersModel()->selectEqualPassword($result[0]['password']);
 
         if (!empty($results) && $password) {
-            count($_POST) === 4 ? setcookie('autorized', $result[0]['id'], time() + 3600 * 24 * 7, '/combine') && $_SESSION = [] : $_SESSION['autorized'] = $result[0]['id'];
+            count($_POST) === 4 ? setcookie('autorized', $result[0]['id'], time() + 3600 * 24 * 7, '/combine', self::getDomain()) && $_SESSION = [] : $_SESSION['autorized'] = $result[0]['id'];
 
             return header('Location: /combine/ifAutorized');
         }

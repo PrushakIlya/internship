@@ -137,7 +137,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authorization !== null) {
-  if (document.cookie.length > 36) {
+  if (document.cookie.includes('error')) {
     _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorName.textContent = getCookieCombine(document.cookie);
   }
 

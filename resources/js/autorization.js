@@ -4,7 +4,7 @@ import { authorization, authEmail, authPassword, authName, authSubmit, authError
 import { getCookie } from './all-functions.js';
 
 if (authorization !== null) {
-  if (document.cookie.length > 36) {
+  if (document.cookie.includes('error')) {
     authErrorName.textContent = getCookieCombine(document.cookie);
   }
 

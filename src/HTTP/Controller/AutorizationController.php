@@ -17,7 +17,7 @@ class AutorizationController extends BaseController
 
     public function logout()
     {
-        setcookie('autorized', '', time() - 1, '/autorization');
+        setcookie('autorized', '', time() - 1, '/autorization', self::getDomain());
         header('Location: /autorization');
     }
 
@@ -28,11 +28,11 @@ class AutorizationController extends BaseController
         $results = parent::getClientsModel()->selectEqualPassword($result[0]['password']);
 
         if (!empty($results) && $password) {
-            setcookie('autorized', $results[0]['id'], time() + 3600, '/autorization');
+            setcookie('autorized', $results[0]['id'], time() + 3600, '/autorization', self::getDomain());
 
             return header('Location: /autorization/ifAutorized');
         }
-        setcookie('error', 'It is not correct!One more', time() + 2, '/autorization');
+        setcookie('error', 'It is not correct!One more', time() + 2, '/autorization', self::getDomain());
         header('Location: /autorization');
     }
 }
