@@ -2,65 +2,55 @@
 
 namespace Prushak\Internship\Models;
 
-use InvalidArgumentException;
 use PDO;
 
-class UsersModel extends BaseModel
+class CombineUsersModel extends BaseModel
 {
-    public function store(): void
+    public function store($password): void
     {
-        $sql = 'INSERT INTO users (name, email, gender, status) VALUES (:name, :email, :gender, :status)';
+        $sql = 'INSERT INTO users (firstname, lastname, email, password) VALUES (:firstname, :lastname, :email, :password)';
         $stmt = BaseModel::getConn()->prepare($sql);
         $stmt->execute([
-            ':name' => $_POST['name'], ':email' => $_POST['email'],
-            ':gender' => $_POST['gender'] === 'male' ? 1 : 0, ':status' => $_POST['status'] === 'active' ? 1 : 0,
+            ':firstname' => $_POST['firstname'],
+            ':lastname' => $_POST['lastname'],
+            ':email' => $_POST['email'],
+            ':password' => $password,
         ]);
     }
 
-    public function index(): array
+    public function selectByEmail($email): array
     {
-        $sql = 'SELECT * FROM users';
-        $stmt = BaseModel::getConn()->query($sql);
-        if ($stmt) {
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            return $results;
-        } else {
-            throw new InvalidArgumentException('Request on the server is failed');
-        }
-    }
-
-    public function getEmail($email): array
-    {
-        $sql = "SELECT email FROM users WHERE email='$email'";
+        $sql = "SELECT * FROM users WHERE email = '$email'";
         $stmt = BaseModel::getConn()->query($sql);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $result;
     }
 
-    public function elemById($id): array
+    public function selectEqualEmailName($email, $name): array
+    {
+        $sql = "SELECT * FROM users WHERE email = '$email' AND firstname = '$name'";
+        $stmt = BaseModel::getConn()->query($sql);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    public function selectEqualPassword($password): array
+    {
+        $sql = "SELECT * FROM users WHERE password = '$password'";
+        $stmt = BaseModel::getConn()->query($sql);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    public function selectById($id): array
     {
         $sql = "SELECT * FROM users WHERE id='$id'";
         $stmt = BaseModel::getConn()->query($sql);
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $results;
-    }
-
-    public function update($id): void
-    {
-        $sql = "UPDATE users SET name=:name,email=:email,gender=:gender,status=:status WHERE id = '$id'";
-        $stmt = BaseModel::getConn()->prepare($sql);
-        $stmt->execute([
-            ':name' => $_POST['name'], ':email' => $_POST['email'],
-            ':gender' => $_POST['gender'] === 'male' ? 1 : 0, ':status' => $_POST['status'] === 'active' ? 1 : 0,
-        ]);
-    }
-
-    public function destroy($id): void
-    {
-        $sql = "DELETE FROM users WHERE id = '$id'";
-        BaseModel::getConn()->exec($sql);
     }
 }

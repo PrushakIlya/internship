@@ -1,24 +1,22 @@
 import { PATTERNNAME, PATTERNEMAIL, PATTERNPASSWORD_REG } from './expressions.js';
 import { NAMEERROR, MAILERROR, PASSWORDERROR_REG, PASSWORDERROR_EMPTY_REG, PASSWORDERROR_NOT_EQUAL_REG } from './errors.js';
-import { CHECKEMAILREG } from './api-type';
+import { CHECKCOMBINE_EMAIL } from './api-type';
 import { apiCheckEmail } from './api';
 import {
-  regFirstname,
-  regLastname,
-  regEmail,
-  regPass,
-  regPassConf,
-  regSubmit,
-  regErrorFirstname,
-  regErrorLastname,
-  regErrorEmail,
-  regErrorPass,
-  regErrorPassConf,
-  registration,
-  successBlock,
-} from './vars.js';
+  firstname,
+  lastname,
+  email,
+  password,
+  passwordConf,
+  submit,
+  errorFirstname,
+  errorLastname,
+  errorEmail,
+  errorPassword,
+  errorPasswordConf,
+} from './exports/vars.js';
 
-if (registration !== null) {
+if (combineRegistration !== null) {
   document.cookie.includes('success') && successBlock.classList.add('register_success');
   const regFirstnameFunc = () => {
     if (!regFirstname.value.match(PATTERNNAME)) regErrorFirstname.textContent = NAMEERROR;
@@ -34,7 +32,7 @@ if (registration !== null) {
 
   const regEmailFunc = () => {
     if (!regEmail.value.match(PATTERNEMAIL)) regErrorEmail.textContent = MAILERROR;
-    else apiCheckEmail(CHECKEMAILREG, regEmail.value, regErrorEmail);
+    else apiCheckEmail(CHECKCOMBINE_EMAIL, regEmail.value, regErrorEmail);
     if (regEmail.value.length === 0) regErrorEmail.textContent = '';
   };
 

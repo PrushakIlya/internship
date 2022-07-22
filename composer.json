@@ -3,7 +3,10 @@
     "autoload": {
         "psr-4": {
             "Prushak\\Internship\\": "src/"
-        }
+        },
+        "files": [
+            "helpers.php"
+        ]
     },
     "authors": [
         {

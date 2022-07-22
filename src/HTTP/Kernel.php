@@ -41,6 +41,7 @@ class Web
 
                 $controllerName = $this->namespace . $controller;
                 $controller = new $controllerName();
+
                 echo $id ? $controller->$method($id) : $controller->$method();
 
                 return 0;
