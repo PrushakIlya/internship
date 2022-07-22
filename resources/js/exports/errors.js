@@ -5,7 +5,6 @@ export const MAILERROR = 'example: dgg34d@test.by';
 export const NAMEERROR = 'Only latters[3-20]';
 export const PASSWORDERROR = 'Only latters and numbers[10-20]';
 export const AUTORIZATIONERROR = 'Email is taken';
-
-export const PASSWORDERROR_REG = 'upper and lower case latters, numbers, symbols[8-20]';
+export const PASSWORDERROR_REG = 'at least some: symbol, number, upper and lower latter [8-20]';
 export const PASSWORDERROR_EMPTY_REG = 'Password is empty';
 export const PASSWORDERROR_NOT_EQUAL_REG = 'Password is not equal';

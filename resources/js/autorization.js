@@ -1,49 +1,49 @@
-import { PATTERNNAME, PATTERNPASSWORD_REG, PATTERNEMAIL } from './expressions.js';
-import { NAMEERROR, PASSWORDERROR_REG, MAILERROR } from './errors.js';
-import { combineAuthorisation, authEmail, authPassword, authName, authSubmit, authErrorEmail, authErrorPassword, authErrorName } from './vars.js';
+import { PATTERNNAME, PATTERNPASSWORD, PATTERNEMAIL } from './exports/expressions.js';
+import { NAMEERROR, PASSWORDERROR_REG, MAILERROR } from './exports/errors.js';
+import { sectionAuthorisation, email, password, firstname, submit, errorEmail, errorPassword, errorFirstname } from './exports/getElementById.js';
 import { getCookieCombine } from './all-functions.js';
 
-if (combineAuthorisation !== null) {
-  if (  document.cookie.includes('error')) {
-    authErrorName.textContent = getCookieCombine(document.cookie);
+if (sectionAuthorisation !== null) {
+  if (document.cookie.includes('error')) {
+    errorName.textContent = getCookieCombine(document.cookie);
   }
 
-  const authEmailFunc = () => {
-    if (!authEmail.value.match(PATTERNEMAIL)) authErrorEmail.textContent = MAILERROR;
-    else authErrorEmail.textContent = ' ';
-    if (authEmail.value.length === 0) authErrorEmail.textContent = '';
+  const emailFunc = () => {
+    if (!email.value.match(PATTERNEMAIL)) errorEmail.textContent = MAILERROR;
+    else errorEmail.textContent = ' ';
+    if (email.value.length === 0) errorEmail.textContent = '';
   };
 
-  const authPasswordFunc = () => {
-    if (!authPassword.value.match(PATTERNPASSWORD_REG)) authErrorPassword.textContent = PASSWORDERROR_REG;
-    else authErrorPassword.textContent = ' ';
-    if (authPassword.value.length === 0) authErrorPassword.textContent = '';
+  const passwordFunc = () => {
+    if (!password.value.match(PATTERNPASSWORD)) errorPassword.textContent = PASSWORDERROR_REG;
+    else errorPassword.textContent = ' ';
+    if (password.value.length === 0) errorPassword.textContent = '';
   };
 
-  const authNameFunc = () => {
-    if (!authName.value.match(PATTERNNAME)) authErrorName.textContent = NAMEERROR;
-    else authErrorName.textContent = ' ';
-    if (authName.value.length === 0) authErrorName.textContent = '';
+  const firstnameFunc = () => {
+    if (!firstname.value.match(PATTERNNAME)) errorFirstname.textContent = NAMEERROR;
+    else errorFirstname.textContent = ' ';
+    if (firstname.value.length === 0) errorFirstname.textContent = '';
   };
 
-  authEmail.oninput = authEmailFunc;
-  authPassword.oninput = authPasswordFunc;
-  authName.oninput = authNameFunc;
+  email.oninput = emailFunc;
+  password.oninput = passwordFunc;
+  firstname.oninput = firstnameFunc;
 
   document.addEventListener('DOMContentLoaded', function () {
     const callback = () => {
       if (
-        (authErrorEmail.textContent.length === 1 && authErrorPassword.textContent.length === 1 && authErrorName.textContent.length === 1) ||
-        (authErrorEmail.textContent.length === 0 &&
-          authEmail.value.length > 0 &&
-          authErrorPassword.textContent.length === 0 &&
-          authPassword.value.length > 0 &&
-          authErrorName.textContent.length === 0 &&
-          authName.value.length > 0)
+        (errorEmail.textContent.length === 1 && errorPassword.textContent.length === 1 && errorName.textContent.length === 1) ||
+        (errorEmail.textContent.length === 0 &&
+          email.value.length > 0 &&
+          errorPassword.textContent.length === 0 &&
+          password.value.length > 0 &&
+          errorName.textContent.length === 0 &&
+          firstname.value.length > 0)
       ) {
-        authSubmit.disabled = false;
+        submit.disabled = false;
       } else {
-        authSubmit.disabled = true;
+        submit.disabled = true;
       }
     };
     let observer = new MutationObserver(callback);

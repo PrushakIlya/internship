@@ -47,14 +47,9 @@ var navigateCurrentPage = function navigateCurrentPage(button, num, current) {
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _upload_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./upload.js */ "./resources/js/upload.js");
+/* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.js */ "./resources/js/index.js");
 /* harmony import */ var _autorization_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./autorization.js */ "./resources/js/autorization.js");
-/* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.js */ "./resources/js/index.js");
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './create.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './edit.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-
-
-
+// import './upload.js';
 
 
 
@@ -67,44 +62,44 @@ Object(function webpackMissingModule() { var e = new Error("Cannot find module '
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './expressions.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './errors.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-/* harmony import */ var _all_functions_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./all-functions.js */ "./resources/js/all-functions.js");
+/* harmony import */ var _exports_expressions_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./exports/expressions.js */ "./resources/js/exports/expressions.js");
+/* harmony import */ var _exports_errors_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./exports/errors.js */ "./resources/js/exports/errors.js");
+/* harmony import */ var _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./exports/getElementById.js */ "./resources/js/exports/getElementById.js");
+/* harmony import */ var _all_functions_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./all-functions.js */ "./resources/js/all-functions.js");
 
 
 
 
 
-if (Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) !== null) {
+if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.sectionAuthorisation !== null) {
   if (document.cookie.includes('error')) {
-    Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = (0,_all_functions_js__WEBPACK_IMPORTED_MODULE_1__.getCookieCombine)(document.cookie);
+    errorName.textContent = (0,_all_functions_js__WEBPACK_IMPORTED_MODULE_3__.getCookieCombine)(document.cookie);
   }
 
-  var authEmailFunc = function authEmailFunc() {
-    if (!Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(Object(function webpackMissingModule() { var e = new Error("Cannot find module './expressions.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))) Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = Object(function webpackMissingModule() { var e = new Error("Cannot find module './errors.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());else Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = ' ';
-    if (Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) === 0) Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = '';
+  var emailFunc = function emailFunc() {
+    if (!_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.email.value.match(_exports_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNEMAIL)) _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.errorEmail.textContent = _exports_errors_js__WEBPACK_IMPORTED_MODULE_1__.MAILERROR;else _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.errorEmail.textContent = ' ';
+    if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.email.value.length === 0) _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.errorEmail.textContent = '';
   };
 
-  var authPasswordFunc = function authPasswordFunc() {
-    if (!Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(Object(function webpackMissingModule() { var e = new Error("Cannot find module './expressions.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))) Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = Object(function webpackMissingModule() { var e = new Error("Cannot find module './errors.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());else Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = ' ';
-    if (Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) === 0) Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = '';
+  var passwordFunc = function passwordFunc() {
+    if (!_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.password.value.match(_exports_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNPASSWORD)) _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.errorPassword.textContent = _exports_errors_js__WEBPACK_IMPORTED_MODULE_1__.PASSWORDERROR_REG;else _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.errorPassword.textContent = ' ';
+    if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.password.value.length === 0) _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.errorPassword.textContent = '';
   };
 
-  var authNameFunc = function authNameFunc() {
-    if (!Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(Object(function webpackMissingModule() { var e = new Error("Cannot find module './expressions.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))) Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = Object(function webpackMissingModule() { var e = new Error("Cannot find module './errors.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());else Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = ' ';
-    if (Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) === 0) Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = '';
+  var firstnameFunc = function firstnameFunc() {
+    if (!_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.firstname.value.match(_exports_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNNAME)) _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.errorFirstname.textContent = _exports_errors_js__WEBPACK_IMPORTED_MODULE_1__.NAMEERROR;else _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.errorFirstname.textContent = ' ';
+    if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.firstname.value.length === 0) _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.errorFirstname.textContent = '';
   };
 
-  Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = authEmailFunc;
-  Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = authPasswordFunc;
-  Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = authNameFunc;
+  _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.email.oninput = emailFunc;
+  _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.password.oninput = passwordFunc;
+  _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.firstname.oninput = firstnameFunc;
   document.addEventListener('DOMContentLoaded', function () {
     var callback = function callback() {
-      if (Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) === 1 && Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) === 1 && Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) === 1 || Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) === 0 && Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) > 0 && Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) === 0 && Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) > 0 && Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) === 0 && Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) > 0) {
-        Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = false;
+      if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.errorEmail.textContent.length === 1 && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.errorPassword.textContent.length === 1 && errorName.textContent.length === 1 || _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.errorEmail.textContent.length === 0 && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.email.value.length > 0 && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.errorPassword.textContent.length === 0 && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.password.value.length > 0 && errorName.textContent.length === 0 && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.firstname.value.length > 0) {
+        _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.submit.disabled = false;
       } else {
-        Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = true;
+        _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.submit.disabled = true;
       }
     };
 
@@ -116,6 +111,153 @@ if (Object(function webpackMissingModule() { var e = new Error("Cannot find modu
     });
   });
 }
+
+/***/ }),
+
+/***/ "./resources/js/exports/api-type.js":
+/*!******************************************!*\
+  !*** ./resources/js/exports/api-type.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CHECKEMAIL": () => (/* binding */ CHECKEMAIL)
+/* harmony export */ });
+var ROOT = 'http://localhost:3000';
+var CHECKEMAIL = ROOT + '/api/checkEmail';
+
+/***/ }),
+
+/***/ "./resources/js/exports/api.js":
+/*!*************************************!*\
+  !*** ./resources/js/exports/api.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "apiCheckEmail": () => (/* binding */ apiCheckEmail)
+/* harmony export */ });
+var apiCheckEmail = function apiCheckEmail(url, payload, error_block) {
+  fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(function (res) {
+    return res.json();
+  }).then(function (body) {
+    if (body === true) error_block.innerHTML = 'Something wrong';else error_block.innerHTML = ' ';
+  })["catch"](function (error) {
+    return console.log(error);
+  });
+};
+
+/***/ }),
+
+/***/ "./resources/js/exports/errors.js":
+/*!****************************************!*\
+  !*** ./resources/js/exports/errors.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AUTORIZATIONERROR": () => (/* binding */ AUTORIZATIONERROR),
+/* harmony export */   "MAILERROR": () => (/* binding */ MAILERROR),
+/* harmony export */   "NAMEERROR": () => (/* binding */ NAMEERROR),
+/* harmony export */   "PASSWORDERROR": () => (/* binding */ PASSWORDERROR),
+/* harmony export */   "PASSWORDERROR_EMPTY_REG": () => (/* binding */ PASSWORDERROR_EMPTY_REG),
+/* harmony export */   "PASSWORDERROR_NOT_EQUAL_REG": () => (/* binding */ PASSWORDERROR_NOT_EQUAL_REG),
+/* harmony export */   "PASSWORDERROR_REG": () => (/* binding */ PASSWORDERROR_REG),
+/* harmony export */   "UPLOADERRORS_1": () => (/* binding */ UPLOADERRORS_1),
+/* harmony export */   "UPLOADERRORS_2": () => (/* binding */ UPLOADERRORS_2)
+/* harmony export */ });
+var UPLOADERRORS_1 = 'Max file size is 200kByt';
+var UPLOADERRORS_2 = 'Only png,jpeg,txt';
+var MAILERROR = 'example: dgg34d@test.by';
+var NAMEERROR = 'Only latters[3-20]';
+var PASSWORDERROR = 'Only latters and numbers[10-20]';
+var AUTORIZATIONERROR = 'Email is taken';
+var PASSWORDERROR_REG = 'at least some: symbol, number, upper and lower latter [8-20]';
+var PASSWORDERROR_EMPTY_REG = 'Password is empty';
+var PASSWORDERROR_NOT_EQUAL_REG = 'Password is not equal';
+
+/***/ }),
+
+/***/ "./resources/js/exports/expressions.js":
+/*!*********************************************!*\
+  !*** ./resources/js/exports/expressions.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PATTERNEMAIL": () => (/* binding */ PATTERNEMAIL),
+/* harmony export */   "PATTERNNAME": () => (/* binding */ PATTERNNAME),
+/* harmony export */   "PATTERNPASSWORD": () => (/* binding */ PATTERNPASSWORD)
+/* harmony export */ });
+var PATTERNEMAIL = /^(([a-zA-Z0-9]{3,26})@([a-z]{3,10}).(com|ru|by))$/g;
+var PATTERNNAME = /^([A-Za-z]{3,20})$/g;
+var PATTERNPASSWORD = /^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=_-]).{8,15})$/g;
+
+/***/ }),
+
+/***/ "./resources/js/exports/getElementById.js":
+/*!************************************************!*\
+  !*** ./resources/js/exports/getElementById.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "combineAuthorisation": () => (/* binding */ combineAuthorisation),
+/* harmony export */   "combineistration": () => (/* binding */ combineistration),
+/* harmony export */   "email": () => (/* binding */ email),
+/* harmony export */   "errorEmail": () => (/* binding */ errorEmail),
+/* harmony export */   "errorFirstname": () => (/* binding */ errorFirstname),
+/* harmony export */   "errorLastname": () => (/* binding */ errorLastname),
+/* harmony export */   "errorPassword": () => (/* binding */ errorPassword),
+/* harmony export */   "errorPasswordConf": () => (/* binding */ errorPasswordConf),
+/* harmony export */   "firstname": () => (/* binding */ firstname),
+/* harmony export */   "istration": () => (/* binding */ istration),
+/* harmony export */   "lastname": () => (/* binding */ lastname),
+/* harmony export */   "password": () => (/* binding */ password),
+/* harmony export */   "passwordConf": () => (/* binding */ passwordConf),
+/* harmony export */   "sectionAuthorisation": () => (/* binding */ sectionAuthorisation),
+/* harmony export */   "sectionIndex": () => (/* binding */ sectionIndex),
+/* harmony export */   "submit": () => (/* binding */ submit),
+/* harmony export */   "successBlock": () => (/* binding */ successBlock),
+/* harmony export */   "upload": () => (/* binding */ upload),
+/* harmony export */   "uploadErrors": () => (/* binding */ uploadErrors),
+/* harmony export */   "uploadFile": () => (/* binding */ uploadFile),
+/* harmony export */   "uploadSubmit": () => (/* binding */ uploadSubmit)
+/* harmony export */ });
+var uploadSubmit = document.getElementById('upload_submit');
+var uploadFile = document.getElementById('formFile');
+var uploadErrors = document.getElementById('upload_errors');
+var upload = document.getElementById('upload'); //
+
+var firstname = document.getElementById('firstname');
+var lastname = document.getElementById('lastname');
+var email = document.getElementById('email');
+var password = document.getElementById('password');
+var passwordConf = document.getElementById('password_conf');
+var submit = document.getElementById('submit');
+var errorFirstname = document.getElementById('error_firstname');
+var errorLastname = document.getElementById('error_lastname');
+var errorEmail = document.getElementById('error_email');
+var errorPassword = document.getElementById('error_password');
+var errorPasswordConf = document.getElementById('error_password_conf');
+var successBlock = document.getElementById('success_block');
+var sectionIndex = document.getElementById('index');
+var sectionAuthorisation = document.getElementById('authorisation'); //
+
+var istration = document.getElementById('registration');
+var combineAuthorisation = document.getElementById('combine_authorisation');
+var combineistration = document.getElementById('combine_registration');
 
 /***/ }),
 
@@ -126,56 +268,56 @@ if (Object(function webpackMissingModule() { var e = new Error("Cannot find modu
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './expressions.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './errors.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './api-type'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './api'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './exports/vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _exports_expressions_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./exports/expressions.js */ "./resources/js/exports/expressions.js");
+/* harmony import */ var _exports_errors_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./exports/errors.js */ "./resources/js/exports/errors.js");
+/* harmony import */ var _exports_api_type_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./exports/api-type.js */ "./resources/js/exports/api-type.js");
+/* harmony import */ var _exports_api_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./exports/api.js */ "./resources/js/exports/api.js");
+/* harmony import */ var _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./exports/getElementById.js */ "./resources/js/exports/getElementById.js");
 
 
 
 
 
 
-if (combineRegistration !== null) {
+if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.sectionIndex !== null) {
   document.cookie.includes('success') && successBlock.classList.add('register_success');
 
-  var regFirstnameFunc = function regFirstnameFunc() {
-    if (!regFirstname.value.match(Object(function webpackMissingModule() { var e = new Error("Cannot find module './expressions.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))) regErrorFirstname.textContent = Object(function webpackMissingModule() { var e = new Error("Cannot find module './errors.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());else regErrorFirstname.textContent = ' ';
-    if (regFirstname.value.length === 0) regErrorFirstname.textContent = '';
+  var firstnameFunc = function firstnameFunc() {
+    if (!_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.firstname.value.match(_exports_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNNAME)) _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorFirstname.textContent = _exports_errors_js__WEBPACK_IMPORTED_MODULE_1__.NAMEERROR;else _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorFirstname.textContent = ' ';
+    if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.firstname.value.length === 0) _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorFirstname.textContent = '';
   };
 
-  var regLastnameFunc = function regLastnameFunc() {
-    if (!regLastname.value.match(Object(function webpackMissingModule() { var e = new Error("Cannot find module './expressions.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))) regErrorLastname.textContent = Object(function webpackMissingModule() { var e = new Error("Cannot find module './errors.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());else regErrorLastname.textContent = ' ';
-    if (regLastname.value.length === 0) regErrorLastname.textContent = '';
+  var lastnameFunc = function lastnameFunc() {
+    if (!_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.lastname.value.match(_exports_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNNAME)) _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorLastname.textContent = _exports_errors_js__WEBPACK_IMPORTED_MODULE_1__.NAMEERROR;else _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorLastname.textContent = ' ';
+    if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.lastname.value.length === 0) _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorLastname.textContent = '';
   };
 
-  var regEmailFunc = function regEmailFunc() {
-    if (!regEmail.value.match(Object(function webpackMissingModule() { var e = new Error("Cannot find module './expressions.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))) regErrorEmail.textContent = Object(function webpackMissingModule() { var e = new Error("Cannot find module './errors.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());else Object(function webpackMissingModule() { var e = new Error("Cannot find module './api'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(Object(function webpackMissingModule() { var e = new Error("Cannot find module './api-type'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), regEmail.value, regErrorEmail);
-    if (regEmail.value.length === 0) regErrorEmail.textContent = '';
+  var emailFunc = function emailFunc() {
+    if (!_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.email.value.match(_exports_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNEMAIL)) _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorEmail.textContent = _exports_errors_js__WEBPACK_IMPORTED_MODULE_1__.MAILERROR;else (0,_exports_api_js__WEBPACK_IMPORTED_MODULE_3__.apiCheckEmail)(CHECKCOMBINE_EMAIL, _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.email.value, _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorEmail);
+    if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.email.value.length === 0) _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorEmail.textContent = '';
   };
 
-  var regPassFunc = function regPassFunc() {
-    !regPass.value.match(Object(function webpackMissingModule() { var e = new Error("Cannot find module './expressions.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())) ? regErrorPass.textContent = Object(function webpackMissingModule() { var e = new Error("Cannot find module './errors.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) : regErrorPass.textContent = ' ';
-    if (regPass.value.length === 0) regErrorPass.textContent = '';
+  var passwordFunc = function passwordFunc() {
+    !_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.password.value.match(PATTERNPASSWORD_REG) ? _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorPassword.textContent = _exports_errors_js__WEBPACK_IMPORTED_MODULE_1__.PASSWORDERROR_REG : _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorPassword.textContent = ' ';
+    if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.password.value.length === 0) _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorPassword.textContent = '';
   };
 
-  var regPassConfFunc = function regPassConfFunc() {
-    regPass.value === regPassConf.value ? regErrorPassConf.textContent = ' ' : regErrorPass.textContent = Object(function webpackMissingModule() { var e = new Error("Cannot find module './errors.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-    if (regPassConf.value.length === 0) regErrorPass.textContent = '';
+  var passwordConfFunc = function passwordConfFunc() {
+    _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.password.value === _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.passwordConf.value ? _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorPasswordConf.textContent = ' ' : _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorPassword.textContent = _exports_errors_js__WEBPACK_IMPORTED_MODULE_1__.PASSWORDERROR_NOT_EQUAL_REG;
+    if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.passwordConf.value.length === 0) _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorPassword.textContent = '';
   };
 
-  regFirstname.oninput = regFirstnameFunc;
-  regLastname.oninput = regLastnameFunc;
-  regEmail.oninput = regEmailFunc;
-  regPass.oninput = regPassFunc;
-  regPassConf.oninput = regPassConfFunc;
+  _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.firstname.oninput = firstnameFunc;
+  _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.lastname.oninput = lastnameFunc;
+  _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.email.oninput = emailFunc;
+  _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.password.oninput = passwordFunc;
+  _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.passwordConf.oninput = passwordConfFunc;
   document.addEventListener('DOMContentLoaded', function () {
     var callback = function callback() {
-      if (regErrorFirstname.textContent.length === 1 && regErrorLastname.textContent.length === 1 && regErrorEmail.textContent.length === 1 && regErrorPass.textContent.length === 1 && regErrorPassConf.textContent.length === 1 || regErrorFirstname.textContent.length === 0 && regFirstname.value.length > 0 && regErrorLastname.textContent.length === 0 && regLastname.value.length > 0 && regErrorEmail.textContent.length === 0 && regEmail.value.length > 0 && regErrorPass.textContent.length === 0 && regPass.value.length > 0 && regErrorPassConf.textContent.length === 0 && regPassConf.value.length > 0) {
-        regSubmit.disabled = false;
+      if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorFirstname.textContent.length === 1 && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorLastname.textContent.length === 1 && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorEmail.textContent.length === 1 && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorPassword.textContent.length === 1 && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorPasswordConf.textContent.length === 1 || _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorFirstname.textContent.length === 0 && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.firstname.value.length > 0 && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorLastname.textContent.length === 0 && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.lastname.value.length > 0 && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorEmail.textContent.length === 0 && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.email.value.length > 0 && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorPassword.textContent.length === 0 && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.password.value.length > 0 && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.errorPasswordConf.textContent.length === 0 && _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.passwordConf.value.length > 0) {
+        _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.submit.disabled = false;
       } else {
-        regSubmit.disabled = true;
+        _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_4__.submit.disabled = true;
       }
     };
 
@@ -186,42 +328,6 @@ if (combineRegistration !== null) {
       subtree: true
     });
   });
-}
-
-/***/ }),
-
-/***/ "./resources/js/upload.js":
-/*!********************************!*\
-  !*** ./resources/js/upload.js ***!
-  \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './errors.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-
-
-
-if (Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) !== null) {
-  Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = function () {
-    if (Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) === 0) {
-      Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = Object(function webpackMissingModule() { var e = new Error("Cannot find module './errors.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-      Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = true;
-    } else {
-      if (Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) > 200000) {
-        Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = Object(function webpackMissingModule() { var e = new Error("Cannot find module './errors.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-        Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = true;
-      }
-
-      if (Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) !== 'image/png' && Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) !== 'image/jpeg' && Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) !== 'text/plain') {
-        Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = Object(function webpackMissingModule() { var e = new Error("Cannot find module './errors.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-        Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = true;
-      } else {
-        Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = ' ';
-        Object(function webpackMissingModule() { var e = new Error("Cannot find module './vars.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) = false;
-      }
-    }
-  };
 }
 
 /***/ }),

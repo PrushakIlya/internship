@@ -2,16 +2,16 @@
 {% block authorisation %}
 	<section class="authorisation" id="authorisation">
 		<div class="wrapper d-flex flex-column align-items-center">
-			<form action="/combine/check" method="POST" class="mt-4" style="width:400px">
+			<form action="/combine/check" method="POST" class="mt-4" style="width:450px">
 				<h1 class="text-center mt-4 fw-bold">SIGN IN</h1>
 
-				{{ include('./components/input.twig',{error_id: 'error_name',name:'name',title:'Name'}) }}
+				{{ include('./components/input.twig',{error_id: 'error_firstname',name:'firstname',title:'Firstname'}) }}
 				{{ include('./components/input.twig',{error_id: 'error_email',name:'email',title:'Email'}) }}
 				{{ include('./components/input.twig',{error_id: 'error_password',name:'password',title:'Password'}) }}
 
 				<input type="checkbox" class="mt-4" name="checkbox">
 				<label for="checkbox" class="ms-4">Remember me</label>
-				<input type="submit" value="Sign in" class="btn btn-primary mt-3 w-100" id="auth_submit" disabled>
+				<input type="submit" value="Sign in" class="btn btn-primary mt-3 w-100" id="submit" disabled>
 				<a href="/" class="btn btn-primary mt-3 w-100">Back</a>
 			</form>
 		</div>
