@@ -1,5 +1,5 @@
 import { PATTERNNAME, PATTERNEMAIL, PATTERNPASSWORD } from './exports/expressions.js';
-import { NAMEERROR, MAILERROR, PASSWORDERROR_REG, PASSWORDERROR_NOT_EQUAL_REG } from './exports/errors.js';
+import { NAMEERROR, MAILERROR, PASSWORDERROR, PASSWORDERROR_NOT_EQUAL } from './exports/errors.js';
 import { CHECKEMAIL } from './exports/api-type.js';
 import { apiCheckEmail } from './exports/api.js';
 import {
@@ -15,6 +15,7 @@ import {
   errorPassword,
   errorPasswordConf,
   sectionIndex,
+  successBlock,
 } from './exports/getElementById.js';
 
 if (sectionIndex !== null) {
@@ -43,7 +44,7 @@ if (sectionIndex !== null) {
   };
 
   const passwordConfFunc = () => {
-    password.value === passwordConf.value ? (errorPasswordConf.textContent = ' ') : (errorPassword.textContent = PASSWORDERROR_NOT_EQUAL_REG);
+    password.value === passwordConf.value ? (errorPasswordConf.textContent = ' ') : (errorPassword.textContent = PASSWORDERROR_NOT_EQUAL);
     if (passwordConf.value.length === 0) errorPassword.textContent = '';
   };
 

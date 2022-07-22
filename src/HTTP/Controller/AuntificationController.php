@@ -8,7 +8,7 @@ class AuntificationController extends BaseController
 {
     public function __construct()
     {
-        // new BaseController();
+        new BaseController();// why without it does not see variables????
         // if (!$_COOKIE) {
         //     $_SESSION['count'] = 0;
         // }
@@ -32,22 +32,22 @@ class AuntificationController extends BaseController
         // parent::getCheckService()->checkSessionCookies(parent::view());
     }
 
-    // public function ifAutorized(): void
-    // {
-    //     if (!isset($_SESSION['autorized']) && !isset($_COOKIE['autorized'])) {
-    //         header('Location: /combine/registration');
-    //     } elseif (isset($_SESSION['autorized'])) {
-    //         $id = $_SESSION['autorized'];
-    //         $result = parent::getUsersModel()->selectById($id);
-    //         $results = parent::getFilesModel()->selectByUserId($id);
-    //         parent::view([$results, $result]);
-    //     } else {
-    //         $id = $_COOKIE['autorized'];
-    //         $result = parent::getUsersModel()->selectById($id);
-    //         $results = parent::getFilesModel()->selectByUserId($id);
-    //         parent::view([$results, $result]);
-    //     }
-    // }
+    public function ifAutorized(): void
+    {
+        if (!isset($_SESSION['autorized']) && !isset($_COOKIE['autorized'])) {
+            header('Location: /index');
+        } elseif (isset($_SESSION['autorized'])) {
+            $id = $_SESSION['autorized'];
+            $result = parent::getUsersModel()->selectById($id);
+            $results = parent::getFilesModel()->selectByUserId($id);
+            parent::view([$results, $result]);
+        } else {
+            $id = $_COOKIE['autorized'];
+            $result = parent::getUsersModel()->selectById($id);
+            $results = parent::getFilesModel()->selectByUserId($id);
+            parent::view([$results, $result]);
+        }
+    }
 
     // public function logout(): void
     // {
@@ -56,24 +56,25 @@ class AuntificationController extends BaseController
     //     header('Location: /combine/registration');
     // }
 
-    // public function store(): void
-    // {
-    //     parent::getCombineUsersModel()->store(parent::passwordHash($_POST['password']));
-    //     setcookie('success', 'welcome', time() + 2, '/combine', self::getDomain());
-    //     header('Location: /combine/registration');
-    // }
+    public function store(): void
+    {
+        parent::getUsersModel()->store(parent::passwordHash($_POST['password']));
+        setcookie('success', 'welcome', time() + 2, '/', self::getDomain());
+        header('Location: /');
+    }
 
     public function check()
     {
-        $result = parent::getUsersModel()->selectEqualEmailName($_POST['auth_email'], $_POST['auth_name']);
-        self::countToBlock(3);
-        $password = password_verify($_POST['auth_password'], $result[0]['password']);
+        $result = parent::getUsersModel()->selectEqualEmailName($_POST['email'], $_POST['name']);
+        var_dump($result);
+        // self::countToBlock(3, '/');
+        $password = password_verify($_POST['password'], $result[0]['password']);
         $results = parent::getUsersModel()->selectEqualPassword($result[0]['password']);
 
         if (!empty($results) && $password) {
-            count($_POST) === 4 ? setcookie('autorized', $result[0]['id'], time() + 3600 * 24 * 7, '/combine', self::getDomain()) && $_SESSION = [] : $_SESSION['autorized'] = $result[0]['id'];
+            count($_POST) === 4 ? setcookie('autorized', $result[0]['id'], time() + 3600 * 24 * 7, '/', self::getDomain()) && $_SESSION = [] : $_SESSION['autorized'] = $result[0]['id'];
 
-            return header('Location: /combine/ifAutorized');
+            return header('Location: /ifAutorized');
         }
     }
 

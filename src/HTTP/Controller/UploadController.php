@@ -2,48 +2,48 @@
 
 namespace Prushak\Internship\HTTP\Controller;
 
-class FrontController extends BaseController
+class UploadController extends BaseController
 {
-    public function index(): void
-    {
-        $results = parent::getUsersModel()->index();
-        parent::view($results);
-    }
+    // public function index(): void
+    // {
+    //     $results = parent::getUsersModel()->index();
+    //     parent::view($results);
+    // }
 
-    public function edit($id): void
-    {
-        $results = parent::getUsersModel()->elemById($id);
-        parent::view($results);
-    }
+    // public function edit($id): void
+    // {
+    //     $results = parent::getUsersModel()->elemById($id);
+    //     parent::view($results);
+    // }
 
-    public function create(): void
-    {
-        parent::view();
-    }
+    // public function create(): void
+    // {
+    //     parent::view();
+    // }
 
-    public function store(): void
-    {
-        header('Location: /');
-        parent::getUsersModel()->store();
-    }
+    // public function store(): void
+    // {
+    //     header('Location: /');
+    //     parent::getUsersModel()->store();
+    // }
 
-    public function update($id): void
-    {
-        header('Location: /');
-        parent::getUsersModel()->update($id);
-    }
+    // public function update($id): void
+    // {
+    //     header('Location: /');
+    //     parent::getUsersModel()->update($id);
+    // }
 
-    public function destroy($id): void
-    {
-        header('Location: /');
-        parent::getUsersModel()->destroy($id);
-    }
+    // public function destroy($id): void
+    // {
+    //     header('Location: /');
+    //     parent::getUsersModel()->destroy($id);
+    // }
 
-    public function massDestroy(): void
-    {
-        header('Location: /');
-        parent::getCheckService()->splitInputDestroy(parent::getUsersModel());
-    }
+    // public function massDestroy(): void
+    // {
+    //     header('Location: /');
+    //     parent::getCheckService()->splitInputDestroy(parent::getUsersModel());
+    // }
 
     public function upload(): void
     {

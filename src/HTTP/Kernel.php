@@ -49,7 +49,7 @@ class Web
         }
 
         header('HTTP/1.1 404 Not Found');
-        include '../resources/views/404.php';
+        include '../resources/views/status/404.twig';
         die();
     }
 }

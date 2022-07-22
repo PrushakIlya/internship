@@ -12,8 +12,6 @@ class BaseController
 {
     private static object $usersModel;
     private static object $filesModel;
-    private static object $clientsModel;
-    private static array $api;
     private static object $checkService;
     private static object $apiService;
     private static object $logService;
@@ -26,7 +24,6 @@ class BaseController
         self::$checkService = new CheckService();
         self::$apiService = new ApiService();
         self::$logService = new LogService();
-        self::$api = include '../routes/api.php';
         self::$domain = '';
     }
 
@@ -45,11 +42,6 @@ class BaseController
         return self::$usersModel;
     }
 
-    public static function getClientsModel(): object
-    {
-        return self::$clientsModel;
-    }
-
     public static function getFilesModel(): object
     {
         return self::$filesModel;
@@ -65,14 +57,6 @@ class BaseController
         return self::$checkService;
     }
 
-    public static function getApi($param): string
-    {
-        return self::$api[$param] . self::$api['token'];
-    }
-    public static function getApiElem($param, $elem): string
-    {
-        return self::$api[$param] . $elem . self::$api['token'];
-    }
     public static function getApiService(): object
     {
         return self::$apiService;
@@ -114,7 +98,7 @@ class BaseController
     //     }
     // }
 
-    public static function countToBlock($time)
+    public static function countToBlock($time, $url)
     {
         if (empty($result)) {
             $_SESSION['count'] += 1;
@@ -123,12 +107,12 @@ class BaseController
 
                 self::getLogService()->logCombineError('exceptions');
 
-                setcookie('bloked', 'A lot attempt', time() + 60 * 15, '/combine', self::getDomain());
+                setcookie('bloked', 'A lot attempt', time() + 60 * 15, '/', self::getDomain());
             } else {
-                setcookie('error', 'Come again pls', time() + 2, '/combine', self::getDomain());
+                setcookie('error', 'Come again pls', time() + 2, '/', self::getDomain());
             }
 
-            return header('Location: /combine/authorization');
+            return header("Location: $url");
         }
     }
 }

@@ -1,11 +1,11 @@
 import { PATTERNNAME, PATTERNPASSWORD, PATTERNEMAIL } from './exports/expressions.js';
-import { NAMEERROR, PASSWORDERROR_REG, MAILERROR } from './exports/errors.js';
+import { NAMEERROR, PASSWORDERROR, MAILERROR } from './exports/errors.js';
 import { sectionAuthorisation, email, password, firstname, submit, errorEmail, errorPassword, errorFirstname } from './exports/getElementById.js';
 import { getCookieCombine } from './all-functions.js';
 
 if (sectionAuthorisation !== null) {
   if (document.cookie.includes('error')) {
-    errorName.textContent = getCookieCombine(document.cookie);
+    errorFirstname.textContent = getCookieCombine(document.cookie);
   }
 
   const emailFunc = () => {
@@ -15,7 +15,7 @@ if (sectionAuthorisation !== null) {
   };
 
   const passwordFunc = () => {
-    if (!password.value.match(PATTERNPASSWORD)) errorPassword.textContent = PASSWORDERROR_REG;
+    if (!password.value.match(PATTERNPASSWORD)) errorPassword.textContent = PASSWORDERROR;
     else errorPassword.textContent = ' ';
     if (password.value.length === 0) errorPassword.textContent = '';
   };
@@ -33,12 +33,12 @@ if (sectionAuthorisation !== null) {
   document.addEventListener('DOMContentLoaded', function () {
     const callback = () => {
       if (
-        (errorEmail.textContent.length === 1 && errorPassword.textContent.length === 1 && errorName.textContent.length === 1) ||
+        (errorEmail.textContent.length === 1 && errorPassword.textContent.length === 1 && errorFirstname.textContent.length === 1) ||
         (errorEmail.textContent.length === 0 &&
           email.value.length > 0 &&
           errorPassword.textContent.length === 0 &&
           password.value.length > 0 &&
-          errorName.textContent.length === 0 &&
+          errorFirstname.textContent.length === 0 &&
           firstname.value.length > 0)
       ) {
         submit.disabled = false;
