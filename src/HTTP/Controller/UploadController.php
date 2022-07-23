@@ -24,6 +24,7 @@ class UploadController extends BaseController
             header('Location: /');
         }
 
+        var_dump($_SESSION);
         if ($types[count($types) - 1] === $typeFile) {
             $results = parent::getCheckService()->contenerUpload($fileName, $tmpName, 'text');
             parent::successUpload($results, $fileName, $typeFile, $fileSize, $id);
@@ -31,7 +32,6 @@ class UploadController extends BaseController
             foreach ($types as $item) {
                 if ($typeFile === $item) {
                     $results = parent::getCheckService()->contenerUpload($fileName, $tmpName, 'img', $type[1]);
-                    var_dump($results);
                     parent::successUpload($results, $fileName, $typeFile, $fileSize, $id);
                 }
             }

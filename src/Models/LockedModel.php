@@ -24,7 +24,7 @@ class LockedModel extends BaseModel
 
     public function destroy($ip): void
     {
-        $sql = "DELETE FROM locked WHERE id = '$ip'";
+        $sql = "DELETE FROM locked WHERE ip = '$ip'";
         BaseModel::getConn()->exec($sql);
     }
 }

@@ -2,8 +2,6 @@
 
 namespace Prushak\Internship\HTTP\Controller;
 
-session_start();
-
 class AuntificationController extends BaseController
 {
     public function __construct()
@@ -14,9 +12,8 @@ class AuntificationController extends BaseController
         }
 
         $result = parent::getLockedModel()->getByIp($_SERVER['REMOTE_ADDR']);
-
         if (!empty($result)) {
-            if (date('Y-m-d H:i:s') === $result[0]['unlocked_date']) {
+            if (date('Y-m-d H:i:s') > $result[0]['unlocked_date'] || date('Y-m-d H:i:s') === $result[0]['unlocked_date']) {
                 parent::getLockedModel()->destroy($_SERVER['REMOTE_ADDR']);
             } else {
                 header('HTTP/1.0 404 Not Found');
@@ -43,15 +40,9 @@ class AuntificationController extends BaseController
         if (!isset($_SESSION['autorized']) && !isset($_COOKIE['autorized'])) {
             header('Location: /');
         } elseif (isset($_SESSION['autorized'])) {
-            $id = $_SESSION['autorized'];
-            $users = parent::getUsersModel()->selectById($id);
-            $files = parent::getFilesModel()->selectByUserId($id);
-            view('if_autorized', ['users' => $users, 'files' => $files]);
+            parent::ifAuthorizedParam($_SESSION['autorized']);
         } else {
-            $id = $_COOKIE['autorized'];
-            $users = parent::getUsersModel()->selectById($id);
-            $files = parent::getFilesModel()->selectByUserId($id);
-            view('if_autorized', ['users' => $users, 'files' => $files]);
+            parent::ifAuthorizedParam($_COOKIE['autorized']);
         }
     }
 
@@ -72,11 +63,10 @@ class AuntificationController extends BaseController
     public function check()
     {
         $result = parent::getUsersModel()->selectEqualEmailName($_POST['email'], $_POST['firstname']);
-        self::countToBlock(3, '/authorisation', $result);
-
-
         $password = password_verify($_POST['password'], $result[0]['password']);
         $results = parent::getUsersModel()->selectEqualPassword($result[0]['password']);
+
+        self::countToBlock(3, '/authorisation', $result, $results, $password);
 
         if (!empty($results) && $password) {
             count($_POST) === 4 ? setcookie('autorized', $result[0]['id'], time() + 3600 * 24 * 7, '/', self::getDomain()) && $_SESSION = [] : $_SESSION['autorized'] = $result[0]['id'];

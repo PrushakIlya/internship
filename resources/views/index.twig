@@ -7,11 +7,11 @@
 			</div>
 			<form action="/store" method="POST" class="mt-4" style="width:450px">
 				<h1 class="text-center mt-4 fw-bold">SIGN UP</h1>
-				{{ include('./components/input.twig',{error_id: 'error_firstname',name:'firstname',title:'FirstName'}) }}
-				{{ include('./components/input.twig',{error_id: 'error_lastname',name:'lastname',title:'LastName'}) }}
-				{{ include('./components/input.twig',{error_id: 'error_email',name:'email',title:'Email'}) }}
-				{{ include('./components/input.twig',{error_id: 'error_password',name:'password',title:'Password'}) }}
-				{{ include('./components/input.twig',{error_id: 'error_password_conf',name:'password_conf',title:'Confirm Password'}) }}
+				{{ include('./components/input.twig',{error_id: 'error_firstname',name:'firstname',title:'FirstName',type:'text'}) }}
+				{{ include('./components/input.twig',{error_id: 'error_lastname',name:'lastname',title:'LastName',type:'text'}) }}
+				{{ include('./components/input.twig',{error_id: 'error_email',name:'email',title:'Email',type:'text'}) }}
+				{{ include('./components/input.twig',{error_id: 'error_password',name:'password',title:'Password',type:'password'}) }}
+				{{ include('./components/input.twig',{error_id: 'error_password_conf',name:'password_conf',title:'Confirm Password',type:'password'}) }}
 				<input value="Sign up" type="submit" class="btn btn-primary mt-3 w-100" id="submit" disabled>
 				<a href="/authorisation" class="btn btn-primary mt-3 w-100" id="signin">Sign in</a>
 			</form>

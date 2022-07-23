@@ -3,9 +3,6 @@ export const uploadFile = document.getElementById('formFile');
 export const uploadErrors = document.getElementById('upload_errors');
 export const upload = document.getElementById('upload');
 
-
-
-//
 export const firstname = document.getElementById('firstname');
 export const lastname = document.getElementById('lastname');
 export const email = document.getElementById('email');

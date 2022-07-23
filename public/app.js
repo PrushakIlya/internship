@@ -2,49 +2,6 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./resources/js/all-functions.js":
-/*!***************************************!*\
-  !*** ./resources/js/all-functions.js ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getCookie": () => (/* binding */ getCookie),
-/* harmony export */   "navigateCurrentPage": () => (/* binding */ navigateCurrentPage)
-/* harmony export */ });
-var getCookie = function getCookie(name) {
-  var cookie = document.cookie.split('=');
-  var value = cookie[1].replaceAll('%20', ' ');
-  value = value.replaceAll('%21', '');
-  return value;
-}; // export const getCookieCombine = () => {
-//   if (document.cookie.includes('error')) {
-//     const cookies = document.cookie.split(';');
-//     cookies.forEach(element => {
-//       const el = element.split('=');
-//       if (el[0].trim() === 'error') {
-//         const value = el[1].replaceAll('%20', ' ');
-//         errorFirstname.textContent = value;
-//         return 0;
-//       }
-//     });
-//   }
-// };
-
-var navigateCurrentPage = function navigateCurrentPage(button, num, current) {
-  button.addEventListener('click', function () {
-    sessionStorage.setItem('current_page', num);
-  });
-
-  if (sessionStorage.getItem('current_page') == num) {
-    current.classList.remove('current_page');
-    button.classList.add('current_page');
-  }
-};
-
-/***/ }),
-
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -71,8 +28,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _exports_expressions_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./exports/expressions.js */ "./resources/js/exports/expressions.js");
 /* harmony import */ var _exports_errors_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./exports/errors.js */ "./resources/js/exports/errors.js");
 /* harmony import */ var _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./exports/getElementById.js */ "./resources/js/exports/getElementById.js");
-/* harmony import */ var _all_functions_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./all-functions.js */ "./resources/js/all-functions.js");
-
 
 
 
@@ -248,8 +203,7 @@ __webpack_require__.r(__webpack_exports__);
 var uploadSubmit = document.getElementById('upload_submit');
 var uploadFile = document.getElementById('formFile');
 var uploadErrors = document.getElementById('upload_errors');
-var upload = document.getElementById('upload'); //
-
+var upload = document.getElementById('upload');
 var firstname = document.getElementById('firstname');
 var lastname = document.getElementById('lastname');
 var email = document.getElementById('email');

@@ -1,7 +1,6 @@
 import { PATTERNNAME, PATTERNPASSWORD, PATTERNEMAIL } from './exports/expressions.js';
 import { NAMEERROR, PASSWORDERROR, MAILERROR } from './exports/errors.js';
 import { sectionAuthorisation, email, password, firstname, submit, errorEmail, errorPassword, errorFirstname } from './exports/getElementById.js';
-import { getCookieCombine } from './all-functions.js';
 
 if (sectionAuthorisation !== null) {
   if (document.cookie.includes('error')) {

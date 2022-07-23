@@ -3,6 +3,7 @@
 include '../vendor/autoload.php';
 include '../src/HTTP/Kernel.php';
 
+session_start();
 $dotenv = Dotenv\Dotenv::createImmutable(str_replace('/public', '', __DIR__));
 $dotenv->load();
 

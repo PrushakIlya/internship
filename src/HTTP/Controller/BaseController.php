@@ -4,7 +4,6 @@ namespace Prushak\Internship\HTTP\Controller;
 
 use Prushak\Internship\Models\FilesModel;
 use Prushak\Internship\Models\UsersModel;
-use Prushak\Internship\Services\ApiService;
 use Prushak\Internship\Services\CheckService;
 use Prushak\Internship\Services\LogService;
 use Prushak\Internship\Models\LockedModel;
@@ -15,7 +14,6 @@ class BaseController
     private static object $filesModel;
     private static object $lockedModel;
     private static object $checkService;
-    private static object $apiService;
     private static object $logService;
     private static string $domain;
 
@@ -25,7 +23,6 @@ class BaseController
         self::$filesModel = new FilesModel();
         self::$lockedModel = new LockedModel();
         self::$checkService = new CheckService();
-        self::$apiService = new ApiService();
         self::$logService = new LogService();
         self::$domain = '';
     }
@@ -60,24 +57,10 @@ class BaseController
         return self::$checkService;
     }
 
-    public static function getApiService(): object
-    {
-        return self::$apiService;
-    }
     public static function getLogService(): object
     {
         return self::$logService;
     }
-
-    // public static function successUpload($results, $fileText, $arr, $typeFile): void
-    // {
-    //     if ($results[0]) {
-    //         self::getFilesModel()->store($results[1]);
-    //         self::getLogService()->log($fileText . $arr[1], $typeFile);
-    //     } else {
-    //         self::getLogService()->log($fileText . $arr[1], $typeFile, 'Connect is not stable');
-    //     }
-    // }
 
     public static function ifHaveCookie(): void
     {
@@ -101,9 +84,9 @@ class BaseController
         }
     }
 
-    public static function countToBlock($time, $url, $result)
+    public static function countToBlock($time, $url, $result, $results)
     {
-        if (empty($result)) {
+        if (empty($result) || empty($results) || empty($password)) {
             $_SESSION['count'] += 1;
             if ($_SESSION['count'] === $time && isset($_SERVER['REMOTE_ADDR'])) {
                 $_SESSION['count'] = 0;
@@ -111,14 +94,18 @@ class BaseController
                 $date = date('Y-m-d H:i:s', (time() + $_ENV['TIME_BLOCK']));
                 self::getLockedModel()->store($_SERVER['REMOTE_ADDR'], $date);
                 self::getLogService()->logError('exceptions');
-            
-                
-
             } else {
                 setcookie('error', 'Come again pls', time() + 2, '/', self::getDomain());
             }
 
             return header("Location: $url");
         }
+    }
+    public static function ifAuthorizedParam($storage)
+    {
+        $id = $storage;
+        $users = self::getUsersModel()->selectById($id);
+        $files = self::getFilesModel()->selectByUserId($id);
+        view('if_autorized', ['users' => $users, 'files' => $files]);
     }
 }
