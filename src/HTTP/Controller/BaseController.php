@@ -108,11 +108,12 @@ class BaseController
             if ($_SESSION['count'] === $time && isset($_SERVER['REMOTE_ADDR'])) {
                 $_SESSION['count'] = 0;
 
-                $time = time() + 900;
-                $time = gmdate('Y-m-d H:i:s', $time);
-                self::getLockedModel()->store($_SERVER['REMOTE_ADDR'], $time);
+                $date = date('Y-m-d H:i:s', (time() + $_ENV['TIME_BLOCK']));
+                self::getLockedModel()->store($_SERVER['REMOTE_ADDR'], $date);
                 self::getLogService()->logError('exceptions');
-            // setcookie('bloked', 'A lot attempt', time() + 60 * 15, '/', self::getDomain());
+            
+                
+
             } else {
                 setcookie('error', 'Come again pls', time() + 2, '/', self::getDomain());
             }

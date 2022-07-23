@@ -3,8 +3,11 @@
 include '../vendor/autoload.php';
 include '../src/HTTP/Kernel.php';
 
-// ini_set('display_errors', 1);
-// error_reporting(E_ALL);
+$dotenv = Dotenv\Dotenv::createImmutable(str_replace('/public', '', __DIR__));
+$dotenv->load();
+
+date_default_timezone_set($_ENV['TIMEZONE']);
+ini_set('display_errors', $_ENV['DEBUG_DISPLAY']);
 
 try {
     include '../database/seeders/databaseSeeder.php';

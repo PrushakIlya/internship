@@ -5,7 +5,15 @@ import { getCookieCombine } from './all-functions.js';
 
 if (sectionAuthorisation !== null) {
   if (document.cookie.includes('error')) {
-    errorFirstname.textContent = getCookieCombine(document.cookie);
+    const cookies = document.cookie.split(';');
+    cookies.forEach(element => {
+      const el = element.split('=');
+      if (el[0].trim() === 'error') {
+        const value = el[1].replaceAll('%20', ' ');
+        errorFirstname.textContent = value;
+        return 0;
+      }
+    });
   }
 
   const emailFunc = () => {

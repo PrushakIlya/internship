@@ -11,7 +11,6 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "getCookie": () => (/* binding */ getCookie),
-/* harmony export */   "getCookieCombine": () => (/* binding */ getCookieCombine),
 /* harmony export */   "navigateCurrentPage": () => (/* binding */ navigateCurrentPage)
 /* harmony export */ });
 var getCookie = function getCookie(name) {
@@ -19,14 +18,20 @@ var getCookie = function getCookie(name) {
   var value = cookie[1].replaceAll('%20', ' ');
   value = value.replaceAll('%21', '');
   return value;
-};
-var getCookieCombine = function getCookieCombine(name) {
-  var cookies = document.cookie.split(';');
-  var cookie = cookies[0].split('=');
-  var value = cookie[1].replaceAll('%20', ' ');
-  value = value.replaceAll('%21', '');
-  return value;
-};
+}; // export const getCookieCombine = () => {
+//   if (document.cookie.includes('error')) {
+//     const cookies = document.cookie.split(';');
+//     cookies.forEach(element => {
+//       const el = element.split('=');
+//       if (el[0].trim() === 'error') {
+//         const value = el[1].replaceAll('%20', ' ');
+//         errorFirstname.textContent = value;
+//         return 0;
+//       }
+//     });
+//   }
+// };
+
 var navigateCurrentPage = function navigateCurrentPage(button, num, current) {
   button.addEventListener('click', function () {
     sessionStorage.setItem('current_page', num);
@@ -74,7 +79,16 @@ __webpack_require__.r(__webpack_exports__);
 
 if (_exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.sectionAuthorisation !== null) {
   if (document.cookie.includes('error')) {
-    _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.errorFirstname.textContent = (0,_all_functions_js__WEBPACK_IMPORTED_MODULE_3__.getCookieCombine)(document.cookie);
+    var cookies = document.cookie.split(';');
+    cookies.forEach(function (element) {
+      var el = element.split('=');
+
+      if (el[0].trim() === 'error') {
+        var value = el[1].replaceAll('%20', ' ');
+        _exports_getElementById_js__WEBPACK_IMPORTED_MODULE_2__.errorFirstname.textContent = value;
+        return 0;
+      }
+    });
   }
 
   var emailFunc = function emailFunc() {

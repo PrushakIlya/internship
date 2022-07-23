@@ -18,5 +18,3 @@ function view($template, $payload = [])
     $twig->addExtension(new \Twig\Extension\DebugExtension());
     echo $twig->render("/$template.twig", $payload);
 }
-
-

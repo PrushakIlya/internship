@@ -14,12 +14,15 @@ class AuntificationController extends BaseController
         }
 
         $result = parent::getLockedModel()->getByIp($_SERVER['REMOTE_ADDR']);
+
         if (!empty($result)) {
-            time() == $result[0]['unlocked_date'] && parent::getLockedModel()->destroy($_SERVER['REMOTE_ADDR']);
-        } else {
-            header('HTTP/1.0 404 Not Found');
-            include '../resources/views/status/403.twig';
-            die();
+            if (date('Y-m-d H:i:s') === $result[0]['unlocked_date']) {
+                parent::getLockedModel()->destroy($_SERVER['REMOTE_ADDR']);
+            } else {
+                header('HTTP/1.0 404 Not Found');
+                include '../resources/views/status/403.twig';
+                die();
+            }
         }
     }
 
@@ -69,7 +72,9 @@ class AuntificationController extends BaseController
     public function check()
     {
         $result = parent::getUsersModel()->selectEqualEmailName($_POST['email'], $_POST['firstname']);
-        self::countToBlock(1, '/', $result);
+        self::countToBlock(3, '/authorisation', $result);
+
+
         $password = password_verify($_POST['password'], $result[0]['password']);
         $results = parent::getUsersModel()->selectEqualPassword($result[0]['password']);
 
