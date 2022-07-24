@@ -1,5 +1,4 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./resources/js/api-type.js":
@@ -8,14 +7,15 @@
   \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "checkEmail": () => (/* binding */ checkEmail),
-/* harmony export */   "checkEmailGo": () => (/* binding */ checkEmailGo)
+/* harmony export */   "CHECKEMAIL": () => (/* binding */ CHECKEMAIL),
+/* harmony export */   "CHECKEMAILGO": () => (/* binding */ CHECKEMAILGO)
 /* harmony export */ });
 var ROOT = 'http://localhost:3000';
-var checkEmail = ROOT + '/api/checkEmail';
-var checkEmailGo = ROOT + '/api/checkEmailGo';
+var CHECKEMAIL = ROOT + '/api/checkEmail';
+var CHECKEMAILGO = ROOT + '/api/checkEmailGo';
 
 /***/ }),
 
@@ -25,6 +25,7 @@ var checkEmailGo = ROOT + '/api/checkEmailGo';
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "apiCheckEmail": () => (/* binding */ apiCheckEmail)
@@ -39,7 +40,6 @@ var apiCheckEmail = function apiCheckEmail(url, payload, error_block) {
   }).then(function (res) {
     return res.json();
   }).then(function (body) {
-    console.log(body);
     if (body === true) error_block.innerHTML = 'Email is taken';
   })["catch"](function (error) {
     return console.log(error);
@@ -54,9 +54,12 @@ var apiCheckEmail = function apiCheckEmail(url, payload, error_block) {
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _api_type_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api-type.js */ "./resources/js/api-type.js");
-/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./api.js */ "./resources/js/api.js");
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vars.js */ "./resources/js/vars.js");
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_vars_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _upload_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./upload.js */ "./resources/js/upload.js");
+/* harmony import */ var _upload_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_upload_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _create_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./create.js */ "./resources/js/create.js");
 /* harmony import */ var _edit_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit.js */ "./resources/js/edit.js");
 
@@ -72,11 +75,15 @@ __webpack_require__.r(__webpack_exports__);
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _api_type_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api-type.js */ "./resources/js/api-type.js");
 /* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./api.js */ "./resources/js/api.js");
+/* harmony import */ var _expressions_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./expressions.js */ "./resources/js/expressions.js");
 
 
+
+var task = window.location.pathname.split('/');
 var create_firstname = document.getElementById('create_name');
 var create_email = document.getElementById('create_email');
 var create_submit = document.getElementById('create_submit');
@@ -84,15 +91,19 @@ var create_error_name = document.getElementById('create_error_name');
 var create_error_email = document.getElementById('create_error_email');
 
 if (create_firstname !== null && create_email !== null && create_submit !== null && create_error_name !== null && create_error_email !== null) {
-  create_firstname.oninput = function () {
-    if (!create_firstname.value.match(/^(([A-Za-z]|.){3,50})$/g)) create_error_name.innerHTML = 'NAME has only letters, length[3,20]';else create_error_name.innerHTML = ' ';
+  var inputCreateFirstName = function inputCreateFirstName() {
+    if (!create_firstname.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_2__.PATTERNFIRSTNAME)) create_error_name.innerHTML = 'NAME has only letters, length[3,20]';else create_error_name.innerHTML = ' ';
   };
 
-  create_email.oninput = function () {
-    (0,_api_js__WEBPACK_IMPORTED_MODULE_1__.apiCheckEmail)(_api_type_js__WEBPACK_IMPORTED_MODULE_0__.checkEmail, create_email.value, create_error_email) || (0,_api_js__WEBPACK_IMPORTED_MODULE_1__.apiCheckEmail)(_api_type_js__WEBPACK_IMPORTED_MODULE_0__.checkEmailGo, create_email.value, create_error_email);
-    if (!create_email.value.match(/^(([a-zA-Z0-9]{3,40})@([a-z]+).(com|yandex|ru))$/g)) create_error_email.innerHTML = 'EMAIL has letters and numbers, length[3,40]';else create_error_email.innerHTML = ' ';
+  var inputCreateEmail = function inputCreateEmail() {
+    task[1] === 'two' ? (0,_api_js__WEBPACK_IMPORTED_MODULE_1__.apiCheckEmail)(_api_type_js__WEBPACK_IMPORTED_MODULE_0__.CHECKEMAILGO, create_email.value, create_error_email) : (0,_api_js__WEBPACK_IMPORTED_MODULE_1__.apiCheckEmail)(_api_type_js__WEBPACK_IMPORTED_MODULE_0__.CHECKEMAIL, create_email.value, create_error_email);
+    if (!create_email.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_2__.PATTERNEMAIL)) create_error_email.innerHTML = 'EMAIL has letters and numbers, length[3,40]';else create_error_email.innerHTML = ' ';
   };
 
+  create_firstname.oninput = inputCreateFirstName;
+  ;
+  create_email.oninput = inputCreateEmail;
+  ;
   document.addEventListener('DOMContentLoaded', function () {
     var callback = function callback() {
       if (create_error_name.textContent.length === 1 && create_error_email.textContent.length === 1) {
@@ -121,11 +132,15 @@ if (create_firstname !== null && create_email !== null && create_submit !== null
   \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _api_type_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api-type.js */ "./resources/js/api-type.js");
 /* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./api.js */ "./resources/js/api.js");
+/* harmony import */ var _expressions_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./expressions.js */ "./resources/js/expressions.js");
 
 
+
+var task = window.location.pathname.split('/');
 var edit_firstname = document.getElementById('edit_name');
 var edit_email = document.getElementById('edit_email');
 var edit_submit = document.getElementById('edit_submit');
@@ -133,19 +148,29 @@ var edit_error_name = document.getElementById('edit_error_name');
 var edit_error_email = document.getElementById('edit_error_email');
 
 if (edit_email !== null && edit_submit !== null && edit_error_name !== null && edit_error_email !== null) {
+  var inputEditFirstname = function inputEditFirstname() {
+    if (!edit_firstname.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_2__.PATTERNFIRSTNAME)) edit_error_name.innerHTML = 'NAME has only letters, length[3,20]';else edit_error_name.innerHTML = ' ';
+  };
+
+  var inputEditEmail = function inputEditEmail() {
+    if (task[1] === 'two') {
+      (0,_api_js__WEBPACK_IMPORTED_MODULE_1__.apiCheckEmail)(_api_type_js__WEBPACK_IMPORTED_MODULE_0__.CHECKEMAILGO, edit_email.value, edit_error_email);
+      start_mail !== edit_email.value && (0,_api_js__WEBPACK_IMPORTED_MODULE_1__.apiCheckEmail)(_api_type_js__WEBPACK_IMPORTED_MODULE_0__.CHECKEMAIL, edit_email.value, edit_error_email);
+    } else {
+      (0,_api_js__WEBPACK_IMPORTED_MODULE_1__.apiCheckEmail)(_api_type_js__WEBPACK_IMPORTED_MODULE_0__.CHECKEMAIL, edit_email.value, edit_error_email);
+      start_mail !== edit_email.value && (0,_api_js__WEBPACK_IMPORTED_MODULE_1__.apiCheckEmail)(_api_type_js__WEBPACK_IMPORTED_MODULE_0__.CHECKEMAILGO, edit_email.value, edit_error_email);
+    }
+
+    if (!edit_email.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_2__.PATTERNEMAIL)) edit_error_email.innerHTML = 'EMAIL has letters and numbers, length[3,40]';else edit_error_email.innerHTML = ' ';
+  };
+
   edit_error_name.innerHTML = ' ';
   edit_error_email.innerHTML = ' ';
   var start_mail = edit_email.value;
-
-  edit_firstname.oninput = function () {
-    if (!edit_firstname.value.match(/^(([A-Za-z]|.){3,50})$/g)) edit_error_name.innerHTML = 'NAME has only letters, length[3,20]';else edit_error_name.innerHTML = ' ';
-  };
-
-  edit_email.oninput = function () {
-    if (start_mail !== edit_email.value) (0,_api_js__WEBPACK_IMPORTED_MODULE_1__.apiCheckEmail)(_api_type_js__WEBPACK_IMPORTED_MODULE_0__.checkEmail, edit_email.value, edit_error_email);
-    if (!edit_email.value.match(/^(([a-zA-Z0-9]{3,40})@([a-z]+).(com|yandex|ru))$/g)) edit_error_email.innerHTML = 'EMAIL has letters and numbers, length[3,40]';else edit_error_email.innerHTML = ' ';
-  };
-
+  edit_firstname.oninput = inputEditFirstname;
+  ;
+  edit_email.oninput = inputEditEmail;
+  ;
   document.addEventListener('DOMContentLoaded', function () {
     var callback = function callback() {
       if (edit_error_name.textContent.length === 1 && edit_error_email.textContent.length === 1) {
@@ -168,12 +193,73 @@ if (edit_email !== null && edit_submit !== null && edit_error_name !== null && e
 
 /***/ }),
 
+/***/ "./resources/js/expressions.js":
+/*!*************************************!*\
+  !*** ./resources/js/expressions.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PATTERNEMAIL": () => (/* binding */ PATTERNEMAIL),
+/* harmony export */   "PATTERNFIRSTNAME": () => (/* binding */ PATTERNFIRSTNAME)
+/* harmony export */ });
+var PATTERNFIRSTNAME = /^(([A-Za-z]|.){3,50})$/g;
+var PATTERNEMAIL = /^(([a-zA-Z0-9]{3,26})@([a-z]{3,10}).(com|yandex|ru))$/g;
+
+/***/ }),
+
+/***/ "./resources/js/upload.js":
+/*!********************************!*\
+  !*** ./resources/js/upload.js ***!
+  \********************************/
+/***/ (() => {
+
+var upload_submit = document.getElementById('upload_submit');
+var upload_file = document.getElementById('formFile');
+var upload_errors = document.getElementById('upload_errors');
+
+upload_file.oninput = function () {
+  if (upload_file.files[0].size > 200000) {
+    upload_errors.innerHTML = 'Max file size is 200kByt';
+    upload_submit.disabled = true;
+    console.log(upload_file.files[0].size);
+  }
+
+  if (upload_file.files[0].type !== 'image/png' && upload_file.files[0].type !== 'image/jpeg' && upload_file.files[0].type !== 'text/plain') {
+    upload_errors.innerHTML = 'Only png,jpeg,txt';
+    upload_submit.disabled = true;
+    console.log(upload_file.files[0].type);
+  } else {
+    upload_errors.innerHTML = ' ';
+    upload_submit.disabled = false;
+  }
+};
+
+/***/ }),
+
+/***/ "./resources/js/vars.js":
+/*!******************************!*\
+  !*** ./resources/js/vars.js ***!
+  \******************************/
+/***/ (() => {
+
+var create_firstname = document.getElementById('create_name');
+var create_email = document.getElementById('create_email');
+var create_submit = document.getElementById('create_submit');
+var create_error_name = document.getElementById('create_error_name');
+var create_error_email = document.getElementById('create_error_email');
+
+/***/ }),
+
 /***/ "./resources/sass/app.sass":
 /*!*********************************!*\
   !*** ./resources/sass/app.sass ***!
   \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -239,6 +325,18 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	
