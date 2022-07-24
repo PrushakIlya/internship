@@ -15,5 +15,5 @@ try {
 } catch (PDOException $e) {
     echo $e;
 }
-$web = new Web();
+$web = new Kernal();
 $web->route();

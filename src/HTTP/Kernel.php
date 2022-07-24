@@ -1,6 +1,6 @@
 <?php
 
-class Web
+class Kernal
 {
     private array $web;
     private array $api;
