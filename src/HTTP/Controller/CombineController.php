@@ -8,6 +8,7 @@ class CombineController extends BaseController
 {
     public function __construct()
     {
+        parent::__construct();
         if (!$_COOKIE) {
             $_SESSION['count'] = 0;
         }
