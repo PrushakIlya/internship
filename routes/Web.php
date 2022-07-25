@@ -1,5 +1,5 @@
 <?php
-
+// [route_name, [controller_name, method_name]];
 return [
     '/storeUploded' => 'upload/store',
     '/logout' => 'auntification/logout',

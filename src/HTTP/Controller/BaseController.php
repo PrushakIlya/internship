@@ -10,59 +10,59 @@ use Prushak\Internship\Models\LockedModel;
 
 class BaseController
 {
-    private static object $usersModel;
-    private static object $filesModel;
-    private static object $lockedModel;
-    private static object $checkService;
-    private static object $logService;
-    private static string $domain;
+    private object $usersModel;
+    private object $filesModel;
+    private object $lockedModel;
+    private object $checkService;
+    private object $logService;
+    private string $domain;
 
     public function __construct()
     {
-        self::$usersModel = new UsersModel();
-        self::$filesModel = new FilesModel();
-        self::$lockedModel = new LockedModel();
-        self::$checkService = new CheckService();
-        self::$logService = new LogService();
-        self::$domain = '';
+        $this->usersModel = new UsersModel();
+        $this->filesModel = new FilesModel();
+        $this->lockedModel = new LockedModel();
+        $this->checkService = new CheckService();
+        $this->logService = new LogService();
+        $this->domain = '';
     }
 
-    public static function getDomain()
+    public function getDomain()
     {
-        return self::$domain;
+        return $this->domain;
     }
 
-    public static function getUsersModel(): object
+    public function getUsersModel(): object
     {
-        return self::$usersModel;
+        return $this->usersModel;
     }
 
-    public static function getLockedModel(): object
+    public function getLockedModel(): object
     {
-        return self::$lockedModel;
+        return $this->lockedModel;
     }
 
-    public static function getFilesModel(): object
+    public function getFilesModel(): object
     {
-        return self::$filesModel;
+        return $this->filesModel;
     }
 
-    public static function passwordHash($request)
+    public function passwordHash($request)
     {
         return password_hash($request, PASSWORD_BCRYPT);
     }
 
-    public static function getCheckService(): object
+    public function getCheckService(): object
     {
-        return self::$checkService;
+        return $this->checkService;
     }
 
-    public static function getLogService(): object
+    public function getLogService(): object
     {
-        return self::$logService;
+        return $this->logService;
     }
 
-    public static function ifHaveCookie(): void
+    public function ifHaveCookie(): void
     {
         if ($_COOKIE && count($_COOKIE) >= 2 && !$_COOKIE['error'] && $_COOKIE['autorized']) {
             header('Location: /ifAutorized');
@@ -71,20 +71,20 @@ class BaseController
         }
     }
 
-    public static function successUpload($results, $fileName, $typeFile, $fileSize, $id): void
+    public function successUpload($results, $fileName, $typeFile, $fileSize, $id): void
     {
-        $sumSize = self::$filesModel->getSumSize();
+        $sumSize = $this->filesModel->getSumSize();
 
         if ($results[0]) {
-            self::getFilesModel()->store($fileName, $id);
+            $this->getFilesModel()->store($fileName, $id);
 
-            self::getLogService()->log($fileName .'.'. $typeFile, $fileSize, 'successes', $sumSize[0]['sum']);
+            $this->getLogService()->log($fileName .'.'. $typeFile, $fileSize, 'successes', $sumSize[0]['sum']);
         } else {
-            self::getLogService()->logError('errors');
+            $this->getLogService()->logError('errors');
         }
     }
 
-    public static function countToBlock($time, $url, $result, $results)
+    public function countToBlock($time, $url, $result, $results)
     {
         if (empty($result) || empty($results) || empty($password)) {
             $_SESSION['count'] += 1;
@@ -92,20 +92,20 @@ class BaseController
                 $_SESSION['count'] = 0;
 
                 $date = date('Y-m-d H:i:s', (time() + $_ENV['TIME_BLOCK']));
-                self::getLockedModel()->store($_SERVER['REMOTE_ADDR'], $date);
-                self::getLogService()->logError('exceptions');
+                $this->getLockedModel()->store($_SERVER['REMOTE_ADDR'], $date);
+                $this->getLogService()->logError('exceptions');
             } else {
-                setcookie('error', 'Come again pls', time() + 2, '/', self::getDomain());
+                setcookie('error', 'Come again pls', time() + 2, '/', $this->getDomain());
             }
 
             return header("Location: $url");
         }
     }
-    public static function ifAuthorizedParam($storage)
+    public function ifAuthorizedParam($storage)
     {
         $id = $storage;
-        $users = self::getUsersModel()->selectById($id);
-        $files = self::getFilesModel()->selectByUserId($id);
+        $users = $this->getUsersModel()->selectById($id);
+        $files = $this->getFilesModel()->selectByUserId($id);
         view('if_autorized', ['users' => $users, 'files' => $files]);
     }
 }

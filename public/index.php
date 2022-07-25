@@ -16,4 +16,4 @@ try {
     echo $e;
 }
 $web = new Kernal();
-$web->route();
+$web->run();

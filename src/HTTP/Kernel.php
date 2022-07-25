@@ -13,7 +13,7 @@ class Kernal
         $this->namespace = 'Prushak\Internship\HTTP\Controller\\';
     }
 
-    public function route()
+    public function run()
     {
         $route = [];
         $arr = explode('/', $_SERVER['REQUEST_URI']);
