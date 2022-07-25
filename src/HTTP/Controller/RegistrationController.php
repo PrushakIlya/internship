@@ -6,12 +6,12 @@ class RegistrationController extends BaseController
 {
     public function index(): void
     {
-        parent::view();
+        $this->view();
     }
     public function store(): void
     {
-        parent::getClientsModel()->store(parent::passwordHash($_POST['password']));
-        setcookie('success', 'welcome', time() + 2, '/registration', self::getDomain());
+        $this->getClientsModel()->store($this->passwordHash($_POST['password']));
+        setcookie('success', 'welcome', time() + 2, '/registration', $this->getDomain());
         header('Location: /registration');
     }
 }

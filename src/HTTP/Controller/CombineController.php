@@ -8,7 +8,6 @@ class CombineController extends BaseController
 {
     public function __construct()
     {
-        new BaseController();
         if (!$_COOKIE) {
             $_SESSION['count'] = 0;
         }
@@ -22,12 +21,12 @@ class CombineController extends BaseController
 
     public function registration(): void
     {
-        parent::getCheckService()->checkSessionCookies(parent::view());
+        $this->getCheckService()->checkSessionCookies($this->view());
     }
 
     public function authorization(): void
     {
-        parent::getCheckService()->checkSessionCookies(parent::view());
+        $this->getCheckService()->checkSessionCookies($this->view());
     }
 
     public function ifAutorized(): void
@@ -36,40 +35,40 @@ class CombineController extends BaseController
             header('Location: /combine/registration');
         } elseif (isset($_SESSION['autorized'])) {
             $id = $_SESSION['autorized'];
-            $result = parent::getCombineUsersModel()->selectById($id);
-            $results = parent::getCombineFilesModel()->selectByUserId($id);
-            parent::view([$results, $result]);
+            $result = $this->getCombineUsersModel()->selectById($id);
+            $results = $this->getCombineFilesModel()->selectByUserId($id);
+            $this->view([$results, $result]);
         } else {
             $id = $_COOKIE['autorized'];
-            $result = parent::getCombineUsersModel()->selectById($id);
-            $results = parent::getCombineFilesModel()->selectByUserId($id);
-            parent::view([$results, $result]);
+            $result = $this->getCombineUsersModel()->selectById($id);
+            $results = $this->getCombineFilesModel()->selectByUserId($id);
+            $this->view([$results, $result]);
         }
     }
 
     public function logout(): void
     {
-        setcookie('autorized', ' ', time() - 1, '/combine', self::getDomain());
+        setcookie('autorized', ' ', time() - 1, '/combine', $this->getDomain());
         $_SESSION = [];
         header('Location: /combine/registration');
     }
 
     public function store(): void
     {
-        parent::getCombineUsersModel()->store(parent::passwordHash($_POST['password']));
-        setcookie('success', 'welcome', time() + 2, '/combine', self::getDomain());
+        $this->getCombineUsersModel()->store($this->passwordHash($_POST['password']));
+        setcookie('success', 'welcome', time() + 2, '/combine', $this->getDomain());
         header('Location: /combine/registration');
     }
 
     public function check()
     {
-        $result = parent::getCombineUsersModel()->selectEqualEmailName($_POST['auth_email'], $_POST['auth_name']);
-        self::countToBlock(3);
+        $result = $this->getCombineUsersModel()->selectEqualEmailName($_POST['auth_email'], $_POST['auth_name']);
+        $this->countToBlock(3);
         $password = password_verify($_POST['auth_password'], $result[0]['password']);
-        $results = parent::getCombineUsersModel()->selectEqualPassword($result[0]['password']);
+        $results = $this->getCombineUsersModel()->selectEqualPassword($result[0]['password']);
 
         if (!empty($results) && $password) {
-            count($_POST) === 4 ? setcookie('autorized', $result[0]['id'], time() + 3600 * 24 * 7, '/combine', self::getDomain()) && $_SESSION = [] : $_SESSION['autorized'] = $result[0]['id'];
+            count($_POST) === 4 ? setcookie('autorized', $result[0]['id'], time() + 3600 * 24 * 7, '/combine', $this->getDomain()) && $_SESSION = [] : $_SESSION['autorized'] = $result[0]['id'];
 
             return header('Location: /combine/ifAutorized');
         }
@@ -84,7 +83,6 @@ class CombineController extends BaseController
         $fileName = uniqid('upload_');
         $type = explode('/', $typeFile);
         $id = 0;
-        var_dump($type[1]);
         if (isset($_SESSION['autorized'])) {
             $id = $_SESSION['autorized'];
             header('Location: /combine/ifAutorized');
@@ -96,13 +94,13 @@ class CombineController extends BaseController
         }
 
         if ($types[count($types) - 1] === $typeFile) {
-            $results = parent::getCheckService()->contenerUpload($fileName, $tmpName, 'text');
-            parent::successUploadCombine($results, $fileName, $typeFile, $fileSize, $id);
+            $results = $this->getCheckService()->contenerUpload($fileName, $tmpName, 'text');
+            $this->successUploadCombine($results, $fileName, $typeFile, $fileSize, $id);
         } else {
             foreach ($types as $item) {
                 if ($typeFile === $item) {
-                    $results = parent::getCheckService()->contenerUpload($fileName, $tmpName, 'img', $type[1]);
-                    parent::successUploadCombine($results, $fileName, $typeFile, $fileSize, $id);
+                    $results = $this->getCheckService()->contenerUpload($fileName, $tmpName, 'img', $type[1]);
+                    $this->successUploadCombine($results, $fileName, $typeFile, $fileSize, $id);
                 }
             }
         }

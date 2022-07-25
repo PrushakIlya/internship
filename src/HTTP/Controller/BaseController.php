@@ -13,137 +13,137 @@ use Prushak\Internship\Models\CombineUsersModel;
 
 class BaseController
 {
-    private static object $usersModel;
-    private static object $filesModel;
-    private static object $clientsModel;
-    private static array $api;
-    private static object $checkService;
-    private static object $apiService;
-    private static object $logService;
-    private static object $combineUsersModel;
-    private static object $combineFilesModel;
-    private static string $domain;
+    private object $usersModel;
+    private object $filesModel;
+    private object $clientsModel;
+    private array $api;
+    // private object $checkService;
+    private object $apiService;
+    private object $logService;
+    private object $combineUsersModel;
+    private object $combineFilesModel;
+    private string $domain;
 
     public function __construct()
     {
-        self::$usersModel = new UsersModel();
-        self::$filesModel = new FilesModel();
-        self::$clientsModel = new ClientsModel();
-        self::$checkService = new CheckService();
-        self::$apiService = new ApiService();
-        self::$logService = new LogService();
-        self::$combineFilesModel = new CombineFilesModel();
-        self::$combineUsersModel = new CombineUsersModel();
-        self::$api = include '../routes/api.php';
-        self::$domain = '';
+        $this->usersModel = new UsersModel();
+        $this->filesModel = new FilesModel();
+        $this->clientsModel = new ClientsModel();
+        // $this->checkService = new CheckService();
+        $this->apiService = new ApiService();
+        $this->logService = new LogService();
+        $this->combineFilesModel = new CombineFilesModel();
+        $this->combineUsersModel = new CombineUsersModel();
+        $this->api = include '../routes/api.php';
+        $this->domain = '';
     }
 
-    public static function getDomain()
+    public function getDomain()
     {
-        return self::$domain;
+        return $this->domain;
     }
 
-    public static function view($results = [], string $view = 'layout.php')
+    public function view($results = [], string $view = 'layout.php')
     {
         include '../resources/views/'.$view;
     }
 
-    public static function getCombineFilesModel()
+    public function getCombineFilesModel()
     {
-        return self::$combineFilesModel;
+        return $this->combineFilesModel;
     }
 
-    public static function getCombineUsersModel()
+    public function getCombineUsersModel()
     {
-        return self::$combineUsersModel;
+        return new CombineUsersModel();
     }
 
-    public static function getUsersModel(): object
+    public function getUsersModel(): object
     {
-        return self::$usersModel;
+        return $this->usersModel;
     }
 
-    public static function getClientsModel(): object
+    public function getClientsModel(): object
     {
-        return self::$clientsModel;
+        return $this->clientsModel;
     }
 
-    public static function getFilesModel(): object
+    public function getFilesModel(): object
     {
-        return self::$filesModel;
+        return $this->filesModel;
     }
 
-    public static function passwordHash($request)
+    public function passwordHash($request)
     {
         return password_hash($request, PASSWORD_BCRYPT);
     }
 
-    public static function getCheckService(): object
+    public function getCheckService(): object
     {
-        return self::$checkService;
+        return new CheckService();
     }
 
-    public static function getApi($param): string
+    public function getApi($param): string
     {
-        return self::$api[$param] . self::$api['token'];
+        return $this->api[$param] . $this->api['token'];
     }
-    public static function getApiElem($param, $elem): string
+    public function getApiElem($param, $elem): string
     {
-        return self::$api[$param] . $elem . self::$api['token'];
+        return $this->api[$param] . $elem . $this->api['token'];
     }
-    public static function getApiService(): object
+    public function getApiService(): object
     {
-        return self::$apiService;
+        return $this->apiService;
     }
-    public static function getLogService(): object
+    public function getLogService(): object
     {
-        return self::$logService;
+        return $this->logService;
     }
 
-    public static function successUpload($results, $fileText, $arr, $typeFile): void
+    public function successUpload($results, $fileText, $arr, $typeFile): void
     {
         if ($results[0]) {
-            self::getFilesModel()->store($results[1]);
-            self::getLogService()->log($fileText . $arr[1], $typeFile);
+            $this->getFilesModel()->store($results[1]);
+            $this->getLogService()->log($fileText . $arr[1], $typeFile);
         } else {
-            self::getLogService()->log($fileText . $arr[1], $typeFile, 'Connect is not stable');
+            $this->getLogService()->log($fileText . $arr[1], $typeFile, 'Connect is not stable');
         }
     }
 
-    public static function ifHaveCookie(): void
+    public function ifHaveCookie(): void
     {
         if ($_COOKIE && count($_COOKIE) >= 2 && !$_COOKIE['error'] && $_COOKIE['autorized']) {
             header('Location: /autorization/ifAutorized');
         } else {
-            self::view();
+            $this->view();
         }
     }
 
-    public static function successUploadCombine($results, $fileName, $typeFile, $fileSize, $id): void
+    public function successUploadCombine($results, $fileName, $typeFile, $fileSize, $id): void
     {
-        $sumSize = self::$combineFilesModel->getSumSize();
+        $sumSize = $this->combineFilesModel->getSumSize();
         var_dump($results);
         if ($results[0]) {
-            self::getCombineFilesModel()->store($fileName, $id);
+            $this->getCombineFilesModel()->store($fileName, $id);
 
-            self::getLogService()->logCombine($fileName .'.'. $typeFile, $fileSize, 'successes', $sumSize[0]['sum']);
+            $this->getLogService()->logCombine($fileName .'.'. $typeFile, $fileSize, 'successes', $sumSize[0]['sum']);
         } else {
-            self::getLogService()->logCombineError('errors');
+            $this->getLogService()->logCombineError('errors');
         }
     }
 
-    public static function countToBlock($time)
+    public function countToBlock($time)
     {
         if (empty($result)) {
             $_SESSION['count'] += 1;
             if ($_SESSION['count'] === $time && isset($_SERVER['REMOTE_ADDR'])) {
                 $_SESSION['count'] = 0;
 
-                self::getLogService()->logCombineError('exceptions');
+                $this->getLogService()->logCombineError('exceptions');
 
-                setcookie('bloked', 'A lot attempt', time() + 60 * 15, '/combine', self::getDomain());
+                setcookie('bloked', 'A lot attempt', time() + 60 * 15, '/combine', $this->getDomain());
             } else {
-                setcookie('error', 'Come again pls', time() + 2, '/combine', self::getDomain());
+                setcookie('error', 'Come again pls', time() + 2, '/combine', $this->getDomain());
             }
 
             return header('Location: /combine/authorization');
