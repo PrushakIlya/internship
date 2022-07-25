@@ -19,4 +19,5 @@ if (upload !== null) {
         uploadSubmit.disabled = false;
       }
     }
-  };
+  }
+}

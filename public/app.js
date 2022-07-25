@@ -1,4 +1,5 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./resources/js/all-functions.js":
@@ -45,16 +46,13 @@ var navigateCurrentPage = function navigateCurrentPage(button, num, current) {
   \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-
 /* harmony export */   "CHECKCOMBINE_EMAIL": () => (/* binding */ CHECKCOMBINE_EMAIL),
 /* harmony export */   "CHECKEMAIL": () => (/* binding */ CHECKEMAIL),
 /* harmony export */   "CHECKEMAILFORM": () => (/* binding */ CHECKEMAILFORM),
 /* harmony export */   "CHECKEMAILGO": () => (/* binding */ CHECKEMAILGO),
 /* harmony export */   "CHECKEMAILREG": () => (/* binding */ CHECKEMAILREG)
-
 /* harmony export */ });
 var ROOT = 'http://localhost:3000';
 var CHECKEMAIL = ROOT + '/api/checkEmail';
@@ -64,7 +62,6 @@ var CHECKEMAILREG = ROOT + '/api/checkEmailReg'; //Combine task-6
 
 var CHECKCOMBINE_EMAIL = ROOT + '/api/checkCombineEmail';
 
-
 /***/ }),
 
 /***/ "./resources/js/api.js":
@@ -73,7 +70,6 @@ var CHECKCOMBINE_EMAIL = ROOT + '/api/checkCombineEmail';
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "apiCheckEmail": () => (/* binding */ apiCheckEmail)
@@ -90,9 +86,7 @@ var apiCheckEmail = function apiCheckEmail(url, payload, error_block) {
   }).then(function (res) {
     return res.json();
   }).then(function (body) {
-
     if (body === true) error_block.innerHTML = _errors__WEBPACK_IMPORTED_MODULE_0__.AUTORIZATIONERROR;else error_block.innerHTML = ' ';
-
   })["catch"](function (error) {
     return console.log(error);
   });
@@ -106,7 +100,6 @@ var apiCheckEmail = function apiCheckEmail(url, payload, error_block) {
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _upload_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./upload.js */ "./resources/js/upload.js");
 /* harmony import */ var _autorization_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./autorization.js */ "./resources/js/autorization.js");
@@ -217,7 +210,6 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.combineAuthorisation !== null) {
     if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authPassword.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorPassword.textContent = '';
   };
 
-
   var authNameFunc = function authNameFunc() {
     if (!_vars_js__WEBPACK_IMPORTED_MODULE_2__.authName.value.match(_expressions_js__WEBPACK_IMPORTED_MODULE_0__.PATTERNNAME)) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorName.textContent = _errors_js__WEBPACK_IMPORTED_MODULE_1__.NAMEERROR;else _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorName.textContent = ' ';
     if (_vars_js__WEBPACK_IMPORTED_MODULE_2__.authName.value.length === 0) _vars_js__WEBPACK_IMPORTED_MODULE_2__.authErrorName.textContent = '';
@@ -323,14 +315,11 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.combineRegistration !== null) {
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _api_type_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api-type.js */ "./resources/js/api-type.js");
 /* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./api.js */ "./resources/js/api.js");
 /* harmony import */ var _expressions_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./expressions.js */ "./resources/js/expressions.js");
-
 /* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./vars.js */ "./resources/js/vars.js");
-
 
 
 
@@ -349,7 +338,6 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_3__.create !== null) {
 
   _vars_js__WEBPACK_IMPORTED_MODULE_3__.createFirstname.oninput = inputCreateFirstName;
   _vars_js__WEBPACK_IMPORTED_MODULE_3__.createEmail.oninput = inputCreateEmail;
-
   document.addEventListener('DOMContentLoaded', function () {
     var callback = function callback() {
       if (_vars_js__WEBPACK_IMPORTED_MODULE_3__.createErrorName.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_3__.createErrorEmail.textContent.length === 1) {
@@ -378,7 +366,6 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_3__.create !== null) {
   \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _api_type_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api-type.js */ "./resources/js/api-type.js");
 /* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./api.js */ "./resources/js/api.js");
@@ -559,7 +546,6 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.registration !== null) {
   _vars_js__WEBPACK_IMPORTED_MODULE_4__.regEmail.oninput = regEmailFunc;
   _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPass.oninput = regPassFunc;
   _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPassConf.oninput = regPassConfFunc;
-
   document.addEventListener('DOMContentLoaded', function () {
     var callback = function callback() {
       if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorFirstname.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorLastname.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorEmail.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent.length === 1 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPassConf.textContent.length === 1 || _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorFirstname.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regFirstname.value.length > 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorLastname.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regLastname.value.length > 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorEmail.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regEmail.value.length > 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPass.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPass.value.length > 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regErrorPassConf.textContent.length === 0 && _vars_js__WEBPACK_IMPORTED_MODULE_4__.regPassConf.value.length > 0) {
@@ -579,6 +565,7 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_4__.registration !== null) {
 }
 
 /***/ }),
+
 /***/ "./resources/js/upload.js":
 /*!********************************!*\
   !*** ./resources/js/upload.js ***!
@@ -619,7 +606,6 @@ if (_vars_js__WEBPACK_IMPORTED_MODULE_1__.upload !== null) {
 /*!******************************!*\
   !*** ./resources/js/vars.js ***!
   \******************************/
-
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -716,7 +702,6 @@ var taskFourButton = document.getElementById('task_4');
 var taskFiveButton = document.getElementById('task_5');
 var taskSixButton = document.getElementById('task_6');
 
-
 /***/ }),
 
 /***/ "./resources/sass/app.sass":
@@ -725,7 +710,6 @@ var taskSixButton = document.getElementById('task_6');
   \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -791,18 +775,6 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	
