@@ -14,7 +14,7 @@ if (preg_match('~^(\/two\/edit\/([0-9]+))$~', $_SERVER['REQUEST_URI'], $matches)
 }
 
 ?>
-<section class="edit">
+<section class="edit" id="edit">
   <div class="wrapper">
     <form action="<?php echo $action . $id ?>" method="POST">
       <?php foreach ($results as $item) : ?>

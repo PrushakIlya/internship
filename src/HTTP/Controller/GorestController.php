@@ -6,57 +6,52 @@ class GorestController extends BaseController
 {
     private function getResponseData()
     {
-        $jsonData = file_get_contents(parent::getApi('get'));
+        $jsonData = file_get_contents($this->getApi('get'));
 
         return json_decode($jsonData);
     }
 
     public function index(): void
     {
-        $results = parent::getApiService()->toArray($this->getResponseData());
-        include '../resources/views/layout.php';
+        $results = $this->getApiService()->toArray($this->getResponseData());
+        $this->view($results);
     }
 
     public function edit($id): void
     {
-        $results = parent::getApiService()->toArrayEqual($this->getResponseData(), $id);
-        include '../resources/views/layout.php';
+        $results = $this->getApiService()->toArrayEqual($this->getResponseData(), $id);
+        $this->view($results);
     }
 
     public function update($id): void
     {
         header('Location: /two');
-        parent::getApiService()->curl(parent::getApiElem('update', $id), 'PUT');
-
-        // $response = curl_exec($curl);
-    // if (!$response) {
-    //   return false;
-    // }
+        $this->getApiService()->curl($this->getApiElem('update', $id), 'PUT');
     }
 
     public function create(): void
     {
-        include '../resources/views/layout.php';
+        $this->view();
     }
 
     public function store(): void
     {
         header('Location: /two');
-        parent::getApiService()->curl(parent::getApi('post'), 'POST');
+        $this->getApiService()->curl($this->getApi('post'), 'POST');
     }
 
     public function destroy($id): void
     {
         header('Location: /two');
-        parent::getApiService()->destroy(parent::getApiElem('destroy', $id));
+        $this->getApiService()->destroy($this->getApiElem('destroy', $id));
     }
 
     public function massDestroy(): void
     {
         header('Location: /two');
-        $elems = parent::getCheckService()->splitInputMassDestroy();
+        $elems = $this->getCheckService()->splitInputMassDestroy();
         foreach ($elems as $elem) {
-            parent::getApiService()->destroy(parent::getApiElem('destroy', $elem));
+            $this->getApiService()->destroy($this->getApiElem('destroy', $elem));
         }
     }
 }

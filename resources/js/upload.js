@@ -1,20 +1,22 @@
-const upload_submit = document.getElementById('upload_submit');
-const upload_file = document.getElementById('formFile');
-const upload_errors = document.getElementById('upload_errors');
+import { UPLOADERRORS_1, UPLOADERRORS_2 } from './errors.js';
+import { upload, uploadSubmit, uploadFile, uploadErrors } from './vars.js';
 
-upload_file.oninput = function (){
-  if(upload_file.files[0].size > 200000){
-    upload_errors.innerHTML = 'Max file size is 200kByt';
-    upload_submit.disabled = true;
-    console.log(upload_file.files[0].size);
-  }
-  if(upload_file.files[0].type !== 'image/png' && upload_file.files[0].type !== 'image/jpeg' && upload_file.files[0].type !== 'text/plain'){
-    upload_errors.innerHTML = 'Only png,jpeg,txt';
-    upload_submit.disabled = true;
-    console.log(upload_file.files[0].type);
-  }
-  else {
-    upload_errors.innerHTML = ' ';
-    upload_submit.disabled = false;
-  }
-}
+if (upload !== null) {
+  uploadFile.oninput = function () {
+    if (uploadFile.value.length === 0) {
+      uploadErrors.innerHTML = UPLOADERRORS_2;
+      uploadSubmit.disabled = true;
+    } else {
+      if (uploadFile.files[0].size > 200000) {
+        uploadErrors.innerHTML = UPLOADERRORS_1;
+        uploadSubmit.disabled = true;
+      }
+      if (uploadFile.files[0].type !== 'image/png' && uploadFile.files[0].type !== 'image/jpeg' && uploadFile.files[0].type !== 'text/plain') {
+        uploadErrors.innerHTML = UPLOADERRORS_2;
+        uploadSubmit.disabled = true;
+      } else {
+        uploadErrors.innerHTML = ' ';
+        uploadSubmit.disabled = false;
+      }
+    }
+  };

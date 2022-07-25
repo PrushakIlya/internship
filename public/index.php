@@ -1,22 +1,16 @@
 <?php
 
-include_once '../vendor/autoload.php';
-include_once '../src/HTTP/Kernel.php';
 
-$dbConnect = include_once '../config/connect_db.php';
-include_once '../config/check_table.php';
+include '../vendor/autoload.php';
+include '../src/HTTP/Kernel.php';
 
-include_once '../database/fake/users_fake.php';
-$sqlUsersMigration = include_once '../database/users_migration.php';
-$sqlFilesMigration = include_once '../database/files_migration.php';
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 try {
-    checkTable($dbConnect, $sqlUsersMigration, 'users');
-    checkTable($dbConnect, $sqlFilesMigration, 'files');
-
-    // users_fake($db_connect);
+    include '../database/migrations.php';
 } catch (PDOException $e) {
     echo $e;
 }
-$web = new Web();
-$web->route();
+$web = new Kernal();
+$web->run();

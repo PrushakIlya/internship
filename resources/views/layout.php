@@ -1,6 +1,7 @@
 <?php
 $loader = new \Twig\Loader\FilesystemLoader('../resources/views');
-$twig = new \Twig\Environment($loader, []);
+$twig = new \Twig\Environment($loader, ['debug' => true, ]);
+$twig->addExtension(new \Twig\Extension\DebugExtension());
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,9 +26,27 @@ $twig = new \Twig\Environment($loader, []);
     <?php preg_match('~^(\/edit\/([0-9]+))$~', $_SERVER['REQUEST_URI'], $matches) && include '../resources/views/edit.php'?>
     <?php $_SERVER['REQUEST_URI'] === '/create' && include '../resources/views/create.php'?>
     <?php if ($_SERVER['REQUEST_URI'] === '/upload') {
-    echo $twig->render('upload.twig', ['results' => $results, ]);
-    }
-    ?>
+        echo $twig->render('twigs/upload.twig', ['results' => $results, ]);
+    }?>
+    <?php if ($_SERVER['REQUEST_URI'] === '/autorization') {
+        echo $twig->render('twigs/autorization.twig', []);
+    }?>
+    <?php if ($_SERVER['REQUEST_URI'] === '/autorization/ifAutorized') {
+        echo $twig->render('twigs/if_autorized.twig', ['results' => $results, ]);
+    }?>
+    <?php if ($_SERVER['REQUEST_URI'] === '/registration') {
+        echo $twig->render('twigs/registration.twig', []);
+    }?>
+    <?php if ($_SERVER['REQUEST_URI'] === '/combine/registration') {
+        echo $twig->render('twigs/combine_registration.twig', []);
+    }?>
+    <?php if ($_SERVER['REQUEST_URI'] === '/combine/authorization') {
+        echo $twig->render('twigs/combine_autorization.twig', []);
+    }?>
+    <?php if ($_SERVER['REQUEST_URI'] === '/combine/ifAutorized') {
+        echo $twig->render('twigs/combine_if_autorized.twig', ['results' => $results[0], 'result' => $results[1]]);
+    }?>
+    
 
     <!-- API -->
     <?php $_SERVER['REQUEST_URI'] === '/two' && include '../resources/views/index.php'?>

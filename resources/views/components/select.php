@@ -1,9 +1,7 @@
 <?php
-
-function select($class, $nameId, $optionOne, $optionTwo)
+function select($class, $name_id, $option_1, $option_2)
 {
-    $title = ucfirst($nameId);
-
+    $title = ucfirst($name_id);
     return "
       <div class='$class'>
         <label for='$nameId'>$title: </label>

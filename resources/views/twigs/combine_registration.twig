@@ -1,0 +1,17 @@
+<section class="combine_registration" id="combine_registration">
+	<div class="wrapper d-flex flex-column align-items-center">
+		<div class="success_block mt-4 text-success fw-bold p-3 bg-info bg-opacity-10 border border-info rounded" id="success_block">
+			Welcome! You registered
+		</div>
+		<form action="/combine/store" method="POST" class="mt-4" style="width:400px">
+			<h1 class="text-center mt-4 fw-bold">SIGN UP</h1>
+			{{ include('./twigs/components/input.twig',{error_id: 'reg_error_firstname',name_id:'reg_firstname',name:'firstname',title:'FirstName'}) }}
+			{{ include('./twigs/components/input.twig',{error_id: 'reg_error_lastname',name_id:'reg_lastname',name:'lastname',title:'LastName'}) }}
+			{{ include('./twigs/components/input.twig',{error_id: 'reg_error_email',name_id:'reg_email',name:'email',title:'Email'}) }}
+			{{ include('./twigs/components/input.twig',{error_id: 'reg_error_pass',name_id:'reg_pass',name:'password',title:'Password'}) }}
+			{{ include('./twigs/components/input.twig',{error_id: 'reg_error_pass_conf',name_id:'reg_pass_conf',name:'password_conf',title:'Confirm Password'}) }}
+			<input value="Sign up" type="submit" class="btn btn-primary mt-4 w-100" id="reg_submit" disabled>
+			<a href="/combine/authorization" class="btn btn-primary mt-1 w-100" id="combine_submit">Sign in</a>
+		</form>
+	</div>
+</section>

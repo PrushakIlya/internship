@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_URI'] === '/two/create') {
 }
 ?>
 
-<section class="create">
+<section class="create" id="create">
   <div class="wrapper">
     <form action="<?php echo $action ?>" method="POST">
       <div>
