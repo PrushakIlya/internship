@@ -17,7 +17,7 @@ class BaseController
     private object $filesModel;
     private object $clientsModel;
     private array $api;
-    // private object $checkService;
+    private object $checkService;
     private object $apiService;
     private object $logService;
     private object $combineUsersModel;
@@ -29,7 +29,7 @@ class BaseController
         $this->usersModel = new UsersModel();
         $this->filesModel = new FilesModel();
         $this->clientsModel = new ClientsModel();
-        // $this->checkService = new CheckService();
+        $this->checkService = new CheckService();
         $this->apiService = new ApiService();
         $this->logService = new LogService();
         $this->combineFilesModel = new CombineFilesModel();
@@ -55,7 +55,7 @@ class BaseController
 
     public function getCombineUsersModel()
     {
-        return new CombineUsersModel();
+        return $this->combineUsersModel;
     }
 
     public function getUsersModel(): object
@@ -80,7 +80,7 @@ class BaseController
 
     public function getCheckService(): object
     {
-        return new CheckService();
+        return $this->checkService;
     }
 
     public function getApi($param): string
