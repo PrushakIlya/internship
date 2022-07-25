@@ -1,7 +1,0 @@
-<?php
-
-$sql = 'CREATE TABLE users (id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-name VARCHAR(50) NOT NULL, email VARCHAR(50) NOT NULL UNIQUE,
-gender TINYINT, status TINYINT)';
-
-return $sql;
