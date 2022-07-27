@@ -2,7 +2,7 @@
 
 namespace Prushak\Task7\Products;
 
-use Prushak\Task7\Test;
+use Prushak\Task7\ServiceTrait;
 
 abstract class Product
 {
@@ -11,7 +11,7 @@ abstract class Product
     private string $manufacture;
     private string $releaseDate;
     private int $cost;
-    use Test;
+    use ServiceTrait;
 
     public function __construct(array $type, string $name, string $manufacture, string $releaseDate, int $cost)
     {

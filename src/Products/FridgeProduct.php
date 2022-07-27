@@ -2,8 +2,6 @@
 
 namespace Prushak\Task7\Products;
 
-use Prushak\Task7\Test;
-
 class FridgeProduct extends Product
 {
     private string $name = 'Fridge';

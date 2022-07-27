@@ -8,7 +8,7 @@ use Prushak\Task7\Products\LaptopProduct;
 use Prushak\Task7\Products\TvsetProduct;
 use Prushak\Task7\Services\InstallService;
 
-class BlankProduct implements Inter
+class BlankProduct implements ProductInterface
 {
     public function blanks()
     {

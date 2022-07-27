@@ -2,7 +2,7 @@
 
 namespace Prushak\Task7;
 
-interface Inter
+interface ProductInterface
 {
     public function calculateCost($arrCosts);
 }
