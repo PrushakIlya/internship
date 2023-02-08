@@ -1,8 +1,8 @@
 {
-    "name": "prushak/internship",
+    "name": "prushak/task-7",
     "autoload": {
         "psr-4": {
-            "Prushak\\Internship\\": "src/"
+            "Prushak\\Task7\\": "src/"
         }
     },
     "authors": [
@@ -11,8 +11,5 @@
             "email": "89218019+PrushakIlya@users.noreply.github.com"
         }
     ],
-    "require": {
-        "twig/twig": "^3.4",
-        "friendsofphp/php-cs-fixer": "^3.9"
-    }
+    "require": {}
 }

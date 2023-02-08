@@ -1,7 +1,0 @@
-<?php
-
-$sql = 'CREATE TABLE combineFiles (id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-name VARCHAR(50) NOT NULL UNIQUE, size INT(50) NOT NULL,type VARCHAR(20), 
-user_id INTEGER UNSIGNED,FOREIGN KEY (user_id) REFERENCES combineUsers(id), date TIMESTAMP NOT NULL)';
-
-return $sql;
